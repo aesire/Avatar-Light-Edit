@@ -1,0 +1,172 @@
+{
+  "controller_type": "oculus_touch",
+  "name": "VRChat과 같은 기본 배치",
+  "description": "왼쪽 스틱 이동 · 오른쪽 스틱 회전 · A 점프 · B/Y 메뉴 · 트리거 사용 · 그립 잡기 · 손: 엄지·트리거 터치 + 그립 (VRChat 퀘스트 제스처)",
+  "bindings": {
+    "/actions/main": {
+      "sources": [
+        {
+          "path": "/user/hand/left/input/joystick",
+          "mode": "joystick",
+          "inputs": {
+            "position": {
+              "output": "/actions/main/in/move"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/joystick",
+          "mode": "joystick",
+          "inputs": {
+            "position": {
+              "output": "/actions/main/in/turn"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/a",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/jump"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/b",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/menu"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/y",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/menu"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/trigger",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/use"
+            },
+            "pull": {
+              "output": "/actions/main/in/trigger_value"
+            },
+            "touch": {
+              "output": "/actions/main/in/index_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trigger",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/use"
+            },
+            "pull": {
+              "output": "/actions/main/in/trigger_value"
+            },
+            "touch": {
+              "output": "/actions/main/in/index_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/grip",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/grab"
+            },
+            "pull": {
+              "output": "/actions/main/in/grip_value"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/grip",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/grab"
+            },
+            "pull": {
+              "output": "/actions/main/in/grip_value"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/x",
+          "mode": "button",
+          "inputs": {
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/thumbrest",
+          "mode": "button",
+          "inputs": {
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/thumbrest",
+          "mode": "button",
+          "inputs": {
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        }
+      ],
+      "skeleton": [
+        {
+          "output": "/actions/main/in/skeleton_left",
+          "path": "/user/hand/left/input/skeleton/left"
+        },
+        {
+          "output": "/actions/main/in/skeleton_right",
+          "path": "/user/hand/right/input/skeleton/right"
+        }
+      ],
+      "poses": [
+        {
+          "output": "/actions/main/in/aim",
+          "path": "/user/hand/left/pose/tip"
+        },
+        {
+          "output": "/actions/main/in/aim",
+          "path": "/user/hand/right/pose/tip"
+        }
+      ]
+    }
+  }
+}

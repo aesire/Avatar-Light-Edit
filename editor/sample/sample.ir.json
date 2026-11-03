@@ -1,0 +1,727 @@
+{
+  "irVersion": 1,
+  "name": "SampleAvatar",
+  "buffers": "sample.ir.bin",
+  "nodes": [
+    {
+      "id": 0,
+      "name": "SampleAvatar",
+      "parent": -1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1000"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Armature",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1001"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Hips",
+      "parent": 1,
+      "position": [
+        0,
+        0.85,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1002"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Spine",
+      "parent": 2,
+      "position": [
+        0,
+        0.25,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1003"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Head",
+      "parent": 3,
+      "position": [
+        0,
+        0.32,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1004"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Body",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1005"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Head",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1006"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Hair",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1007"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Skirt",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1008"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Ribbon",
+      "parent": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "source": {
+        "guid": "00000000000000000000000000000000",
+        "fileID": "1009"
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "id": "mesh_body",
+      "name": "Body",
+      "vertexCount": 825,
+      "positions": {
+        "off": 0,
+        "count": 2475
+      },
+      "normals": {
+        "off": 9900,
+        "count": 2475
+      },
+      "tangents": {
+        "off": 19800,
+        "count": 3300
+      },
+      "uv0": {
+        "off": 33000,
+        "count": 1650,
+        "dim": 2
+      },
+      "boneIndices": {
+        "off": 39600,
+        "count": 3300
+      },
+      "boneWeights": {
+        "off": 52800,
+        "count": 3300
+      },
+      "bindposes": {
+        "off": 66000,
+        "count": 48
+      },
+      "submeshes": [
+        {
+          "indices": {
+            "off": 66192,
+            "count": 4608
+          }
+        }
+      ],
+      "blendShapes": []
+    },
+    {
+      "id": "mesh_head",
+      "name": "Head",
+      "vertexCount": 825,
+      "positions": {
+        "off": 84624,
+        "count": 2475
+      },
+      "normals": {
+        "off": 94524,
+        "count": 2475
+      },
+      "tangents": {
+        "off": 104424,
+        "count": 3300
+      },
+      "uv0": {
+        "off": 117624,
+        "count": 1650,
+        "dim": 2
+      },
+      "boneIndices": {
+        "off": 124224,
+        "count": 3300
+      },
+      "boneWeights": {
+        "off": 137424,
+        "count": 3300
+      },
+      "bindposes": {
+        "off": 150624,
+        "count": 48
+      },
+      "submeshes": [
+        {
+          "indices": {
+            "off": 150816,
+            "count": 4608
+          }
+        }
+      ],
+      "blendShapes": [
+        {
+          "name": "=== Face ===",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 169248,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "smile",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 179148,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "eye_close",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 189048,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "--- Viseme ---",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 198948,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "vrc.v_aa",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 208848,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "vrc.v_oh",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 218748,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "--- Shape ---",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 228648,
+                "count": 2475
+              }
+            }
+          ]
+        },
+        {
+          "name": "head_big",
+          "frames": [
+            {
+              "weight": 100,
+              "dPos": {
+                "off": 238548,
+                "count": 2475
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mesh_hair",
+      "name": "Hair",
+      "vertexCount": 462,
+      "positions": {
+        "off": 248448,
+        "count": 1386
+      },
+      "normals": {
+        "off": 253992,
+        "count": 1386
+      },
+      "tangents": {
+        "off": 259536,
+        "count": 1848
+      },
+      "uv0": {
+        "off": 266928,
+        "count": 924,
+        "dim": 2
+      },
+      "boneIndices": {
+        "off": 270624,
+        "count": 1848
+      },
+      "boneWeights": {
+        "off": 278016,
+        "count": 1848
+      },
+      "bindposes": {
+        "off": 285408,
+        "count": 48
+      },
+      "submeshes": [
+        {
+          "indices": {
+            "off": 285600,
+            "count": 2496
+          }
+        }
+      ],
+      "blendShapes": []
+    },
+    {
+      "id": "mesh_skirt",
+      "name": "Skirt",
+      "vertexCount": 297,
+      "positions": {
+        "off": 295584,
+        "count": 891
+      },
+      "normals": {
+        "off": 299148,
+        "count": 891
+      },
+      "tangents": {
+        "off": 302712,
+        "count": 1188
+      },
+      "uv0": {
+        "off": 307464,
+        "count": 594,
+        "dim": 2
+      },
+      "boneIndices": {
+        "off": 309840,
+        "count": 1188
+      },
+      "boneWeights": {
+        "off": 314592,
+        "count": 1188
+      },
+      "bindposes": {
+        "off": 319344,
+        "count": 48
+      },
+      "submeshes": [
+        {
+          "indices": {
+            "off": 319536,
+            "count": 1536
+          }
+        }
+      ],
+      "blendShapes": []
+    },
+    {
+      "id": "mesh_acc",
+      "name": "Ribbon",
+      "vertexCount": 117,
+      "positions": {
+        "off": 325680,
+        "count": 351
+      },
+      "normals": {
+        "off": 327084,
+        "count": 351
+      },
+      "tangents": {
+        "off": 328488,
+        "count": 468
+      },
+      "uv0": {
+        "off": 330360,
+        "count": 234,
+        "dim": 2
+      },
+      "boneIndices": {
+        "off": 331296,
+        "count": 468
+      },
+      "boneWeights": {
+        "off": 333168,
+        "count": 468
+      },
+      "bindposes": {
+        "off": 335040,
+        "count": 48
+      },
+      "submeshes": [
+        {
+          "indices": {
+            "off": 335232,
+            "count": 576
+          }
+        }
+      ],
+      "blendShapes": []
+    }
+  ],
+  "renderers": [
+    {
+      "id": "r_body",
+      "node": 5,
+      "type": "SkinnedMeshRenderer",
+      "mesh": "mesh_body",
+      "bones": [
+        2,
+        3,
+        4
+      ],
+      "rootBone": 2,
+      "materials": [
+        "mat_body"
+      ],
+      "blendShapeWeights": [
+        0
+      ],
+      "enabled": true
+    },
+    {
+      "id": "r_head",
+      "node": 6,
+      "type": "SkinnedMeshRenderer",
+      "mesh": "mesh_head",
+      "bones": [
+        2,
+        3,
+        4
+      ],
+      "rootBone": 4,
+      "materials": [
+        "mat_body"
+      ],
+      "blendShapeWeights": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    {
+      "id": "r_hair",
+      "node": 7,
+      "type": "SkinnedMeshRenderer",
+      "mesh": "mesh_hair",
+      "bones": [
+        2,
+        3,
+        4
+      ],
+      "rootBone": 4,
+      "materials": [
+        "mat_hair"
+      ],
+      "blendShapeWeights": [],
+      "enabled": true
+    },
+    {
+      "id": "r_skirt",
+      "node": 8,
+      "type": "SkinnedMeshRenderer",
+      "mesh": "mesh_skirt",
+      "bones": [
+        2,
+        3,
+        4
+      ],
+      "rootBone": 2,
+      "materials": [
+        "mat_cloth"
+      ],
+      "blendShapeWeights": [],
+      "enabled": true
+    },
+    {
+      "id": "r_acc",
+      "node": 9,
+      "type": "SkinnedMeshRenderer",
+      "mesh": "mesh_acc",
+      "bones": [
+        2,
+        3,
+        4
+      ],
+      "rootBone": 4,
+      "materials": [
+        "mat_poiyomi"
+      ],
+      "blendShapeWeights": [],
+      "enabled": true
+    }
+  ],
+  "materials": [
+    {
+      "guid": "mat_body",
+      "path": "Assets/Sample/Body.mat",
+      "shaderGuid": "df12117ecd77c31469c224178886498e",
+      "floats": {
+        "_UseShadow": 1,
+        "_ShadowBorder": 0.5,
+        "_Cull": 2
+      },
+      "colors": {
+        "_Color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "_ShadowColor": [
+          0.82,
+          0.7,
+          0.75,
+          1
+        ]
+      },
+      "texEnvs": {
+        "_MainTex": {
+          "texture": "tex_skin",
+          "scale": [
+            1,
+            1
+          ],
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      "keywords": [],
+      "renderQueue": -1
+    },
+    {
+      "guid": "mat_hair",
+      "path": "Assets/Sample/Hair.mat",
+      "shaderGuid": "efa77a80ca0344749b4f19fdd5891cbe",
+      "floats": {
+        "_OutlineWidth": 0.08,
+        "_UseRim": 1,
+        "_Cull": 0
+      },
+      "colors": {
+        "_Color": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "_OutlineColor": [
+          0.25,
+          0.15,
+          0.3,
+          1
+        ]
+      },
+      "texEnvs": {
+        "_MainTex": {
+          "texture": "tex_hair",
+          "scale": [
+            1,
+            1
+          ],
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      "keywords": [],
+      "renderQueue": -1
+    },
+    {
+      "guid": "mat_cloth",
+      "path": "Assets/Sample/Cloth.mat",
+      "shaderGuid": "df12117ecd77c31469c224178886498e",
+      "floats": {
+        "_Cull": 0
+      },
+      "colors": {
+        "_Color": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "texEnvs": {
+        "_MainTex": {
+          "texture": "tex_cloth",
+          "scale": [
+            1,
+            1
+          ],
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      "keywords": [],
+      "renderQueue": -1
+    },
+    {
+      "guid": "mat_poiyomi",
+      "path": "Assets/Sample/Ribbon.mat",
+      "shaderGuid": "0123456789abcdef0123456789abcdef",
+      "floats": {
+        "_Glossiness": 0.5
+      },
+      "colors": {
+        "_Color": [
+          0.9,
+          0.2,
+          0.3,
+          1
+        ]
+      },
+      "texEnvs": {},
+      "keywords": [],
+      "renderQueue": -1
+    }
+  ],
+  "textures": [
+    {
+      "guid": "tex_skin",
+      "path": "Assets/Sample/tex_skin.png",
+      "file": "tex_skin.png",
+      "importer": {
+        "sRGB": true,
+        "mipmaps": true,
+        "maxSize": 2048,
+        "wrap": 0,
+        "filter": 1
+      }
+    },
+    {
+      "guid": "tex_hair",
+      "path": "Assets/Sample/tex_hair.png",
+      "file": "tex_hair.png",
+      "importer": {
+        "sRGB": true,
+        "mipmaps": true,
+        "maxSize": 2048,
+        "wrap": 0,
+        "filter": 1
+      }
+    },
+    {
+      "guid": "tex_cloth",
+      "path": "Assets/Sample/tex_cloth.png",
+      "file": "tex_cloth.png",
+      "importer": {
+        "sRGB": true,
+        "mipmaps": true,
+        "maxSize": 2048,
+        "wrap": 0,
+        "filter": 1
+      }
+    }
+  ]
+}

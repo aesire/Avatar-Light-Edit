@@ -1,0 +1,2 @@
+-define:LILTOON_DISABLE_OPTIMIZATION
+-unsafe

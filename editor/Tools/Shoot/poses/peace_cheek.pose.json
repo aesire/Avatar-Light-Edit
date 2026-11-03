@@ -1,0 +1,3 @@
+{ "pose": { "base": "relaxed", "hands": { "right": "peace" }, "muscles": {
+  "Right Arm Down-Up": -0.1, "Right Arm Front-Back": 0.75, "Right Arm Twist In-Out": 1, "Right Forearm Stretch": -0.9,
+  "Head Tilt Left-Right": 0.12 } } }

@@ -1,0 +1,38 @@
+# 빌드 결과·내려받은 패키지·시험 출력 (다시 만들 수 있는 것)
+editor/bin/
+editor/obj/
+editor/packages/
+editor/e2e_out/
+editor/dist/
+importsim/bin/
+importsim/obj/
+importsim/out/
+
+# Unity 렌더 서버 프로젝트가 만드는 것
+editor/Unity/Build/
+editor/Unity/BuildTest/
+editor/Unity/PatchedPlayer/
+editor/Unity/Library/
+editor/Unity/Temp/
+editor/Unity/Logs/
+editor/Unity/UserSettings/
+editor/Unity/obj/
+editor/Unity/*.csproj
+editor/Unity/*.sln
+# build_shaderpacks.sh로 다시 만든다 (약 86 MB)
+editor/Unity/Assets/StreamingAssets/ShaderPacks/
+
+# 정리하며 뺀 것 (빌드하지 않음)
+old/
+
+*.log
+__pycache__/
+.vs/
+
+# 전역 gitignore가 *.dll·*.onnx를 막아도 렌더러 빌드에 꼭 필요한 재료는 저장소에 둔다 (2026-11-01, 없으면 새로 받은 저장소에서 렌더러가 빌드되지 않는다)
+!editor/Unity/Assets/Plugins/OnnxRuntime/**/*.dll
+!editor/Unity/Assets/Plugins/OpenVR/**/*.dll
+!editor/Unity/Assets/StreamingAssets/FaceModel/*.onnx
+
+# 각자 PC의 Claude Code 권한 설정
+.claude/settings.local.json

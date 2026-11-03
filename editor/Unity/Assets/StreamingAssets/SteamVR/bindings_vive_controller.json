@@ -1,0 +1,115 @@
+{
+  "controller_type": "vive_controller",
+  "name": "VRChat과 같은 기본 배치",
+  "description": "왼쪽 트랙패드 이동 · 오른쪽 트랙패드 회전 · 메뉴 단추 메뉴 · 트리거 사용 · 그립 잡기 · 손: 엄지·트리거 터치 + 그립 (VRChat 퀘스트 제스처)",
+  "bindings": {
+    "/actions/main": {
+      "sources": [
+        {
+          "path": "/user/hand/left/input/trackpad",
+          "mode": "trackpad",
+          "inputs": {
+            "position": {
+              "output": "/actions/main/in/move"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trackpad",
+          "mode": "trackpad",
+          "inputs": {
+            "position": {
+              "output": "/actions/main/in/turn"
+            },
+            "touch": {
+              "output": "/actions/main/in/thumb_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/application_menu",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/menu"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/application_menu",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/menu"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/trigger",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/use"
+            },
+            "pull": {
+              "output": "/actions/main/in/trigger_value"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trigger",
+          "mode": "trigger",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/use"
+            },
+            "pull": {
+              "output": "/actions/main/in/trigger_value"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/grip",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/grab"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/grip",
+          "mode": "button",
+          "inputs": {
+            "click": {
+              "output": "/actions/main/in/grab"
+            }
+          }
+        }
+      ],
+      "skeleton": [
+        {
+          "output": "/actions/main/in/skeleton_left",
+          "path": "/user/hand/left/input/skeleton/left"
+        },
+        {
+          "output": "/actions/main/in/skeleton_right",
+          "path": "/user/hand/right/input/skeleton/right"
+        }
+      ],
+      "poses": [
+        {
+          "output": "/actions/main/in/aim",
+          "path": "/user/hand/left/pose/tip"
+        },
+        {
+          "output": "/actions/main/in/aim",
+          "path": "/user/hand/right/pose/tip"
+        }
+      ]
+    }
+  }
+}

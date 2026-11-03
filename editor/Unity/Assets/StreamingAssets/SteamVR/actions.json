@@ -1,0 +1,118 @@
+{
+  "default_bindings": [
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch.json"
+    },
+    {
+      "controller_type": "pico_controller",
+      "binding_url": "bindings_pico_controller.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles.json"
+    },
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller.json"
+    }
+  ],
+  "actions": [
+    {
+      "name": "/actions/main/in/move",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/main/in/turn",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/main/in/jump",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/menu",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/use",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/grab",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/skeleton_left",
+      "type": "skeleton",
+      "skeleton": "/skeleton/hand/left"
+    },
+    {
+      "name": "/actions/main/in/skeleton_right",
+      "type": "skeleton",
+      "skeleton": "/skeleton/hand/right"
+    },
+    {
+      "name": "/actions/main/in/trigger_value",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/main/in/grip_value",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/main/in/aim",
+      "type": "pose"
+    },
+    {
+      "name": "/actions/main/in/thumb_touch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/main/in/index_touch",
+      "type": "boolean"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/main",
+      "usage": "leftright"
+    }
+  ],
+  "localization": [
+    {
+      "language_tag": "en_US",
+      "/actions/main": "Main",
+      "/actions/main/in/move": "Move",
+      "/actions/main/in/turn": "Turn",
+      "/actions/main/in/jump": "Jump",
+      "/actions/main/in/menu": "Menu (tap: quick menu, hold: action menu)",
+      "/actions/main/in/use": "Use / Point",
+      "/actions/main/in/grab": "Grab",
+      "/actions/main/in/skeleton_left": "Left hand (wrist position)",
+      "/actions/main/in/skeleton_right": "Right hand (wrist position)",
+      "/actions/main/in/trigger_value": "Trigger pull (fist)",
+      "/actions/main/in/grip_value": "Grip pull (hand gestures)",
+      "/actions/main/in/aim": "Laser aim (editor windows)",
+      "/actions/main/in/thumb_touch": "Thumb touch (hand gestures)",
+      "/actions/main/in/index_touch": "Trigger touch (hand gestures)"
+    },
+    {
+      "language_tag": "ko_KR",
+      "/actions/main": "기본",
+      "/actions/main/in/move": "이동",
+      "/actions/main/in/turn": "회전",
+      "/actions/main/in/jump": "점프",
+      "/actions/main/in/menu": "메뉴 (짧게: 빠른 메뉴, 길게: 액션 메뉴)",
+      "/actions/main/in/use": "사용·누르기",
+      "/actions/main/in/grab": "잡기",
+      "/actions/main/in/skeleton_left": "왼손 (손목 자리)",
+      "/actions/main/in/skeleton_right": "오른손 (손목 자리)",
+      "/actions/main/in/trigger_value": "트리거 당김 (주먹)",
+      "/actions/main/in/grip_value": "그립 당김 (손 제스처)",
+      "/actions/main/in/aim": "레이저 방향 (에디터 창)",
+      "/actions/main/in/thumb_touch": "엄지 터치 (손 제스처)",
+      "/actions/main/in/index_touch": "트리거 터치 (손 제스처)"
+    }
+  ]
+}

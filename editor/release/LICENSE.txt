@@ -1,0 +1,53 @@
+Avatar Light Edit (ALEdit) 이용 조건
+
+Copyright (C) 2026 시르
+연락처  Discord: .aesire   X(Twitter): https://x.com/aesir_vrc
+
+1. 라이선스: GNU GPL 3판 (GPLv3)
+   이 프로그램은 자유 소프트웨어입니다. GNU 일반 공중 사용 허가서 3판의 조건에 따라
+   누구나 쓰고, 고치고, 다시 배포하고, 판매할 수 있습니다. 전문은 COPYING.txt에 있습니다.
+   고친 판이나 이 코드를 넣은 프로그램을 배포할 때는 그 소스도 GPLv3로 함께 공개해야 합니다.
+   소스 코드는 이 프로그램을 받은 GitHub 저장소에서 같은 버전 태그로 받을 수 있습니다.
+
+2. 추가 허가 (GPLv3 7조)
+   If you modify this Program, or any covered work, by linking or combining it with the Unity runtime
+   (Unity Technologies), the VRChat SDK (VRChat Inc.), or any of the components listed in
+   THIRD_PARTY_NOTICES.txt that are not licensed under the GNU GPL (or modified versions of those
+   components), containing parts covered by the terms of their own licenses, the licensors of this
+   Program grant you additional permission to convey the resulting work. Corresponding Source for a
+   non-source form of such a combination need not include the source code for the parts of those
+   components, but must include the source code for the parts of this Program that are used.
+
+   쉬운 설명: 렌더러는 Unity로 빌드되고 올리기 기능은 VRChat SDK를 부릅니다. 이들과 GPL이 아닌
+   함께 넣은 구성 요소와 묶어 배포하는 것을 허락하며, 그 구성 요소의 소스까지 공개할 필요는 없습니다.
+
+3. 만든 결과물 (추가 허가)
+   (a) Material, mesh, texture, animation, scene and other data files that the Program generates from
+   your assets ("Output") are not covered by this License merely because they were produced by the
+   Program. You may use and convey Output under terms of your choice.
+   (b) The Program copies some of its own files into Unity projects you choose (Assets/VrcProto/Editor/
+   VrcProtoUpload.cs and VrcProto.Protocol.dll, Assets/Editor/VrcProtoShaderPackBuilder.cs). As a special
+   exception, you may convey those files, unmodified and as copied by the Program, as part of a larger
+   work (such as an avatar or outfit package) under terms of your choice, so long as that larger work is
+   not itself a program that edits, previews, converts or uploads avatars by means of those files.
+
+   쉬운 설명: 이 프로그램으로 고친 아바타·의상(머티리얼·메시·텍스처·장면 등)은 GPL과 상관없이
+   원하는 조건으로 팔거나 배포할 수 있습니다. 내 Unity 프로젝트에 복사된 Assets/VrcProto/Editor 폴더가
+   패키지에 섞여 들어가도 괜찮지만, 결과물에 필요 없는 파일이니 빼고 배포하는 것을 권합니다.
+
+4. 원본 에셋
+   아바타·의상·셰이더 등 불러오는 에셋의 라이선스와 VRChat 이용 약관은 사용자가 지켜야 합니다.
+   이 프로그램은 그런 권리를 주지 않습니다.
+
+5. 함께 넣은 소프트웨어
+   THIRD_PARTY_NOTICES.txt에 적은 구성 요소에는 각자의 라이선스가 적용됩니다.
+   렌더러에는 Unity 런타임이 들어 있으며 Unity의 약관을 따릅니다.
+
+6. 상표
+   VRChat, Unity 및 그 밖의 이름은 각 권리자의 상표입니다.
+   이 프로그램은 VRChat Inc.나 Unity Technologies가 만들거나 승인하거나 후원한 것이 아닙니다.
+
+7. 보증 없음
+   이 프로그램은 "있는 그대로" 제공하며, 어떤 보증도 하지 않습니다 (GPLv3 15·16조).
+   법이 허용하는 범위에서 제작자는 프로그램 사용으로 생긴 손해(데이터 손실, 계정 제재 등 포함)에 책임지지 않습니다.
+   중요한 파일은 따로 백업해 주세요.

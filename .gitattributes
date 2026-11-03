@@ -1,0 +1,8 @@
+# 줄바꿈 (2026-11-01): Git에는 LF로 저장한다. 작업 폴더의 CRLF는 바뀐 것으로 치지 않는다.
+# 이진 파일은 Git이 내용으로 가려 건드리지 않는다.
+* text=auto
+
+# cmd는 CRLF여야 돌고, sh는 LF가 기준이다.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf

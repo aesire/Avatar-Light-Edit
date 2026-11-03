@@ -1,0 +1,5 @@
+{ "pose": { "base": "relaxed", "muscles": {
+  "Left Upper Leg Front-Back": -1, "Right Upper Leg Front-Back": -1,
+  "Left Lower Leg Stretch": 0.2, "Right Lower Leg Stretch": 0.2,
+  "Left Arm Front-Back": -0.2, "Right Arm Front-Back": -0.2, "Left Arm Down-Up": -0.45, "Right Arm Down-Up": -0.45,
+  "Left Forearm Stretch": 0.9, "Right Forearm Stretch": 0.9 } } }

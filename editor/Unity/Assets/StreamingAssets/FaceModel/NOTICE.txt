@@ -1,0 +1,14 @@
+face_landmarks_v2.onnx / face_blendshapes_v2.onnx
+
+Google MediaPipe Face Landmarker models (Face Mesh V2: 478 landmarks; Blendshape V2: 52 ARKit-style blendshape scores).
+Source: https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task
+  (downloaded 2026-10-19, sha256 64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff),
+  files face_landmarks_detector.tflite and face_blendshapes.tflite.
+Model cards: "Model Card MediaPipe Face Mesh V2" and "Model Card Blendshape V2"
+  (https://storage.googleapis.com/mediapipe-assets/), both "Licensed under Apache License, Version 2.0".
+Copyright Google LLC. Licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+
+Modification: converted from TFLite to ONNX with tf2onnx 1.16.1 (TensorFlow 2.15.1, opset 17), weights unchanged.
+Checked against the TFLite originals: landmarks max difference 0.0004 px, blendshapes 7e-7.
+
+Used by the VrcProto renderer (WebcamFace.cs) for webcam facial tracking in the editor preview only.

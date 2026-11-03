@@ -1,0 +1,3 @@
+{ "pose": { "base": "relaxed", "muscles": {
+  "Spine Left-Right": 0.12, "Chest Left-Right": -0.08, "Head Tilt Left-Right": -0.12,
+  "Left Upper Leg In-Out": 0.15, "Left Upper Leg Front-Back": 0.45, "Left Lower Leg Stretch": 0.75 } } }
