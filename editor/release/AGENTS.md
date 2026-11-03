@@ -1,6 +1,7 @@
 # Avatar Light Edit (ALEdit) — 자동화 안내
 
 사용자가 AI에게 아바타 사진·영상·스티커·포즈·조명 작업을 부탁했을 때 읽는 문서다. 창을 조작하지 않고 이 폴더의 `Shoot.exe`로 한다. 명령과 장면 파일 형식은 [SHOOT.md](SHOOT.md)에 있다.
+외형 고치기(색·블렌드쉐이프·옷·아이템 켜고 끄기 등)를 부탁받았으면 [EDIT.md](EDIT.md)의 `Shoot.exe look`·`apply`로 한다.
 
 - 답은 사용자의 말로 한다.
 - `Shoot.exe`는 이 폴더에서 실행한다. 답은 JSON이다. 찍은 파일 경로가 답에 들어 있다.

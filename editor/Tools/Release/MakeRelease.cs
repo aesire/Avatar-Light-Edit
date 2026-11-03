@@ -120,8 +120,17 @@ static class MakeRelease
         doc = Regex.Replace(doc, @"^`editor` 폴더에서 실행한다\..*$", "`Shoot.exe`가 있는 폴더에서 실행한다.", RegexOptions.Multiline);
         doc = doc.Replace("머슬 95개 이름은 `editor/Host/Core/HumanPose.cs`의 `Muscles`.", "머슬 95개 이름은 `Shoot.exe inspect <아바타> --muscles`.");
         doc = doc.Replace(" (`editor/Protocol/Messages.cs`)", "").Replace("(`editor/Tools/Shoot/poses`) ", "");
+        doc = doc.Replace("../avatar-edit/EDIT.md", "EDIT.md");
         if (doc.Contains("editor/") || doc.Contains("bin/") || doc.Contains("../")) throw new InvalidDataException("SHOOT.md에 소스 경로가 남았어요: " + Regex.Match(doc, @".{0,40}(editor/|bin/|\.\./).{0,40}").Value);
         File.WriteAllText(Path.Combine(stage, "SHOOT.md"), doc);
+        // 외형 고치기 안내도 함께 (2026-11-03): 작업 기록을 빼고 명령을 배포본 이름으로
+        var edit = File.ReadAllText("../.claude/skills/avatar-edit/EDIT.md").Replace("\r\n", "\n");
+        int ecut = edit.IndexOf("## 작업 기록", StringComparison.Ordinal);
+        if (ecut < 0) throw new InvalidDataException("EDIT.md에서 잘라 낼 자리를 찾지 못했어요");
+        edit = edit.Substring(0, ecut).TrimEnd() + "\n";
+        edit = edit.Replace("dotnet bin/Shoot.dll", "Shoot.exe").Replace("dotnet bin/av/VrcProtoAv.dll", ExeName);
+        if (edit.Contains("editor/") || edit.Contains("bin/") || edit.Contains("../")) throw new InvalidDataException("EDIT.md에 소스 경로가 남았어요: " + Regex.Match(edit, @".{0,40}(editor/|bin/|\.\./).{0,40}").Value);
+        File.WriteAllText(Path.Combine(stage, "EDIT.md"), edit);
     }
 
     /// <summary>폴더의 dll을 관리 어셈블리·네이티브로 나눠 적은 deps.json (dotnet publish의 자체 포함 앱과 같은 모양).</summary>
@@ -309,7 +318,7 @@ static class MakeRelease
             var dir = Path.GetDirectoryName(rel) ?? "";
             if (dir.Replace('\\', '/').EndsWith("StreamingAssets/ShaderPacks") && !packOk.IsMatch(Path.GetFileName(f))) problems.Add("기본 팩이 아닌 셰이더 팩: " + rel);
         }
-        foreach (var need in new[] { ExeName, "VrcProtoAv.deps.json", "Shoot.deps.json", "Shoot.exe", "Shoot.dll", "Shoot.runtimeconfig.json", "AGENTS.md", "SHOOT.md", "shoot-poses/peace_cheek.pose.json", "hostfxr.dll", "hostpolicy.dll", "coreclr.dll", "Renderer/VrcProtoRenderer.exe", "Renderer/UnityPlayer.dll", "licenses/dotnet_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/ShaderPacks/licenses/lilToon_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/FaceModel/NOTICE.txt" })
+        foreach (var need in new[] { ExeName, "VrcProtoAv.deps.json", "Shoot.deps.json", "Shoot.exe", "Shoot.dll", "Shoot.runtimeconfig.json", "AGENTS.md", "SHOOT.md", "EDIT.md", "shoot-poses/peace_cheek.pose.json", "hostfxr.dll", "hostpolicy.dll", "coreclr.dll", "Renderer/VrcProtoRenderer.exe", "Renderer/UnityPlayer.dll", "licenses/dotnet_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/ShaderPacks/licenses/lilToon_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/FaceModel/NOTICE.txt" })
             if (!File.Exists(Path.Combine(stage, need))) problems.Add("빠진 파일: " + need);
         // 보안 패치 (2026-11-03, CVE-2025-59489): 고치기 전 2022.3.22f1 UnityPlayer.dll이면 실패 — Unity Application Patcher로 고친 것만
         var player = Path.Combine(stage, "Renderer", "UnityPlayer.dll");
@@ -320,8 +329,11 @@ static class MakeRelease
         if (user.Length >= 3)
         {
             var a = Encoding.ASCII.GetBytes(user); var w = Encoding.Unicode.GetBytes(user);
+            // 저작권자 연락처·업데이트 저장소에는 같은 이름이 일부러 들어간다 (2026-11-03, GitHub aesire = 빌드 PC 사용자 이름)
+            var meant = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "LICENSE.txt", "update-repo.txt" };
             foreach (var f in all)
             {
+                if (meant.Contains(Path.GetRelativePath(stage, f))) continue;
                 if (new FileInfo(f).Length > 1L << 31) continue;
                 var d = File.ReadAllBytes(f);
                 if (IndexOf(d, a, 0) >= 0 || IndexOf(d, w, 0) >= 0) problems.Add("빌드 PC 사용자 이름이 들어 있음: " + Path.GetRelativePath(stage, f));
