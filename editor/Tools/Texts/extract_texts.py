@@ -93,6 +93,41 @@ def unesc(s):
     return ''.join(r)
 
 
+# 환경 탭 글 (2026-11-03): 환경 페이지의 효과 이름·항목 이름·고르기 이름은 렌더러(Unity)의 환경 Provider 스키마(JSON 문자열)에서 온다.
+# ParamSchema가 있는 렌더러 파일에서 JSON의 "label"·"group"·"optionLabels" 값과, Label => "…"·group을 만드는 줄의 짧은 글("조명"·"볼륨")을 뽑는다.
+RENDERER = os.path.join('Unity', 'Assets', 'Renderer')
+JSON_LABEL = re.compile(r'"(?:label|group)":\s*"([^"]*)"')
+JSON_OPTIONS = re.compile(r'"optionLabels":\s*\[([^\]]*)\]')
+
+
+def schema_labels(s):
+    """스키마 JSON 글 → 그 안의 label·group·optionLabels 값 (한글이 든 것만, 차례대로)"""
+    out = [m.group(1) for m in JSON_LABEL.finditer(s)]
+    for m in JSON_OPTIONS.finditer(s): out += re.findall(r'"([^"]*)"', m.group(1))
+    return [x for x in dict.fromkeys(out) if HANGUL.search(x) and '{' not in x]
+
+
+def env_schema_rows():
+    folder = os.path.join(EDITOR, RENDERER)
+    if not os.path.isdir(folder): return
+    for f in sorted(os.listdir(folder)):
+        if not f.endswith('.cs'): continue
+        src = io.open(os.path.join(folder, f), encoding='utf-8-sig').read()
+        if 'ParamSchema' not in src: continue
+        src_lines = src.split('\n')
+        rows, have = [], set()
+        def add(s, line):
+            if HANGUL.search(s) and s not in have and '{' not in s: have.add(s); rows.append((s, line))
+        for line, s in scan(src):
+            if '"label"' in s or '"optionLabels"' in s:
+                for x in schema_labels(s): add(x, line)
+        # Label => "…" 줄과 group을 만드는 줄 — 보간 식 안의 글("볼륨"·"조명")은 scan이 건너뛰어 줄에서 직접 찾는다
+        for n, l in enumerate(src_lines, 1):
+            if re.search(r'\bLabel\s*=>|""group""', l):
+                for s in re.findall(r'(?<!")"([^"]*)"(?!")', l): add(s, n)
+        if rows: yield ((RENDERER + '/' + f).replace('\\', '/'), rows)
+
+
 def main():
     for lang in LANGS: write(lang)
 
@@ -114,11 +149,17 @@ def write(lang):
             rows = []
             for line, s in scan(io.open(os.path.join(folder, f), encoding='utf-8-sig').read()):
                 if not HANGUL.search(s): continue
-                if s in seen: seen[s][1] += 1; continue
-                seen[s] = [rel, 0]
-                rows.append((s, line))
+                # 환경 스키마 JSON(렌더러 없을 때의 기본 스키마 등)은 통째가 아니라 그 안의 이름들을 (2026-11-03)
+                for x in (schema_labels(s) if '"label"' in s else [s]):
+                    if x in seen: seen[x][1] += 1; continue
+                    seen[x] = [rel, 0]
+                    rows.append((x, line))
             if rows: groups.append((rel, rows))
-    lines = [HEADER + ('' if lang == 'ko' else '# · 이 표의 바꿀 글 = %s 번역. 비우면 한국어 원문이 보인다.\n' % {'en': '영어', 'ja': '일본어'}[lang])]
+    for rel, rows in env_schema_rows():
+        rows = [(s, line) for s, line in rows if s not in seen]
+        for s, _ in rows: seen[s] = [rel, 0]
+        if rows: groups.append((rel, rows))
+    lines =[HEADER + ('' if lang == 'ko' else '# · 이 표의 바꿀 글 = %s 번역. 비우면 한국어 원문이 보인다.\n' % {'en': '영어', 'ja': '일본어'}[lang])]
     total = filled = 0
     for rel, rows in groups:
         lines.append('# ==== %s ====' % rel)

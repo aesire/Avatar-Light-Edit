@@ -26,7 +26,7 @@ namespace VrcProto.AvHost
 
         static Dictionary<string, string> _exact = new Dictionary<string, string>();
         static readonly Dictionary<string, string> _memo = new Dictionary<string, string>();   // 틀로 찾은 결과 (표를 다시 읽으면 비운다)
-        static List<Template> _templates = new List<Template>(), _openTemplates = new List<Template>();
+        static List<Template> _templates = new List<Template>(), _openTemplates = new List<Template>(), _tailTemplates = new List<Template>();
         static List<KeyValuePair<string, string>> _heads = new List<KeyValuePair<string, string>>(), _tails = new List<KeyValuePair<string, string>>();
         static readonly ConditionalWeakTable<AvaloniaObject, Orig> _orig = new ConditionalWeakTable<AvaloniaObject, Orig>();
         static bool _busy, _hooked;
@@ -153,6 +153,20 @@ namespace VrcProto.AvHost
             }
             // 코드가 + 로 이어 붙인 글 (2026-11-02): 표에 있는 앞 조각("저장하지 못했어요: " 등)·뒤 조각(" (실행 취소로 되돌려요)" 등)을 바꾸고 나머지는 다시 찾는다
             if (_depth >= 4) return s;
+            // 여러 줄 글 (2026-11-03): 툴팁이 "이름 + \n기본값: + 값 + \n…"처럼 가운데에 조각이 끼면 앞·뒤 조각으로 못 찾는다 → 줄마다 따로.
+            //   둘째 줄부터는 "\n줄"로 먼저 찾는다 (표에 "\n기본값: "처럼 줄바꿈째 적힌 조각이 많다)
+            if (s.IndexOf('\n', 1) > 0)
+            {
+                var lines = s.Split('\n');
+                var sb = new StringBuilder(Value(lines[0]));
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    var nl = "\n" + lines[i];
+                    var t = Value(nl);
+                    sb.Append(t != nl ? t : "\n" + Value(lines[i]));
+                }
+                return sb.ToString();
+            }
             foreach (var h in _heads)
                 if (s.Length > h.Key.Length && s.StartsWith(h.Key, StringComparison.Ordinal) && (HeadEnd(h.Key[^1]) || TailStart(s[h.Key.Length])))
                     return h.Value + Value(s.Substring(h.Key.Length));
@@ -165,6 +179,14 @@ namespace VrcProto.AvHost
             foreach (var k in _tails)
                 if (s.Length > k.Key.Length && s.EndsWith(k.Key, StringComparison.Ordinal) && (TailStart(k.Key[0]) || HeadEnd(s[s.Length - k.Key.Length - 1])))
                     return Value(s.Substring(0, s.Length - k.Key.Length)) + k.Value;
+            // 값이 든 뒤 조각 (2026-11-03): "씬 · 메시 5 · 머티리얼 4" + " · 미지원 셰이더 1" — 앞 틀의 마지막 값이 "4 · 미지원 셰이더 1"을 삼키면 여기로 온다
+            foreach (var t in _tailTemplates)
+            {
+                int at = s.IndexOf(t.Prefix, 1, StringComparison.Ordinal);
+                if (at < 0) continue;
+                var m = t.Re.Match(s.Substring(at));
+                if (m.Success) return Value(s.Substring(0, at)) + Fill(t, m);
+            }
             return s;
         }
 
@@ -219,6 +241,8 @@ namespace VrcProto.AvHost
             _heads = exact.Where(kv => kv.Key.Length >= 2 && HasHangul(kv.Key)).OrderByDescending(kv => kv.Key.Length).ToList();
             _tails = _heads;
             _openTemplates = templates.Where(t => t.Open != null).ToList();
+            // 뒤 조각으로 쓸 틀: " · 미지원 셰이더 {0}"처럼 띄어쓰기·문장부호로 시작하고 앞머리에 한글이 있는 것
+            _tailTemplates = templates.Where(t => t.Prefix.Length >= 3 && TailStart(t.Prefix[0]) && HasHangul(t.Prefix)).ToList();
             _exact = exact; _templates = templates; _memo.Clear();
             return err;
         }

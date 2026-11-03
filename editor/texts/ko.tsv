@@ -587,24 +587,24 @@ UI 예외 — 계속함		Crash.cs:103
 환경		EnvironmentPanel.cs:27 외 5곳
 환경 되돌리기		EnvironmentPanel.cs:34
 기본 환경으로 되돌리기: 모든 효과의 값을 처음대로	기본 환경으로 되돌리기: 모든 효과의 값을 초기화	EnvironmentPanel.cs:34
-미리보기가 켜지면 조명·후처리 설정이 나와요.	미리보기가 켜지면 조명·후처리 설정이 표시됩니다.	EnvironmentPanel.cs:70
-켜기: 		EnvironmentPanel.cs:85 외 1곳
-끄기: 		EnvironmentPanel.cs:85 외 1곳
- 사용		EnvironmentPanel.cs:89 외 1곳
-켜져 있어요	켜져 있습니다	EnvironmentPanel.cs:89 외 2곳
-꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요	꺼져 있습니다 · 켜면 아래 값이 미리보기에 들어갑니다	EnvironmentPanel.cs:89
-조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 옮겨요	조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 이동합니다	EnvironmentPanel.cs:94
-켜짐		EnvironmentPanel.cs:114 외 3곳
-꺼짐		EnvironmentPanel.cs:114 외 15곳
-\n기본값: 		EnvironmentPanel.cs:184
-환경 되돌리기: 		EnvironmentPanel.cs:193
-기본값으로 되돌리기		EnvironmentPanel.cs:194
-환경: 		EnvironmentPanel.cs:207 외 7곳
-색 고르기	색 선택	EnvironmentPanel.cs:222
-R, G, B (0~1) 또는 #RRGGBB		EnvironmentPanel.cs:232
-파일 경로		EnvironmentPanel.cs:244
-찾기…		EnvironmentPanel.cs:245
-파일 고르기	파일 선택	EnvironmentPanel.cs:256
+미리보기가 켜지면 조명·후처리 설정이 나와요.	미리보기가 켜지면 조명·후처리 설정이 표시됩니다.	EnvironmentPanel.cs:72
+켜기: 		EnvironmentPanel.cs:87 외 1곳
+끄기: 		EnvironmentPanel.cs:87 외 1곳
+{0} 사용		EnvironmentPanel.cs:92
+켜져 있어요	켜져 있습니다	EnvironmentPanel.cs:92 외 2곳
+꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요	꺼져 있습니다 · 켜면 아래 값이 미리보기에 들어갑니다	EnvironmentPanel.cs:92
+조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 옮겨요	조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 이동합니다	EnvironmentPanel.cs:97
+켜짐		EnvironmentPanel.cs:117 외 3곳
+꺼짐		EnvironmentPanel.cs:117 외 15곳
+\n기본값: 		EnvironmentPanel.cs:187
+환경 되돌리기: 		EnvironmentPanel.cs:196
+기본값으로 되돌리기		EnvironmentPanel.cs:197
+환경: 		EnvironmentPanel.cs:210 외 7곳
+색 고르기	색 선택	EnvironmentPanel.cs:225
+R, G, B (0~1) 또는 #RRGGBB		EnvironmentPanel.cs:235
+파일 경로		EnvironmentPanel.cs:247
+찾기…		EnvironmentPanel.cs:248
+파일 고르기	파일 선택	EnvironmentPanel.cs:259
 
 # ==== AvHost/ExportWindow.cs ====
 Unity 프로젝트로 내보내기		ExportWindow.cs:35 외 3곳
@@ -1101,7 +1101,7 @@ Modular Avatar Merge Armature 설정이 있어요 (그대로 따라요).	Modular
 주광 높이		LightPad.cs:207
 해가 떠 있는 높이. 판에서 가운데로 끌어도 높아져요	해가 떠 있는 높이. 판에서 가운데로 끌어도 높아집니다	LightPad.cs:207
 주광 세기		LightPad.cs:208
-주광 세기 배율		LightPad.cs:208
+주광 세기 배율		LightPad.cs:208 외 1곳
 이 조명 프리셋에는 주광이 없어요 (그림자 없는 고른 빛 · 라이트 없음).	이 조명 프리셋에는 주광이 없습니다 (그림자 없는 고른 빛 · 라이트 없음).	LightPad.cs:210
 정면광 세기		LightPad.cs:213
 아바타 정면에서 비추는 그림자 없는 빛 — 얼굴 음영을 메워요 (밝은 월드·실내·노을 프리셋에만, 0이면 끔)	아바타 정면에서 비추는 그림자 없는 빛 — 얼굴 음영을 보완합니다 (밝은 월드·실내·노을 프리셋에만, 0이면 끔)	LightPad.cs:214
@@ -1119,8 +1119,8 @@ Modular Avatar Merge Armature 설정이 있어요 (그대로 따라요).	Modular
 가까울수록 더 밝아요 (닿는 거리는 아래 추가 조명 탭에서)	가까울수록 더 밝습니다 (닿는 거리는 아래 추가 조명 탭에서)	LightPad.cs:231
 정면		LightPad.cs:279 외 2곳
 뒤		LightPad.cs:280 외 3곳
-주광 옮기기	주광 이동	LightPad.cs:339
-조명 {0} 옮기기	조명 {0} 이동	LightPad.cs:339
+주광 옮기기	주광 이동	LightPad.cs:340
+조명 {0} 옮기기	조명 {0} 이동	LightPad.cs:340
 
 # ==== AvHost/MachineNames.cs ====
 구글 번역을 쓰려면 설정 › 블렌드쉐이프 이름 번역에 Cloud Translation API 키를 넣어 주세요. 지금은 번역 표로만 보여요.	Google 번역을 사용하려면 설정 › BlendShape 이름 번역에 Cloud Translation API 키를 넣어 주세요. 지금은 번역 표로만 표시됩니다.	MachineNames.cs:70
@@ -1540,7 +1540,7 @@ VRChat에 올리기	VRChat 업로드	MainWindow.Search.cs:109 외 4곳
 
 # ==== AvHost/MainWindow.Settings.cs ====
 화면·미리보기·방송·업데이트 설정 (Ctrl+,)		MainWindow.Settings.cs:23
-프리셋		MainWindow.Settings.cs:41 외 1곳
+프리셋		MainWindow.Settings.cs:41 외 2곳
 #RRGGBB (비우면 기본)		MainWindow.Settings.cs:80
 바탕 색	배경색	MainWindow.Settings.cs:87
 창 바탕 색이에요. 작업 창·카드 색은 여기서 조금씩 밝게(어두운 바탕) 또는 하얗게(밝은 바탕) 만들어요.	창 배경색입니다. 작업 창·카드 색은 이 색을 기준으로 조금씩 밝게(어두운 테마) 또는 하얗게(밝은 테마) 계산합니다.	MainWindow.Settings.cs:87
@@ -1683,58 +1683,58 @@ GitHub 릴리스에서 새 버전을 받아요. 새 버전이 있을 때만 사�
 꺼지거나 오류가 나면 최근 기록 파일을 보내 주세요. 아바타 이름·PC 경로가 적혀 있을 수 있어요	종료되거나 오류가 발생하면 최근 로그 파일을 보내 주세요. 아바타 이름·PC 경로가 포함될 수 있습니다	MainWindow.Settings.cs:329
 
 # ==== AvHost/MainWindow.Shots.cs ====
-laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:262
-laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:284
-laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:286
-VR 시험 단추		MainWindow.Shots.cs:327
-VR 시험 창		MainWindow.Shots.cs:329
-떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:329
-{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:505
-{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:536
-skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:542
-FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:552
-UI 시험 묶음		MainWindow.Shots.cs:559 외 2곳
-{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:579
-{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:591
-FAIL rocker 없음		MainWindow.Shots.cs:620
-{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:666
-FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:677
-슬롯		MainWindow.Shots.cs:681
-기타 		MainWindow.Shots.cs:691
-{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:709
- 쓰기	 사용	MainWindow.Shots.cs:713
-꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:718
-{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:721
-FAIL palette: 탭이 없음		MainWindow.Shots.cs:735
- · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:744
-자세 › 손 모양 띄우기		MainWindow.Shots.cs:841
-에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:846
-밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:849
-핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:851
-핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:853
-핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:856
-다시 붙이기	다시 도킹	MainWindow.Shots.cs:860 외 1곳
-가져온 파일 창		MainWindow.Shots.cs:868
-가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:874
-가져온 파일 창 닫기		MainWindow.Shots.cs:877
-머티리얼·에셋 창		MainWindow.Shots.cs:883
-머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:888
-머티리얼·에셋 창 닫기		MainWindow.Shots.cs:896
-텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:921
-텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:941
-텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:943
-텍스처 합치기: 적용 → 		MainWindow.Shots.cs:949
-텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:954
-텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:957
-search:눈 감기		MainWindow.Shots.cs:975
-search:웃음		MainWindow.Shots.cs:975
-save:웃는 얼굴		MainWindow.Shots.cs:984
-쥐기		MainWindow.Shots.cs:996 외 1곳
-그림자		MainWindow.Shots.cs:996 외 2곳
-오버레이		MainWindow.Shots.cs:996 외 4곳
-토글		MainWindow.Shots.cs:996 외 1곳
-찾기 "{0}" → {1}		MainWindow.Shots.cs:999
-찾기 색인 {0}개		MainWindow.Shots.cs:1001
+laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:280
+laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:302
+laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:304
+VR 시험 단추		MainWindow.Shots.cs:345
+VR 시험 창		MainWindow.Shots.cs:347
+떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:347
+{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:523
+{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:554
+skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:560
+FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:570
+UI 시험 묶음		MainWindow.Shots.cs:577 외 2곳
+{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:597
+{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:609
+FAIL rocker 없음		MainWindow.Shots.cs:638
+{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:684
+FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:695
+슬롯		MainWindow.Shots.cs:699
+기타 		MainWindow.Shots.cs:709
+{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:727
+ 쓰기	 사용	MainWindow.Shots.cs:731
+꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:736
+{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:739
+FAIL palette: 탭이 없음		MainWindow.Shots.cs:753
+ · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:762
+자세 › 손 모양 띄우기		MainWindow.Shots.cs:859
+에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:864
+밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:867
+핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:869
+핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:871
+핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:874
+다시 붙이기	다시 도킹	MainWindow.Shots.cs:878 외 1곳
+가져온 파일 창		MainWindow.Shots.cs:886
+가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:892
+가져온 파일 창 닫기		MainWindow.Shots.cs:895
+머티리얼·에셋 창		MainWindow.Shots.cs:901
+머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:906
+머티리얼·에셋 창 닫기		MainWindow.Shots.cs:914
+텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:939
+텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:959
+텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:961
+텍스처 합치기: 적용 → 		MainWindow.Shots.cs:967
+텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:972
+텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:975
+search:눈 감기		MainWindow.Shots.cs:993
+search:웃음		MainWindow.Shots.cs:993
+save:웃는 얼굴		MainWindow.Shots.cs:1002
+쥐기		MainWindow.Shots.cs:1014 외 1곳
+그림자		MainWindow.Shots.cs:1014 외 2곳
+오버레이		MainWindow.Shots.cs:1014 외 4곳
+토글		MainWindow.Shots.cs:1014 외 1곳
+찾기 "{0}" → {1}		MainWindow.Shots.cs:1017
+찾기 색인 {0}개		MainWindow.Shots.cs:1019
 
 # ==== AvHost/MainWindow.TestEdit.cs ====
 촬영 		MainWindow.TestEdit.cs:48 외 1곳
@@ -2158,6 +2158,7 @@ F{0}에 표정이 없어요. 표정 페이지에서 표정 단추를 오른쪽 �
 미리보기에서 지원하지 않는 셰이더라, 바꾼 값은 저장되지만 화면에는 보이지 않아요.	미리보기에서 지원하지 않는 셰이더라, 변경한 값은 저장되지만 화면에는 보이지 않습니다.	MaterialPanel.cs:239
 미리보기가 켜지면 슬라이더 범위와 선택 목록이 나와요.	미리보기가 켜지면 슬라이더 범위와 선택 목록이 표시됩니다.	MaterialPanel.cs:241
 꺼져 있어요 · 켜면 아래 값이 화면에 보여요	꺼져 있습니다 · 켜면 아래 값이 화면에 표시됩니다	MaterialPanel.cs:294
+ 사용		MaterialPanel.cs:297
 바꿈 {0}	변경됨 {0}	MaterialPanel.cs:311
 전문가 모드에서 섹션 {0}개가 더 보여요.	전문가 모드에서 섹션 {0}개가 더 표시됩니다.	MaterialPanel.cs:315
 맞는 프로퍼티가 없어요.	일치하는 프로퍼티가 없습니다.	MaterialPanel.cs:316
@@ -3021,7 +3022,13 @@ VR 사진·영상 폴더를 데스크톱에서 열어요	VR 사진·영상 폴�
 
 # ==== Host/Shared/EditorContext.cs ====
 선택 		EditorContext.cs:64 외 1곳
-[\n          { "id": "UnityLighting", "version": 1, "label": "조명",\n            "params": [\n              { "name": "preset", "label": "프리셋", "type": "enum", "options": ["bright", "indoor", "dark", "none"], "optionLabels": ["밝은 월드", "실내", "어두운 월드", "라이트 없음"], "default": "bright" },\n              { "name": "intensity", "label": "주광 세기 배율", "type": "float", "min": 0, "max": 3, "default": 1 },\n              { "name": "yaw", "label": "주광 회전(°)", "type": "float", "min": -180, "max": 180, "default": 0 },\n              { "name": "ambient", "label": "환경광 배율", "type": "float", "min": 0, "max": 3, "default": 1 }\n            ] }\n        ]		EditorContext.cs:108
+조명		EditorContext.cs:108
+주광 회전(°)		EditorContext.cs:108
+환경광 배율		EditorContext.cs:108
+밝은 월드		EditorContext.cs:108
+실내		EditorContext.cs:108
+어두운 월드		EditorContext.cs:108
+라이트 없음		EditorContext.cs:108
 
 # ==== Host/Shared/LilLocalization.cs ====
 마스크		LilLocalization.cs:97
@@ -3549,6 +3556,68 @@ VRCFury 라이선스		UploadPlan.cs:35
  해제		Wardrobe.cs:123
 착용: 		Wardrobe.cs:134
 해제: 		Wardrobe.cs:134
+
+# ==== Unity/Assets/Renderer/EnvAudioLink.cs ====
+소리		EnvAudioLink.cs:34
+박자 (BPM)		EnvAudioLink.cs:34
+오디오 파일 (wav·ogg·mp3)		EnvAudioLink.cs:34
+파일 소리 크기 (0 = 소리 없이 분석만)		EnvAudioLink.cs:34
+테마 색 1		EnvAudioLink.cs:34
+테마 색 2		EnvAudioLink.cs:34
+박자 패턴 (합성)		EnvAudioLink.cs:34
+오디오 파일		EnvAudioLink.cs:34
+
+# ==== Unity/Assets/Renderer/EnvLights.cs ====
+닿는 거리 (m)		EnvLights.cs:36
+둘레 각도 (°, 0 = 정면)		EnvLights.cs:36
+아바타에서 거리 (m)		EnvLights.cs:36
+스포트가 겨누는 높이 (m)		EnvLights.cs:36
+스포트 각도 (°)		EnvLights.cs:36
+포인트 (사방으로)		EnvLights.cs:36
+스포트 (한 방향)		EnvLights.cs:36
+빛 크기 (m)		EnvLights.cs:51
+스포트 가장자리 부드럽기		EnvLights.cs:51
+카메라 (_VRChatCameraMode)		EnvLights.cs:192
+거울 (_VRChatMirrorMode)		EnvLights.cs:192
+보통 화면		EnvLights.cs:192
+VR 손 카메라		EnvLights.cs:192
+데스크톱 손 카메라		EnvLights.cs:192
+스크린샷		EnvLights.cs:192
+거울 아님		EnvLights.cs:192
+VR 거울		EnvLights.cs:192
+데스크톱 거울		EnvLights.cs:192
+볼륨		EnvLights.cs:34
+추가 조명		EnvLights.cs:87
+라이트 볼륨		EnvLights.cs:130
+VRChat 시점		EnvLights.cs:190
+
+# ==== Unity/Assets/Renderer/PostProcess.cs ====
+블룸 세기		PostProcess.cs:120
+블룸 문턱값 (이보다 밝은 곳이 번짐)		PostProcess.cs:120
+블룸 퍼짐		PostProcess.cs:120
+블룸 색		PostProcess.cs:120
+톤 매핑		PostProcess.cs:120
+노출 (EV)		PostProcess.cs:120
+색온도 (차갑게 ↔ 따뜻하게)		PostProcess.cs:120
+틴트 (초록 ↔ 자홍)		PostProcess.cs:120
+비네트 (가장자리 어둡게)		PostProcess.cs:120
+ACES (영화 같은 대비)		PostProcess.cs:120
+후처리		PostProcess.cs:118
+
+# ==== Unity/Assets/Renderer/UnityLighting.cs ====
+주광 방향 회전(°)		UnityLighting.cs:44
+주광 높이 더하기(°)		UnityLighting.cs:44
+주광 색 (곱하기)		UnityLighting.cs:44
+정면광 배율 (얼굴 음영 메우기)		UnityLighting.cs:44
+주광 그림자		UnityLighting.cs:44
+그림자 부드럽기 (스튜디오·방송)		UnityLighting.cs:44
+머리카락·머리 장식이 드리우는 그림자		UnityLighting.cs:44
+환경광 색 (곱하기)		UnityLighting.cs:44
+반사 세기		UnityLighting.cs:44
+배경 색 직접 고르기		UnityLighting.cs:44
+노을		UnityLighting.cs:44
+밤		UnityLighting.cs:44
+그림자 없는 고른 빛		UnityLighting.cs:44
 
 # ==== 코드에서 사라진 원문 (바꿀 글을 옮겨 적은 뒤 지워도 된다) ====
 VR로 보기를 켰어요. 내 키 {0} cm로 아바타 눈높이에 맞춰요	VR로 보기를 켰습니다. 내 키 {0} cm로 아바타 눈높이에 맞춥니다	(없음)

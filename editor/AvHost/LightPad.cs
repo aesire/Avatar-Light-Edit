@@ -295,9 +295,10 @@ namespace VrcProto.AvHost
                 }
             }
 
+            // 직접 그리는 글이라 TextBlock처럼 저절로 바뀌지 않는다 → 글 표로 바꿔 그린다 (2026-11-03, "정면"·"뒤"가 영어 화면에서도 한국어였다)
             static void Label(DrawingContext ctx, string s, Point at, Color col, double size)
             {
-                var ft = new FormattedText(s, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, Typeface.Default, size, new SolidColorBrush(col));
+                var ft = new FormattedText(Texts.T(s),CultureInfo.CurrentCulture, FlowDirection.LeftToRight, Typeface.Default, size, new SolidColorBrush(col));
                 ctx.DrawText(ft, new Point(at.X - ft.Width / 2, at.Y - ft.Height / 2));
             }
 

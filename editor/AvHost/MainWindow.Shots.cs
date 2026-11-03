@@ -1,4 +1,4 @@
-// 화면 확인용 찍기 (개발용): dotnet VrcProtoAv.dll --ui-shots <x.ir.json> <출력 폴더> [--ui-sizes 1000x600,1600x960] [--ui-pane 470]
+﻿// 화면 확인용 찍기 (개발용): dotnet VrcProtoAv.dll --ui-shots <x.ir.json> <출력 폴더> [--ui-sizes 1000x600,1600x960] [--ui-pane 470]
 // 창을 화면 밖에 활성화 없이 띄우고 렌더러가 장면을 불러오기를 기다린 뒤(머티리얼 스키마·환경 값이 있어야 페이지가 실제와 같다) 페이지마다 쉬운 모드·전문가 모드 내용을 끝까지 PNG로 저장한 뒤 닫는다.
 // --ui-sizes를 주면 크기마다 창 전체(보이는 그대로)도 찍는다 (win_<크기>_<페이지>.png) — 좁은 창에서 글이 잘리거나 줄이 깨지는지 본다.
 // --vr-panel-shots: VR 에디터 창 시험 (헤드셋 없이) — VR 창 모드를 켜고 창을 그려 렌더러에 보내 답을 받는지, 그린 화면(vr_panel.png),
@@ -53,6 +53,7 @@ namespace VrcProto.AvHost
                 await Task.Delay(1500);
                 await TakeShots();
                 File.WriteAllLines(Path.Combine(_shotsDir!, "clipped_text.txt"), _clipped);
+                if (Texts.Lang != "ko") File.WriteAllLines(Path.Combine(_shotsDir!, "untranslated_text.txt"), _untranslated);
                 Close();
             };
         }
@@ -87,9 +88,26 @@ namespace VrcProto.AvHost
             }
         }
 
+        // 번역 안 된 글 찾기 (2026-11-03): 한국어가 아닌 화면에서 한글이 남은 글과 툴팁(보일 때 바뀔 글)을 untranslated_text.txt에 모은다
+        readonly SortedSet<string> _untranslated = new SortedSet<string>(StringComparer.Ordinal);
+
+        void ScanUntranslated(Control root, string shot)
+        {
+            if (Texts.Lang == "ko") return;
+            static bool Hangul(string s) => s.Any(c => c >= '가' && c <= '힣');
+            foreach (var c in root.GetVisualDescendants().OfType<Control>().Prepend(root))
+            {
+                if (!c.IsEffectivelyVisible) continue;
+                if (c is TextBlock t && !string.IsNullOrEmpty(t.Text) && Hangul(t.Text)) _untranslated.Add($"{shot}\ttext\t{t.Text.Replace("\n", "\\n")}");
+                if (ToolTip.GetTip(c) is string tip && Hangul(Texts.T(tip))) _untranslated.Add($"{shot}\ttip\t{tip.Replace("\n", "\\n")}");
+            }
+            File.WriteAllLines(Path.Combine(_shotsDir!, "untranslated_text.txt"), _untranslated);   // 찍기가 중간에 끝나도 남게
+        }
+
         void Save(Control target, string name, string fill, int maxHeight = 2000)
         {
             ScanClipped(target, name);
+            ScanUntranslated(target, name);
             var size = new PixelSize(Math.Max(1, (int)Math.Ceiling(target.Bounds.Width)), Math.Clamp((int)Math.Ceiling(target.Bounds.Height), 1, maxHeight));   // 아주 긴 목록은 위쪽만
             using var bmp = new RenderTargetBitmap(size);
             // 투명 바탕에 그리면 글자가 깨져 보여 잠깐 작업 창 색을 깐다
@@ -106,6 +124,7 @@ namespace VrcProto.AvHost
         void SaveTab(Control page, string name)
         {
             ScanClipped(page, name);
+            ScanUntranslated(page, name);
             var sv = page.GetVisualDescendants().OfType<ScrollViewer>().Where(x => x.IsEffectivelyVisible).OrderByDescending(x => x.Bounds.Width * x.Bounds.Height).FirstOrDefault();
             var head = page.GetVisualDescendants().OfType<SubTabs>().FirstOrDefault()?.Children.OfType<Control>().FirstOrDefault();
             if (sv?.Content is not Control body) { Save(page, name, Ui.KPanel, 6000); return; }

@@ -37,6 +37,8 @@ namespace VrcProto.AvHost
             _ctx.DocumentOpened += () => { if (_ctx.Doc != null) _ctx.Doc.Changed += a => { if (a.Contains(Addr.Environment)) Later.Run(this, Rebuild); }; Rebuild(); };
             // 렌더러 ready(스키마가 들어옴)·sceneLoaded(범위만) 둘 다 온다 — 스키마가 바뀔 때만 (장면이 보인 순간 0.1~0.25초 멈추던 것)
             _ctx.RendererInfoChanged += () => { var k = _ctx.EnvironmentSchema.ToJson(); if (k == _schemaKey) return; Later.Run(this, Rebuild); };
+            // 조명 배치판은 글을 직접 그린다 → 언어를 바꾸면 다시 만든다 (2026-11-03)
+            Texts.LangChanged += () => Later.Run(this, Rebuild);
             Rebuild();
         }
 
@@ -86,7 +88,8 @@ namespace VrcProto.AvHost
                 });
                 sw.SetQuiet(active);
                 var tab = new StackPanel();
-                tab.Children.Add(Ui.Card(Ui.DescRow(title + " 사용", active ? "켜져 있어요" : "꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요", sw.Control)));
+                // 이름을 먼저 바꿔 "{0} 사용" 틀로 (2026-11-03): "조명" + " 사용"이 "조명 {0}"(조명 1 …) 틀에 걸려 "Light 사용"으로 보였다
+                tab.Children.Add(Ui.Card(Ui.DescRow($"{Texts.T(title)} 사용",active ? "켜져 있어요" : "꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요", sw.Control)));
                 if (id == "UnityLighting")
                 {
                     // 조명 배치판: 주광·정면광·추가 조명 1~3을 위에서 본 판에서 끌어 옮긴다 (LightPad.cs)
