@@ -335,22 +335,33 @@ namespace VrcProto.AvHost
         {
             IrScene scene;
             Boot("파일 읽기 시작");
+            // 렌더러에는 IR을 읽기 전에 먼저 시킨다 (2026-11-12 로딩 시간): 렌더러는 경로만 있으면 되는데, 에디터가 IR을 다 읽을 때까지(큰 아바타 0.15~0.25초) 놀고 있었다
+            bool early = _ctx.Render?.IsConnected == true && File.Exists(irPath);
+            if (early) _ctx.Render!.Send(Msg.Make(Msg.LoadScene).Set("irPath", Path.GetFullPath(irPath)).Set("texCache", _settings.TextureCache));
             try { scene = IrScene.Load(irPath); }
-            catch (Exception e) { Error("가져온 파일을 열지 못했어요", irPath + "\n" + e.Message); return false; }
+            catch (Exception e)
+            {
+                Error("가져온 파일을 열지 못했어요", irPath + "\n" + e.Message);
+                if (early && _ctx.Doc != null) SendLoadScene();   // 렌더러를 앞의 문서로 되돌린다
+                return false;
+            }
             Boot("파일 읽음");
             ClearRecovery();   // 앞의 문서는 저장했거나 버리기로 했다 (복구할 때는 OfferRecovery가 바로 다시 쓴다)
             var doc = new Document(scene, Path.GetFullPath(irPath));
             if (changeset != null) doc.LoadChangeset(changeset);
             if (variants != null) doc.LoadVariants(variants);
             _sync = new RenderSync(doc, new CtxSink(_ctx));
-            doc.Changed += _ => { RefreshTitle(); RefreshUndoButtons(); };
+            _sync.OriginalEnded += () => RefreshOriginalButton();
+            RefreshOriginalButton();
+            doc.Changed += _ => { RefreshTitle(); RefreshUndoButtons(); RefreshHistory(); };
+            RefreshHistory();
             _sessionPath = sessionPath;
             _ctx.Camera = JNode.Null;
             _sceneLoadedOnce = false;
             _closeConfirmed = false;
             // 렌더러에 먼저 보낸다 (2026-10-23): 페이지를 채우는 데 1초쯤 걸려(큰 시험 장면) 그동안 렌더러가 놀았다. 장면 결과(sceneLoaded)는 페이지를 다 채운 뒤에 처리된다 (같은 UI 스레드)
             bool connected = _ctx.Render?.IsConnected == true;
-            if (connected) SendLoadScene(doc);
+            if (connected) SendLoadScene(doc, sent: early);
             // 몸 메시를 처음부터 골라 두고(페이지가 한 번만 그린다), 그 원본은 페이지를 채우는 동안 백그라운드에서 읽는다
             var first = RendererPicker.BestBody(scene) ?? scene.Renderers.FirstOrDefault()?.Id;
             var meshes = new MeshEdits(doc);
@@ -475,7 +486,7 @@ namespace VrcProto.AvHost
         {
             var name = _sessionPath != null ? Path.GetFileName(_sessionPath) : _ctx.Doc != null ? Path.GetFileName(_ctx.Doc.IrPath) : null;
             bool dirty = _ctx.Doc?.IsDirty == true;
-            Title = (RunMode.Test ? "[테스트] " : "") + (name != null ? name + (dirty ? " •" : "") + " — " : "") + "Avatar Light Edit";
+            Title = (RunMode.Test ? "[테스트] " : "") + (name != null ? name + (dirty ? " •" : "") + " — " : "") + AppName;
             _fileText.Text = name != null ? name + (dirty ? "  •" : "") : "";
             int n = _ctx.Doc?.Overrides.Count ?? 0;
             if (_ctx.Doc == null) _changesItem.Set(StatusItem.State.Off, "열린 파일 없음");

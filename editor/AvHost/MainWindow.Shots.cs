@@ -51,7 +51,14 @@ namespace VrcProto.AvHost
             {
                 if (ApplyPaneSideLater) ApplyPaneSide();
                 await Task.Delay(1500);
-                await TakeShots();
+                // 찍다가 예외가 나도 꼭 끝낸다 (2026-11-12): 예외가 UI 예외로 넘어가 "계속함"이 되면 창이 화면 밖에 뜬 채 끝나지 않았다
+                try { await TakeShots(); }
+                catch (Exception e)
+                {
+                    File.WriteAllText(Path.Combine(_shotsDir!, "shots_error.txt"), e.ToString());
+                    Console.Error.WriteLine("[ui-shots] 실패: " + e);
+                    Environment.ExitCode = 1;
+                }
                 File.WriteAllLines(Path.Combine(_shotsDir!, "clipped_text.txt"), _clipped);
                 if (Texts.Lang != "ko") File.WriteAllLines(Path.Combine(_shotsDir!, "untranslated_text.txt"), _untranslated);
                 Close();
@@ -671,6 +678,14 @@ namespace VrcProto.AvHost
                     Save((Control)bw.Content!, "dialmode_board.png", Ui.KBase);
                     bw.Close();
                 }
+                // OBS로 보내기 · 배경 크로마키 줄 (2026-11-12): 보내는 곳을 잠깐 OBS·크로마키로 바꿔 찍고 되돌린다
+                {
+                    var (outKeep, bgKeep) = (_settings.OverlayOutput, _settings.OverlayObsBg);
+                    _settings.OverlayOutput = "obs"; _settings.OverlayObsBg = "chroma"; _overlay.NotifyChanged();
+                    _side.Select("studio"); _studioPanel!.ShowTab("overlay"); await Task.Delay(500);
+                    SaveTab(_studioPanel, "overlay_obs_chroma.png");
+                    _settings.OverlayOutput = outKeep; _settings.OverlayObsBg = bgKeep; _overlay.NotifyChanged();
+                }
                 // 설치된 기믹: 아바타 › 붙인 것 맨 아래 단추로 펼친다 (예전 IR이면 원본에서 다시 찾는다)
                 try
                 {
@@ -822,6 +837,19 @@ namespace VrcProto.AvHost
                 await Task.Delay(800);
                 var sv = w.GetVisualDescendants().OfType<ScrollViewer>().FirstOrDefault();
                 Save(sv?.Content as Control ?? (Control)w.Content!, "dlg_settings.png", Ui.KBase);
+                Save((Control)w.Content!, "dlg_settings_window.png", Ui.KBase);   // 왼쪽 묶음 목록까지 (2026-11-12)
+                // 작업 기록 창 (2026-11-12): 값을 두 번 바꾸고 하나 되돌린 상태
+                if (_ctx.Doc is { } hdoc && hdoc.Original.Renderers.FirstOrDefault(x => hdoc.Original.FindMesh(x.Mesh)?.BlendShapes.Count > 0) is { } hr)
+                {
+                    var hname = hdoc.Original.FindMesh(hr.Mesh)!.BlendShapes[0].Name;
+                    hdoc.Set(Addr.BlendShape(hr.Id, hname), 30.0, "블렌드쉐이프: " + hname);
+                    hdoc.Set(Addr.BlendShape(hr.Id, hname), 60.0, "블렌드쉐이프: " + hname);
+                    hdoc.Undo();
+                    ShowHistory();
+                    await Task.Delay(500);
+                    if (_historyWindow != null) { Save((Control)_historyWindow.Content!, "dlg_history.png", Ui.KCard); _historyWindow.Close(); }
+                    hdoc.Undo();
+                }
                 if (sv?.Content is Panel { Children: { Count: > 0 } kids }) Save(kids[kids.Count - 1], "dlg_settings_info.png", Ui.KBase);   // 긴 창이라 위 그림에서 잘리는 맨 아래 칸 (2026-11-01)
                 w.Close();
             }

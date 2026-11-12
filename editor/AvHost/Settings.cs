@@ -124,6 +124,8 @@ namespace VrcProto.AvHost
         public int StickerOutline = 6;
         // 스튜디오 2차: 소품 [{ id, name, path(IR), pos, rotY, scale, visible }], 심도 { enabled, strength, auto, distance }, 녹화 { mode, seconds, fps, size, format, turns, transparent }
         public JNode StudioProps = JNode.Arr(), StudioDof = JNode.Obj(), StudioRecord = JNode.Obj();
+        // 세팅 프리셋을 불러올 때 프리셋의 조명(환경 조명·추가 조명·라이트 볼륨)도 넣기 (2026-11-12, 기본 켜짐)
+        public bool StudioPresetLighting = true;
         // 함께 세운 아바타 (2026-10-25): [{ id, name, path(IR), pos(월드), rot[x,y,z,w], scale, visible, pose(setPose 형식 | 없음) }] — 실행 취소 없이 여기에 기억
         public JNode Guests = JNode.Arr();
         // 렌더 품질 (2026-10-23, 렌더러 setQuality): 프레임 제한(0 = 없음, -1 = 모니터 주사율) · 스튜디오 고화질(스튜디오 페이지·방송 오버레이 동안) · 주변 가림 세기 · 촬영 지터 누적 장 수
@@ -149,6 +151,14 @@ namespace VrcProto.AvHost
         public double OverlayAspect = 0.75;
         public JNode OverlayCamera = JNode.Null;
         public string OverlayKeyToggle = "Ctrl+Alt+O", OverlayKeyAdjust = "Ctrl+Alt+P";
+        // 보내는 곳 (2026-11-12, OverlayController.Outputs): screen(게임 위 투명 창) · obs(OBS 게임 캡처용 창) · game(게임 화면과 합친 창 — 디스코드 게임 방송)
+        //   OverlayGameTitle: 합칠 게임 창의 제목 (창 핸들은 실행마다 바뀌므로 제목으로 다시 찾는다)
+        public string OverlayOutput = "screen", OverlayGameTitle = "";
+        // OBS로 보낼 때 배경 (2026-11-12): alpha(투명 — OBS 게임 캡처 "투명도 허용") · chroma(OverlayChroma 색 — 윈도우 캡처 + 크로마키 필터)
+        public string OverlayObsBg = "alpha", OverlayChroma = "#00FF00";
+        // 조명 (2026-11-12): env(환경 탭 그대로) · own(오버레이 전용 — OverlayEnvironment, 환경 목록 그대로의 사본, 없으면 Null)
+        public string OverlayLightSource = "env";
+        public JNode OverlayEnvironment = JNode.Null;
         // 컨트롤 보드 (OverlayBoard.cs): 맨 위에 고정 · 방송 화면에서 숨기기 · 오버레이를 켜면 같이 열기 · 창 자리(물리 픽셀, 없으면 화면 가운데 오른쪽)
         public bool BoardPinned = true, BoardHideFromCapture = true, BoardAutoOpen = true;
         // 보드를 열면 에디터 창을 숨긴다 (보드의 "에디터 열기"로 다시)
@@ -336,6 +346,7 @@ namespace VrcProto.AvHost
                 if (st["record"].Kind == JKind.Object) s.StudioRecord = st["record"].Clone();
                 if (st.Has("quality")) s.StudioQuality = st["quality"].AsBool;
                 if (st.Has("ao")) s.StudioAo = Math.Clamp(st["ao"].AsDouble, 0, 1);
+                if (st.Has("presetLighting")) s.StudioPresetLighting = st["presetLighting"].AsBool;
                 if (st.Has("captureAa")) s.StudioCaptureAa = Math.Clamp(st["captureAa"].AsInt, 1, 32);
                 if (j["render"].Has("maxFps")) s.RenderMaxFps = Math.Clamp(j["render"]["maxFps"].AsInt, -1, 1000);
                 var ov = j["overlay"];
@@ -352,6 +363,12 @@ namespace VrcProto.AvHost
                 if (ov["camera"].Kind == JKind.Object) s.OverlayCamera = ov["camera"].Clone();
                 if (ov.Has("keyToggle")) s.OverlayKeyToggle = ov["keyToggle"].AsString;
                 if (ov.Has("keyAdjust")) s.OverlayKeyAdjust = ov["keyAdjust"].AsString;
+                if (ov.Has("output")) s.OverlayOutput = ov["output"].AsString;
+                if (ov.Has("game")) s.OverlayGameTitle = ov["game"].AsString;
+                if (ov.Has("obsBg")) s.OverlayObsBg = ov["obsBg"].AsString == "chroma" ? "chroma" : "alpha";
+                if (ov.Has("chroma") && OverlayController.ParseHex(ov["chroma"].AsString) != null) s.OverlayChroma = ov["chroma"].AsString;
+                if (ov.Has("lightSource")) s.OverlayLightSource = ov["lightSource"].AsString == "own" ? "own" : "env";
+                if (ov["environment"].Kind == JKind.Array) s.OverlayEnvironment = ov["environment"].Clone();
                 var bd = j["board"];
                 if (bd.Has("pinned")) s.BoardPinned = bd["pinned"].AsBool;
                 if (bd.Has("hideFromCapture")) s.BoardHideFromCapture = bd["hideFromCapture"].AsBool;
@@ -434,10 +451,12 @@ namespace VrcProto.AvHost
                         .Set("shotBrightness", ShotBrightness).Set("shotContrast", ShotContrast).Set("shotSaturation", ShotSaturation)
                         .Set("stickerSpec", StickerSpec).Set("stickerOutline", StickerOutline).Set("stickerOutlineColor", StickerOutlineColor)
                         .Set("props", StudioProps).Set("dof", StudioDof).Set("record", StudioRecord)
-                        .Set("quality", StudioQuality).Set("ao", StudioAo).Set("captureAa", StudioCaptureAa))
+                        .Set("quality", StudioQuality).Set("ao", StudioAo).Set("captureAa", StudioCaptureAa).Set("presetLighting", StudioPresetLighting))
                     .Set("render", JNode.Obj().Set("maxFps", RenderMaxFps))
                     .Set("overlay", JNode.Obj().Set("corner", OverlayCorner).Set("size", OverlaySize).Set("clickThrough", OverlayClickThrough).Set("topmost", OverlayTopmost).Set("x", OverlayX).Set("y", OverlayY).Set("supersample", OverlaySupersample).Set("lighting", OverlayLighting)
-                        .Set("fps", OverlayFps).Set("aspect", OverlayAspect).Set("camera", OverlayCamera).Set("keyToggle", OverlayKeyToggle).Set("keyAdjust", OverlayKeyAdjust))
+                        .Set("fps", OverlayFps).Set("aspect", OverlayAspect).Set("camera", OverlayCamera).Set("keyToggle", OverlayKeyToggle).Set("keyAdjust", OverlayKeyAdjust)
+                        .Set("output", OverlayOutput).Set("game", OverlayGameTitle).Set("obsBg", OverlayObsBg).Set("chroma", OverlayChroma)
+                        .Set("lightSource", OverlayLightSource).Set("environment", OverlayEnvironment))
                     .Set("board", BoardMessage())
                     .Set("update", JNode.Obj().Set("repo", UpdateRepo).Set("auto", UpdateAuto).Set("lastCheck", UpdateLastCheck).Set("skip", UpdateSkip))
                     .Set("faceNeutral", FaceNeutral).Set("faceGroups", FaceGroups).Set("faceHead", FaceHead)

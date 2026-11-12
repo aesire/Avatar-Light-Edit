@@ -20,11 +20,13 @@ namespace VrcProto.Viewer
             public float Squish, Stretch, Sag, PullMax, SpringMin, Bulge;
         }
 
+        // PullMax · SpringMin (2026-11-12): 시뮬레이션이 무게감을 값을 깎지 않고 느린 시간으로 돌리게 바뀌어, 기본 설정(무게 4 · 느낌 기본값)에서
+        // 60 Hz 스텝마다 실제로 걸리는 Pull·관성이 예전과 같도록 옮겼다 (예전 값 0.2/0.6 · 0.12/0.85 · 0.07/0.94).
         static readonly (string Id, SoftPreset P)[] SoftPresets =
         {
-            ("light", new SoftPreset { Squish = 0.25f, Stretch = 0.12f, Sag = 0.10f, PullMax = 0.2f, SpringMin = 0.6f, Bulge = 0.6f }),
-            ("normal", new SoftPreset { Squish = 0.45f, Stretch = 0.25f, Sag = 0.22f, PullMax = 0.12f, SpringMin = 0.85f, Bulge = 1f }),
-            ("smooth", new SoftPreset { Squish = 0.3f, Stretch = 0.3f, Sag = 0.18f, PullMax = 0.07f, SpringMin = 0.94f, Bulge = 0.8f }),
+            ("light", new SoftPreset { Squish = 0.25f, Stretch = 0.12f, Sag = 0.10f, PullMax = 0.17f, SpringMin = 0.55f, Bulge = 0.6f }),
+            ("normal", new SoftPreset { Squish = 0.45f, Stretch = 0.25f, Sag = 0.22f, PullMax = 0.11f, SpringMin = 0.72f, Bulge = 1f }),
+            ("smooth", new SoftPreset { Squish = 0.3f, Stretch = 0.3f, Sag = 0.18f, PullMax = 0.065f, SpringMin = 0.78f, Bulge = 0.8f }),
         };
 
         static readonly string[] SoftNames = { "breast", "bust", "boob", "oppai", "mune", "胸", "おっぱい" };

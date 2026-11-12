@@ -56,6 +56,13 @@ namespace VrcProto.Viewer
 
         void Awake()
         {
+            // 방송 창(OBS·게임 합치기)은 제목 있는 보통 창이라 Alt+F4로 닫힐 수 있다 → 렌더러를 끝내지 않고 오버레이만 끈다 (2026-11-12)
+            Application.wantsToQuit += () =>
+            {
+                if (_quitting || !Overlay.Framed) return true;
+                Send(Msg.Make(Msg.Overlay).Set("close", true));
+                return false;
+            };
             _bootAt = Time.realtimeSinceStartup; _bootLap.Start();
             Application.runInBackground = true;
             Application.targetFrameRate = 60;
@@ -311,7 +318,19 @@ namespace VrcProto.Viewer
                     {
                         bool on = m["enabled"].AsBool;
                         Overlay.AlphaFix = !m.Has("alphaFix") || m["alphaFix"].AsBool;
-                        var err = Overlay.Set(on, (long)m["hwnd"].AsDouble, m["adjust"].AsBool, m.Has("supersample") ? m["supersample"].AsFloat : 1, m["fps"].AsInt);
+                        // 보내는 곳·게임 창·합칠 때 아바타 상자 (2026-11-12)
+                        if (m["box"].Kind == JKind.Object)
+                        {
+                            var b = m["box"];
+                            if (b.Has("corner")) Overlay.BoxCorner = b["corner"].AsString;
+                            if (b.Has("size")) Overlay.BoxSize = b["size"].AsFloat;
+                            if (b.Has("aspect")) Overlay.BoxAspect = b["aspect"].AsFloat;
+                        }
+                        // 크로마키 색 [r, g, b] (0~1, 2026-11-12): OBS로 보낼 때 투명 대신 이 색을 배경으로. 없으면 투명
+                        var key = m["chroma"];
+                        Overlay.Chroma = key.Kind == JKind.Array && key.Count >= 3 ? new Color(key[0].AsFloat, key[1].AsFloat, key[2].AsFloat, 1) : (Color?)null;
+                        var err = Overlay.Set(on, (long)m["hwnd"].AsDouble, m["adjust"].AsBool, m.Has("supersample") ? m["supersample"].AsFloat : 1, m["fps"].AsInt,
+                            m["mode"].AsStringOrNull ?? "screen", (long)m["game"].AsDouble);
                         _studio.Hide(on);
                         if (err != null) Send(Msg.Make(Msg.Notice).Set("text", err));
                         Debug.Log($"[VrcProto] 방송 오버레이 {(on ? "켬" : "끔")}" + (err != null ? " · " + err : ""));
@@ -334,8 +353,13 @@ namespace VrcProto.Viewer
                     if (m.Has("weight")) _phys.Weight = Mathf.Clamp((float)m["weight"].AsDouble, 1, 30);
                     if (m.Has("inelastic")) _phys.Inelastic = m["inelastic"].AsBool;
                     if (m.Has("smooth")) _phys.Smoothing = m["smooth"].AsBool;
-                    if (m.Has("legacy")) _phys.Legacy = m["legacy"].AsBool;
                     if (m.Has("feel")) _phys.SetFeel(m["feel"]);
+                    if (m["resetPeaks"].AsBool) _phys.ResetPeaks();
+                    if (m.Has("advance"))   // 바로 돌리기 (촬영 자리 잡기 · E2E): 시간이 멈춰 있어도 돈다
+                    {
+                        float sec = (float)m["advance"].AsDouble, fps = m.Has("advanceFps") ? (float)m["advanceFps"].AsDouble : 60;
+                        _phys.Advance(sec, fps); _guests.Advance(sec, fps, _phys);
+                    }
                     if (m.Has("testGrab")) _phys.TestGrab(m["testGrab"].AsString, new Vector3(0, (float)m["testGrabY"].AsDouble, 0));   // 시험용 (E2E pbrules)
                     if (m["stats"].AsBool)
                     {
@@ -345,7 +369,7 @@ namespace VrcProto.Viewer
                         var arr = JNode.Arr(); foreach (var d in detail) arr.Add(d);
                         var (jm, jx, jw) = _phys.Jitter();
                         var (sm, sx) = _phys.Swing();
-                        Send(Msg.Make(Msg.PhysBoneStats).Set("penetrations", pen).Set("bones", bones).Set("detail", arr).Set("jitter", jm).Set("jitterMax", jx).Set("jitterWorst", jw).Set("swing", sm).Set("swingMax", sx));
+                        Send(Msg.Make(Msg.PhysBoneStats).Set("penetrations", pen).Set("bones", bones).Set("detail", arr).Set("jitter", jm).Set("jitterMax", jx).Set("jitterWorst", jw).Set("swing", sm).Set("swingMax", sx).Set("tickMs", _phys.TickMs).Set("tickParts", _phys.TickParts));
                     }
                     break;
                 case Msg.SetPose:

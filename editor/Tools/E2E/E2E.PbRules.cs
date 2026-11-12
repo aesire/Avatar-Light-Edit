@@ -68,7 +68,7 @@ static partial class E2E
                 ch.Send(Msg.Make(Msg.SetPhysBones).Set("stats", true).Set("describe", names));
                 var lines = wait(Msg.PhysBoneStats, 10000)["detail"].Items.Select(l => l.AsString).ToList();
                 int head = lines.FindIndex(l => l.StartsWith("chain " + name + " "));
-                var last = Regex.Match(lines[head + 2], @"len ([\d.]+) at ([-\d.]+),([-\d.]+),([-\d.]+)");
+                var last = Regex.Match(lines[head + 2], @"len ([\d.]+) (?:peak \S+ )?at ([-\d.]+),([-\d.]+),([-\d.]+)");
                 float F(int g) => float.Parse(last.Groups[g].Value, CultureInfo.InvariantCulture);
                 return (F(1), new[] { F(2), F(3), F(4) }, lines[head].Contains("active True"));
             }

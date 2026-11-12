@@ -47,6 +47,8 @@ namespace VrcProto.AvHost
         // 조명 슬롯(l1_ …)에서 쉬운 모드에 숨기는 값: 겨누는 높이 · 빛 크기 · 가장자리 부드럽기
         static readonly string[] ExpertSuffix = { "_aim", "_size", "_falloff" };
         static bool IsExpert(string name) => ExpertParams.Contains(name) || ExpertSuffix.Any(name.EndsWith);
+        // 거의 쓰지 않는 효과 (2026-11-12, 사용자 요청): 탭 막대 대신 "기타 ▾" 메뉴로 (고른 동안은 막대 끝에)
+        static readonly HashSet<string> RareTabs = new HashSet<string> { "VRChatGlobals", "AudioLink" };
         // 접는 구역(group)의 열림 상태: "provider/group" → 열림 (다시 그려도 유지)
         static readonly Dictionary<string, bool> GroupOpen = new Dictionary<string, bool>();
 
@@ -126,7 +128,7 @@ namespace VrcProto.AvHost
                     rows.Opacity = active ? 1 : 0.5;
                     tab.Children.Add(Ui.Card(rows));
                 }
-                _tabs.Add(id, title, tab, state: active);   // 꺼짐: 글씨, 다이얼 모드는 LED
+                _tabs.Add(id, title, tab, state: active, more: RareTabs.Contains(id));   // 꺼짐: 글씨, 다이얼 모드는 LED
             }
             _tabs.EndUpdate();
         }

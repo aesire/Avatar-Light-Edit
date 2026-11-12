@@ -211,8 +211,12 @@ namespace VrcProto.AvHost
             return g;
         }
 
+        /// <summary>항목 숨기기·보이기 (한 기능만 켜기 --focus, 2026-11-12). 숨긴 항목은 Select도 무시한다.</summary>
+        public void SetShown(string key, bool on) { if (_items.TryGetValue(key, out var v) && v.Item.Parent is Control g) g.IsVisible = on; }
+
         public void Select(string key)
         {
+            if (_items.TryGetValue(key, out var hidden) && hidden.Item.Parent is Control hg && !hg.IsVisible) return;   // 숨긴 페이지로는 단축키·찾기로도 넘어가지 않는다
             Current = key;
             foreach (var kv in _items)
             {

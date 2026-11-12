@@ -11,8 +11,10 @@ want() { case " $WANT " in *" $1 "*) return 0;; esac; return 1; }
 cd "$(dirname "$0")"
 UNITY="${UNITY:-/c/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data}"
 DOTNET="${DOTNET:-dotnet}"
-NETVER="${NETVER:-8.0.27}"
 SHARED="${SHARED:-/c/Program Files/dotnet/shared}"
+# 설치된 8.0.x 중 가장 높은 것을 쓴다 (2026-11-12: 버전을 고정하면 Windows 업데이트로 폴더가 바뀔 때 빌드가 깨진다). NETVER로 직접 정할 수도 있다
+if [ -z "${NETVER:-}" ]; then NETVER="$(ls "$SHARED/Microsoft.NETCore.App" 2>/dev/null | grep '^8\.0\.[0-9]*$' | sort -t. -k3 -n | tail -1)"; fi
+[ -n "$NETVER" ] || { echo "[build] .NET 8 런타임을 찾지 못했어요 ($SHARED/Microsoft.NETCore.App)"; exit 1; }
 CSC="$UNITY/DotNetSdkRoslyn/csc.dll"
 w() { cygpath -w "$1" 2>/dev/null || echo "$1"; }
 
@@ -86,8 +88,10 @@ fi
 # Avalonia Host. NuGet 패키지는 packages/ 에 미리 펼쳐 둔다:
 #   python -I Tools/NuGet/fetch_nuget.py packages Avalonia=11.3.13 Avalonia.Desktop=11.3.13 Avalonia.Themes.Fluent=11.3.13
 if want av; then
-echo "[av] bin/av/VrcProtoAv.dll (Avalonia 11.3)"
-mkdir -p bin/av
+# 출력 폴더는 AVOUT으로 바꿀 수 있다 (2026-11-12: 다른 창에서 bin/av의 에디터를 띄워 둔 채로 따로 빌드·시험할 때 — 예: AVOUT=bin/av_b sh build.sh av)
+AVOUT="${AVOUT:-bin/av}"
+echo "[av] $AVOUT/VrcProtoAv.dll (Avalonia 11.3)"
+mkdir -p "$AVOUT"
 for f in packages/lib/*.dll; do echo "-r:\"$(w "$f")\""; done > obj/av.rsp.$$ && mv -f obj/av.rsp.$$ obj/av.rsp
 # Unity 씬·프리팹 가져오기는 importsim 라이브러리를 쓴다 (없거나 소스가 더 새로우면 importsim 을 먼저 빌드)
 IMPORTSIM=../importsim/bin/ImportSim.Core.dll
@@ -95,24 +99,24 @@ if [ ! -f "$IMPORTSIM" ] || [ -n "$(find ../importsim/src ../importsim/ir bin/Pr
 # 앱 로고(branding/)는 dll 리소스로 — 창 아이콘·제목 표시줄 (2026-11-02)
 "$DOTNET" "$CSC" $COMMON -target:winexe @obj/net.rsp @obj/av.rsp -r:bin/Protocol.dll -r:"$IMPORTSIM" \
   -resource:branding/ALEdit.ico,ALEdit.ico -resource:branding/png/logo-64.png,ALEdit-64.png \
-  -out:bin/av/VrcProtoAv.dll AvHost/*.cs Host/Core/*.cs Host/Shared/*.cs
-cp packages/lib/*.dll packages/native/*.dll bin/Protocol.dll "$IMPORTSIM" bin/av/
+  -out:$AVOUT/VrcProtoAv.dll AvHost/*.cs Host/Core/*.cs Host/Shared/*.cs
+cp packages/lib/*.dll packages/native/*.dll bin/Protocol.dll "$IMPORTSIM" $AVOUT/
 # 화면 글 표 (AvHost/Texts.cs). 고치는 곳은 editor/texts/ko·en·ja.tsv (화면 언어별) — 테스트 모드는 그 파일을 바로 읽는다
-mkdir -p bin/av/texts && cp texts/*.tsv bin/av/texts/
+mkdir -p $AVOUT/texts && cp texts/*.tsv $AVOUT/texts/
 # 사용 안내·이용 조건·오픈소스 고지 (설정 › 정보에서 연다)
-cp release/README.txt release/README.en.txt release/README.ja.txt release/LICENSE.txt release/THIRD_PARTY_NOTICES.txt bin/av/
-cp ../LICENSE bin/av/COPYING.txt   # GPLv3 전문 (2026-11-02, 배포판에 함께 넣어야 한다)
-runtimeconfig bin/av/VrcProtoAv
-printf '@start "" dotnet "%%~dp0VrcProtoAv.dll" %%*\r\n' > bin/av/VrcProtoAv.cmd
+cp release/README.txt release/README.en.txt release/README.ja.txt release/LICENSE.txt release/THIRD_PARTY_NOTICES.txt $AVOUT/
+cp ../LICENSE $AVOUT/COPYING.txt   # GPLv3 전문 (2026-11-02, 배포판에 함께 넣어야 한다)
+runtimeconfig $AVOUT/VrcProtoAv
+printf '@start "" dotnet "%%~dp0VrcProtoAv.dll" %%*\r\n' > $AVOUT/VrcProtoAv.cmd
 # 셰이더 팩 빌더 (Host가 전용 Unity 프로젝트에 복사해 batchmode로 부른다)
-mkdir -p bin/av/ShaderPack && cp Tools/ShaderPack/ShaderPackBuilder.cs bin/av/ShaderPack/
+mkdir -p $AVOUT/ShaderPack && cp Tools/ShaderPack/ShaderPackBuilder.cs $AVOUT/ShaderPack/
 # 업로드 프로젝트용 에디터 스크립트 (Host가 업로드 프로젝트의 Assets/VrcProto/Editor에 복사해 batchmode로 부른다)
-mkdir -p bin/av/Upload && cp Tools/Upload/VrcProtoUpload.cs bin/av/Upload/
+mkdir -p $AVOUT/Upload && cp Tools/Upload/VrcProtoUpload.cs $AVOUT/Upload/
 # lilToon 번역 파일 (MIT) — 머티리얼 페이지의 프로퍼티 이름 표시
 LIL=Unity/Packages/jp.lilxyzw.liltoon/Editor
-mkdir -p bin/av/Localization
-cp "$LIL/Localization/en-US.po" "$LIL/Localization/ko-KR.po" "$LIL/Localization/ja-JP.po" bin/av/Localization/ 2>/dev/null || true
+mkdir -p $AVOUT/Localization
+cp "$LIL/Localization/en-US.po" "$LIL/Localization/ko-KR.po" "$LIL/Localization/ja-JP.po" $AVOUT/Localization/ 2>/dev/null || true
 # lilToon이 코드에서 조합하는 표시 이름 (sHSVGs → Hue|Saturation|Value|Gamma 등)
-grep -o 'loc\["s[A-Za-z0-9]*"\] *= *BuildParams(.*);' "$LIL/lilLanguageManager.cs" 2>/dev/null | sed -E 's/loc\["([^"]+)"\] *= *BuildParams\((.*)\);/\1\t\2/; s/GetLoc\("([^"]*)"\)/\1/g; s/"([^"]*)"/=\1/g; s/, */|/g' > bin/av/Localization/compound.txt || true
+grep -o 'loc\["s[A-Za-z0-9]*"\] *= *BuildParams(.*);' "$LIL/lilLanguageManager.cs" 2>/dev/null | sed -E 's/loc\["([^"]+)"\] *= *BuildParams\((.*)\);/\1\t\2/; s/GetLoc\("([^"]*)"\)/\1/g; s/"([^"]*)"/=\1/g; s/, */|/g' > $AVOUT/Localization/compound.txt || true
 fi
 echo "done"

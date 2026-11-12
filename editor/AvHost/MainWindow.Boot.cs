@@ -15,11 +15,14 @@ namespace VrcProto.AvHost
         readonly List<string> _boot = new List<string>();
         bool _bootDone;
         string _openTiming = "", _infoTiming = "";   // 페이지마다 걸린 시간 (OpenIr, sceneLoaded)
+        string? _restText;   // --timing-rest: 장면이 보였을 때의 기록 (WarmRest가 끝나면 이어 적는다)
 
         void Boot(string step, DateTime? at = null)
         {
             if (_bootDone) return;
-            _boot.Add($"{step} {((at ?? DateTime.Now) - ProcStart).TotalMilliseconds:0}");
+            // --test-heap (2026-11-12, 램 줄이기): 단계마다 쓰레기를 치운 뒤의 관리 힙(MB)을 함께 적는다. 치우느라 시간은 늘어나므로 시간을 잴 때는 빼고 돌린다
+            string heap = RunMode.Test && _args.Contains("--test-heap") ? $" [{GC.GetTotalMemory(true) / 1048576}MB]" : "";
+            _boot.Add($"{step} {((at ?? DateTime.Now) - ProcStart).TotalMilliseconds:0}{heap}");
         }
 
         /// <summary>첫 장면이 보였을 때 한 번: 로그에 남기고 (--test-timing이면) 파일로 쓰고 끝낸다</summary>
@@ -35,8 +38,11 @@ namespace VrcProto.AvHost
                 long priv = Process.GetCurrentProcess().PrivateMemorySize64 / 1048576;
                 long heap = GC.GetTotalMemory(true) / 1048576;   // 쓰레기를 치운 뒤 실제로 붙잡고 있는 관리 메모리
                 var nl = Environment.NewLine;
-                var text = line + nl + _openTiming + nl + _infoTiming + nl + $"Host 메모리 {priv} MB · 관리 힙(치운 뒤) {heap} MB";
+                long privAfter = Process.GetCurrentProcess().PrivateMemorySize64 / 1048576;   // 치운 뒤에도 프로세스가 쥐고 있는 양 (2026-11-12)
+                var text = line + nl + _openTiming + nl + _infoTiming + nl + $"Host 메모리 {priv} MB · 관리 힙(치운 뒤) {heap} MB · 치운 뒤 Host 메모리 {privAfter} MB";
                 if (_args.Contains("--test-pages")) { PageTour(text); return; }
+                // --timing-rest (2026-11-12): 숨은 페이지·탭 준비(WarmRest)가 끝날 때까지 기다렸다가 그 시간·메모리까지 적고 끝낸다
+                if (_args.Contains("--timing-rest")) { _restText = text; return; }
                 try { File.WriteAllText(Path.Combine(Settings.Folder, "test-timing.txt"), text); } catch { }
                 _closeConfirmed = true;
                 Close();

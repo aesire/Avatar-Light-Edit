@@ -26,7 +26,7 @@ namespace VrcProto.Protocol
         public const string Overlay = "overlay";               // { enabled, hwnd, adjust, supersample? }  방송 오버레이: Host가 Unity 창을 떼어 화면 위에 띄운 동안 배경을 투명(DWM 알파)으로, 보조 표시·조작·스튜디오 배경은 끈다(후처리는 그대로). adjust = 끌어서 옮기기·테두리, supersample = 창보다 크게 그려 줄이는 배율(1~2). 렌더러 → Host: { moved: {x,y,w,h} } · { close: true }
         public const string SetSelection = "setSelection";     // { renderer?, mat? }  (Host의 렌더러·머티리얼 선택; 윤곽과 별개)
         public const string SetOutline = "setOutline";         // { renderer?: string, on: bool }  (아바타 파츠 bounds 윤곽 표시)
-        public const string SetPhysBones = "setPhysBones";     // { enabled?, reset?, unpinAll?, motion?: none|sway|jump|turn|walk|vrwalk|snap|resize, soft?: off|light|normal|smooth, legGuard?: bool, stats?: bool, legacy?: bool, feel?: { follow, swing, pull, damp, gravity, falloff, slop(mm), friction, smooth(mm) } }  (PhysBone 미리보기, feel = 느낌 값(Host 설정), legacy = 예전 스텝·감쇠 비교 시험용, soft = 말랑 모드 프리셋, legGuard = 다리 뚫림 막기, stats → physBoneStats)
+        public const string SetPhysBones = "setPhysBones";     // { enabled?, reset?, unpinAll?, motion?: none|sway|jump|turn|walk|vrwalk|snap|resize, soft?: off|light|normal|smooth, legGuard?: bool, stats?: bool, advance?: 초, advanceFps?: 60, resetPeaks?: bool, feel?: { follow, swing, pull, damp, gravity, falloff, slop(mm), friction, smooth(mm) } }  (PhysBone 미리보기, feel = 느낌 값(Host 설정), advance = 화면을 그리지 않고 그 시간만큼 바로 돌리기(시간이 멈춰 있어도, 촬영 자리 잡기·시험), resetPeaks = 관절별 최대 벗어남 다시 재기(시험용), soft = 말랑 모드 프리셋, legGuard = 다리 뚫림 막기, stats → physBoneStats)
         public const string SetPose = "setPose";               // { pose: null | { muscles: { 머슬 이름: 값 }, bodyRotation?: [x,y,z,w], bodyHeight? } }  (null = 불러온 그대로), report?: true → poseApplied
         public const string PoseBone = "poseBone";             // { bone: 휴머노이드 이름, axis?: [x,y,z] 월드 축, angle?: 도, move?: [x,y,z] 손·발 IK 이동, ring?: "x"|"y"|"z" 본 로컬 축(회전 고리와 같은 축)으로 angle만큼, arrow?: "x"|"y"|"z" + amount 관절을 그 축(이동 화살표)으로, select?: true 고르기만 }  (뷰포트 끌기와 같은 경로의 스크립트 조작, 시험용) → poseEdited / poseSelected
         public const string SetNodeTransform = "setNodeTransform"; // { node, trs: [위치3, 회전4(xyzw), 크기3] }  IR 부모 기준 로컬 (핸들로 옮긴 아이템)
@@ -59,7 +59,7 @@ namespace VrcProto.Protocol
         public const string CameraChanged = "cameraChanged";   // { position, rotation, fov, pivot }
         public const string CaptureDone = "captureDone";       // { path, ok, error }
         public const string BakeDone = "bakeDone";             // { out, ok, error, width, height }
-        public const string PhysBoneStats = "physBoneStats";   // { penetrations, bones, jitter, jitterMax, jitterWorst, swing, swingMax } 콜라이더를 파고든 뼈 수 (setPhysBones { stats: true }의 답, 시험용)
+        public const string PhysBoneStats = "physBoneStats";   // { penetrations, bones, jitter, jitterMax, jitterWorst, swing, swingMax, tickMs } 콜라이더를 파고든 뼈 수 (setPhysBones { stats: true }의 답, 시험용)
         public const string PoseEdited = "poseEdited";         // { bone: 휴머노이드 이름, pose: { muscles, bodyRotation?, bodyHeight? } }  뷰포트에서 본을 돌리고 놓았을 때 (Host가 Addr.Pose에 기록)
         public const string PoseApplied = "poseApplied";       // { floorRest, floorNow, floorPart: "렌더러 / 본" }  setPose { report: true }의 답 (시험용: 불러온 자세·지금 자세의 가장 낮은 높이, 바닥 맞추기 확인)
         public const string PoseSelected = "poseSelected";     // { bone: 휴머노이드 이름 | "" }  뷰포트 본 조작에서 본을 고르거나 풀었을 때 (Host 자세 페이지의 "고른 본")

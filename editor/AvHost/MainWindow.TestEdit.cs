@@ -60,6 +60,18 @@ namespace VrcProto.AvHost
                 ""adjust"": { ""brightness"": 0.1, ""contrast"": 1.1, ""saturation"": 1.2 }, ""shot"": { ""width"": 1080, ""height"": 1920, ""embed"": false }, ""sticker"": { ""spec"": ""kakao"", ""color"": ""black"", ""outline"": 9 },
                 ""record"": { ""motion"": ""fixed"", ""seconds"": 5, ""fps"": 24, ""width"": 1280, ""height"": 720, ""format"": ""png"", ""transparent"": true },
                 ""cameras"": [ { ""name"": ""위치 A"", ""state"": { ""pivot"": [0, 1, 0], ""yaw"": 180, ""pitch"": 0, ""distance"": 3, ""fov"": 30 } } ] }"));
+            // 조명 (2026-11-12): 프리셋에 조명도 적고, "조명도 가져오기"가 켜져 있으면 불러올 때 넣는다
+            void SetPreset(string preset)
+            {
+                var env = (_ctx.Doc!.Get(Addr.Environment)).Clone();
+                var e = env.Items.FirstOrDefault(x => x["provider"].AsString == "UnityLighting");
+                if (e == null) { e = JNode.Obj().Set("provider", "UnityLighting").Set("version", 1).Set("params", JNode.Obj()); env.Add(e); }
+                e["params"].Set("preset", preset);
+                _ctx.Doc.Set(Addr.Environment, env, "시험 조명");
+            }
+            string L() => _ctx.Doc!.Get(Addr.Environment).Items.FirstOrDefault(x => x["provider"].AsString == "UnityLighting")?["params"]["preset"].AsString ?? "";
+            s.StudioPresetLighting = true;
+            SetPreset("bright");
             var a = V();
             await Shot("a_saved");
             Save(_pages["studio"], "ui_a.png", Ui.KPanel);
@@ -73,6 +85,7 @@ namespace VrcProto.AvHost
                 ""dof"": { ""enabled"": false, ""strength"": 0.9 }, ""quality"": { ""studio"": false, ""ao"": 0.9, ""aa"": 16 }, ""avatarOnly"": { ""on"": true, ""color"": [1, 0, 1] }, ""transparent"": true,
                 ""adjust"": { ""brightness"": 0, ""contrast"": 1, ""saturation"": 1 }, ""shot"": { ""width"": 3840, ""height"": 2160, ""embed"": true }, ""sticker"": { ""spec"": ""line"", ""color"": ""white"", ""outline"": 2 },
                 ""record"": { ""motion"": ""fixed"", ""seconds"": 8, ""fps"": 30, ""width"": 1920, ""height"": 1080, ""format"": ""mp4"" }, ""cameras"": [] }"));
+            SetPreset("night");
             var b = V();
             Check(a != b, "B 세팅은 A와 다름");
             await Shot("b_other");
@@ -80,11 +93,20 @@ namespace VrcProto.AvHost
             // 불러오기 → A로
             panel.LoadPreset(file);
             Check(V() == a, "불러오면 A 세팅: " + V());
+            Check(L() == "bright", "불러오면 A 조명: " + L());
             await Shot("c_loaded");
             Save(_pages["studio"], "ui_loaded.png", Ui.KPanel);
             // 되돌리기 → B로
             panel.UndoPreset();
             Check(V() == b, "불러오기 전으로: " + V());
+            Check(L() == "night", "불러오기 전 조명으로: " + L());
+            // 조명도 가져오기 끔 → 조명은 그대로
+            s.StudioPresetLighting = false;
+            panel.LoadPreset(file);
+            Check(V() == a && L() == "night", "조명 빼고 불러오기: " + L());
+            panel.UndoPreset();
+            Check(V() == b && L() == "night", "조명 빼고 되돌리기: " + L());
+            s.StudioPresetLighting = true;
             await Shot("d_undo");
             // 끌어다 놓기와 같은 길
             Check(OpenPathAction(file) == "스튜디오 세팅 불러오기", "끌어다 놓기 안내");

@@ -28,7 +28,7 @@ static partial class E2E
         var accept = server.AcceptAsync(CancellationToken.None);
         var psi = new ProcessStartInfo(exe) { UseShellExecute = false };
         // gizmos: 창 화면(OnGUI 포함)을 찍으므로 창을 띄운다
-        if (!(args.Length > 3 && (args[3] == "gizmos" || args[3] == "quality"))) psi.ArgumentList.Add("-batchmode");   // quality: 미리보기 창 화면도 찍는다
+        if (!(args.Length > 3 && (args[3] == "gizmos" || args[3] == "quality" || args[3] == "dofwindow" || args[3] == "overlaygame"))) psi.ArgumentList.Add("-batchmode");   // quality: 미리보기 창 화면도 찍는다
         foreach (var a in new[] { "-pipe", name, "-logFile", Path.Combine(outDir, "renderer.log"), "-screen-width", "960", "-screen-height", "720", "-screen-fullscreen", "0" }) psi.ArgumentList.Add(a);
         using var proc = Process.Start(psi)!;
         if (!accept.Wait(30000)) { Console.WriteLine("FAIL renderer did not connect"); proc.Kill(); return 1; }
@@ -61,6 +61,8 @@ static partial class E2E
             if (args.Length > 3 && args[3] == "pbvr") return VrMoveTest(ch, Wait, ir, outDir, proc);
             if (args.Length > 3 && args[3] == "pbskirt") return PbSkirtTest(ch, Wait, ir, outDir, proc, (args.Length > 4 ? args[4] : "skirt_1.001,skirt_6.001,skirt_11.001,skirt_16.001").Split(','));
             if (args.Length > 3 && args[3] == "pbrules")return PbRulesTest(ch, Wait, ir, outDir, proc);
+            if (args.Length > 3 && args[3] == "pbmove") return PbMoveTest(ch, Wait, ir, outDir, proc, args.Length > 4 ? int.Parse(args[4]) : 12);
+            if (args.Length > 3 && args[3] == "pbrest") return PbRestTest(ch, Wait, ir, outDir, proc, args.Length > 4 ? int.Parse(args[4]) : 30);
             if (args.Length > 3 && args[3] == "pose") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return PoseTest(ch, Wait, ir, outDir, proc, args.Skip(4).ToArray()); }
             if (args.Length > 3 && args[3] == "face") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return FaceTest(ch, Wait, ir, outDir, proc, args.Length > 4 ? args[4] : null); }
             if (args.Length > 3 && args[3] == "faceosc") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return FaceOscTest(ch, Wait, ir, outDir, proc, args.Skip(4).ToArray()); }
@@ -77,8 +79,10 @@ static partial class E2E
             if (args.Length > 3 && args[3] == "limits") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return LimitsTest(ch, Wait, ir, outDir, proc); }
             if (args.Length > 3 && args[3] == "steps") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return StepsTest(ch, Wait, ir, outDir, proc); }
             if (args.Length > 3 && args[3] == "mesh") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return MeshTest(ch, Wait, ir, outDir, proc); }
+            if (args.Length > 3 && args[3] == "dofwindow") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return DofWindowTest(ch, Wait, ir, outDir, proc); }
             if (args.Length > 3 && args[3] == "envplus") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return EnvPlusTest(ch, Wait, ir, outDir, proc); }
             if (args.Length > 3 && args[3] == "overlay") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return OverlayTest(ch, Wait, ir, outDir, proc); }
+            if (args.Length > 3 && args[3] == "overlaygame") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return OverlayGameTest(ch, Wait, ir, outDir, proc); }
             if (args.Length > 3 && args[3] == "vrlink") return VrLinkTest(ch, Wait, ir, outDir, proc, args.Length > 4 && args[4] == "steamvr");
             if (args.Length > 3 && args[3] == "env") { ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true)); return EnvTest(ch, Wait, ir, outDir, proc); }
 
@@ -1502,7 +1506,7 @@ static partial class E2E
 
     /// <summary>
     /// VR처럼 빠른 움직임 (2026-10-23): 90 fps에서 4 m/s로 걷다 멈추기·30° 스냅 회전·방 크기 1.5배 동안 관절이 쉬는 자리에서 벗어난 거리(cm)를
-    /// 예전 방식(`legacy`: 60 Hz 고정 스텝·월드 기준 감쇠·순간이동 처리 없음)과 비교한다.
+    /// 잰다. 일정하게 걸으면 몸을 따라가고, 멈추면 쉬는 자세로 돌아오고, 스냅 회전·크기 바꾸기에 휘둘리지 않는지 본다.
     /// </summary>
     static int VrMoveTest(PipeChannel ch, Func<string, int, JNode> wait, string ir, string outDir, Process proc)
     {
@@ -1524,36 +1528,36 @@ static partial class E2E
             ch.Send(Msg.Make(Msg.LoadScene).Set("irPath", ir));
             var pb = wait(Msg.SceneLoaded, 60000)["physBones"];
             Check(pb["chains"].AsInt > 0, $"physBones: chains {pb["chains"].AsInt}, bones {pb["bones"].AsInt}");
-            ch.Send(Msg.Make(Msg.SetQuality).Set("maxFps", 90));   // 헤드셋 주기
-            var res = new Dictionary<bool, Dictionary<string, (double mean, double max)>>();
-            foreach (var legacy in new[] { true, false })
+            // 시간을 멈추고 90 fps(헤드셋 주기) 프레임을 바로 돌린다 — 기다리지 않고 매번 같은 결과 (2026-11-12, 예전에는 실제 시간으로 기다리며 예전 방식과 견줬다)
+            ch.Send(Msg.Make(Msg.SetView).Set("pauseTime", true));
+            void Run(double seconds, string motion = null)
             {
-                var r = res[legacy] = new Dictionary<string, (double, double)>();
-                ch.Send(Msg.Make(Msg.SetPhysBones).Set("legacy", legacy).Set("reset", true));
-                Thread.Sleep(3000);
-                r["rest"] = S();
-                Console.WriteLine($"   {(legacy ? "old" : "new")} rest: mean {r["rest"].mean:0.00} cm, max {r["rest"].max:0.00} cm");
-                foreach (var (motion, total, marks) in plan)
-                {
-                    ch.Send(Msg.Make(Msg.SetPhysBones).Set("motion", motion));
-                    var sw = Stopwatch.StartNew();
-                    foreach (var (at, what) in marks)
-                    {
-                        int left = at - (int)sw.ElapsedMilliseconds;
-                        if (left > 0) Thread.Sleep(left);
-                        var v = r[$"{motion} {what}"] = S();
-                        Console.WriteLine($"   {(legacy ? "old" : "new")} {motion} {what}: mean {v.mean:0.00} cm, max {v.max:0.00} cm");
-                    }
-                    Thread.Sleep(Math.Max(0, total - (int)sw.ElapsedMilliseconds) + 1500);
-                }
-                r["after"] = S();
-                Console.WriteLine($"   {(legacy ? "old" : "new")} after all: mean {r["after"].mean:0.00} cm, max {r["after"].max:0.00} cm");
+                var m = Msg.Make(Msg.SetPhysBones).Set("advance", seconds).Set("advanceFps", 90);
+                if (motion != null) m.Set("motion", motion);
+                ch.Send(m);
             }
-            var o = res[true]; var n = res[false];
-            Check(n["vrwalk walking"].mean <= o["vrwalk walking"].mean * 0.8 + 0.2, $"walking 4 m/s: mean swing {o["vrwalk walking"].mean:0.00} → {n["vrwalk walking"].mean:0.00} cm (일정한 속도면 몸을 따라감)");
+            var n = new Dictionary<string, (double mean, double max)>();
+            ch.Send(Msg.Make(Msg.SetPhysBones).Set("enabled", true).Set("reset", true));
+            Run(3);
+            n["rest"] = S();
+            Console.WriteLine($"   rest: mean {n["rest"].mean:0.00} cm, max {n["rest"].max:0.00} cm");
+            foreach (var (motion, total, marks) in plan)
+            {
+                int now = 0;
+                foreach (var (at, what) in marks)
+                {
+                    Run((at - now) / 1000.0, now == 0 ? motion : null); now = at;
+                    var v = n[$"{motion} {what}"] = S();
+                    Console.WriteLine($"   {motion} {what}: mean {v.mean:0.00} cm, max {v.max:0.00} cm");
+                }
+                Run((total - now) / 1000.0 + 1.5);
+            }
+            n["after"] = S();
+            Console.WriteLine($"   after all: mean {n["after"].mean:0.00} cm, max {n["after"].max:0.00} cm");
+            Check(n["vrwalk walking"].mean <= n["rest"].mean + 2.5, $"walking 4 m/s: mean swing {n["vrwalk walking"].mean:0.00} cm (일정한 속도면 몸을 따라감, 쉬는 자세 {n["rest"].mean:0.00})");
             Check(n["vrwalk stop+1.5s"].mean <= n["rest"].mean + 0.5, $"1.5 s after stop ≈ rest ({n["vrwalk stop+1.5s"].mean:0.00} vs {n["rest"].mean:0.00} cm)");
-            Check(n["snap snap 30°+0.1s"].max <= o["snap snap 30°+0.1s"].max * 0.8 + 0.5, $"snap turn: max swing {o["snap snap 30°+0.1s"].max:0.00} → {n["snap snap 30°+0.1s"].max:0.00} cm");
-            Check(n["resize ×1.5 +0.1s"].max <= o["resize ×1.5 +0.1s"].max * 0.8 + 0.5, $"resize ×1.5: max swing {o["resize ×1.5 +0.1s"].max:0.00} → {n["resize ×1.5 +0.1s"].max:0.00} cm");
+            Check(n["snap snap 30°+0.1s"].max <= n["rest"].max + 3, $"snap turn: max swing {n["snap snap 30°+0.1s"].max:0.00} cm (쉬는 자세 {n["rest"].max:0.00})");
+            Check(n["resize ×1.5 +0.1s"].max <= n["rest"].max * 1.5 + 3, $"resize ×1.5: max swing {n["resize ×1.5 +0.1s"].max:0.00} cm (쉬는 자세 {n["rest"].max:0.00})");
             Check(Math.Abs(n["after"].mean - n["rest"].mean) < 0.3, $"after motions → rest ({n["after"].mean:0.00} vs {n["rest"].mean:0.00} cm)");
             ch.Send(Msg.Make(Msg.Quit));
         }

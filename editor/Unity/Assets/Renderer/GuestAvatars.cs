@@ -105,6 +105,17 @@ namespace VrcProto.Viewer
             if (g.Holder != null) UnityEngine.Object.Destroy(g.Holder);
         }
 
+        /// <summary>바로 돌리기 (setPhysBones { advance }): 지금 아바타와 같은 만큼 함께 세운 아바타의 PhysBone도 돌린다.</summary>
+        public void Advance(float seconds, float fps, PhysBoneSim main)
+        {
+            foreach (var g in _list)
+            {
+                if (!g.Holder.activeSelf) continue;
+                g.Phys.CopyFrom(main);
+                g.Phys.Advance(seconds, fps);
+            }
+        }
+
         /// <summary>RenderServer.LateUpdate에서 지금 아바타 PhysBone 다음에.</summary>
         public void Tick(float dt, PhysBoneSim main)
         {

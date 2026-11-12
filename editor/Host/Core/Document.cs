@@ -252,6 +252,42 @@ namespace VrcProto.Host.Core
         public string? UndoLabel => _undo.Count > 0 ? _undo[_undo.Count - 1].Label : null;
         public string? RedoLabel => _redo.Count > 0 ? _redo[_redo.Count - 1].Label : null;
 
+        // ---- 실행 취소 기록 창 (2026-11-12): 단계 이름을 차례로 보여 주고, 고른 시점으로 한 번에 간다 ----
+        /// <summary>지금까지 한 단계 수 (실행 취소할 수 있는 수).</summary>
+        public int UndoCount => _undo.Count;
+        /// <summary>기록의 단계 이름: 오래된 것부터, 실행 취소한(다시 실행할 수 있는) 단계까지 이어서. 앞의 UndoCount개가 지금 적용된 단계다.</summary>
+        public IReadOnlyList<string> HistoryLabels
+        {
+            get
+            {
+                var list = new List<string>(_undo.Count + _redo.Count);
+                foreach (var s in _undo) list.Add(s.Label);
+                for (int i = _redo.Count - 1; i >= 0; i--) list.Add(_redo[i].Label);
+                return list;
+            }
+        }
+
+        /// <summary>적용된 단계가 count개가 되도록 실행 취소·다시 실행을 한 번에 한다 (0 = 처음 상태). Changed는 한 번만 나간다.</summary>
+        public void JumpTo(int count)
+        {
+            if (_groupDepth > 0) return;
+            count = Math.Max(0, Math.Min(count, _undo.Count + _redo.Count));
+            var touched = new List<Addr>();
+            while (_undo.Count > count)
+            {
+                var s = _undo[_undo.Count - 1]; _undo.RemoveAt(_undo.Count - 1);
+                for (int i = s.Changes.Count - 1; i >= 0; i--) { Write(s.Changes[i].Addr, s.Changes[i].Before); touched.Add(s.Changes[i].Addr); }
+                _redo.Add(s);
+            }
+            while (_undo.Count < count)
+            {
+                var s = _redo[_redo.Count - 1]; _redo.RemoveAt(_redo.Count - 1);
+                foreach (var c in s.Changes) { Write(c.Addr, c.After); touched.Add(c.Addr); }
+                _undo.Add(s);
+            }
+            if (touched.Count > 0) Replay(touched.Distinct().ToList());
+        }
+
         public void Undo()
         {
             if (_undo.Count == 0 || _groupDepth > 0) return;

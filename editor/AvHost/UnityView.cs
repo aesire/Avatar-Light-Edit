@@ -53,25 +53,39 @@ namespace VrcProto.AvHost
         public bool InOverlay => _overlay;
         public IntPtr UnityHandle => _unity;
 
-        /// <summary>화면 좌표(물리 픽셀) 사각형에 띄운다. clickThrough면 마우스가 아래 창(게임)으로 간다.</summary>
-        public bool EnterOverlay(int x, int y, int w, int h, bool topmost, bool clickThrough)
+        /// <summary>화면 좌표(물리 픽셀) 사각형에 띄운다. clickThrough면 마우스가 아래 창(게임)으로 간다.
+        /// title이 있으면 (2026-11-12, OBS·게임 합치기) 제목 표시줄 있는 보통 창으로 — 작업 표시줄에 나오고 OBS·디스코드 창 목록에 그 제목으로 보인다.
+        /// 이때 x·y·w·h는 그림 칸(클라이언트) 크기이고, 닫기 단추는 두지 않는다 (렌더러가 끝나지 않게).</summary>
+        public bool EnterOverlay(int x, int y, int w, int h, bool topmost, bool clickThrough, string? title = null)
         {
             if (_unity == IntPtr.Zero || !Win32.IsWindow(_unity)) return false;
+            bool framed = !string.IsNullOrEmpty(title);
             if (!_overlay)
             {
+                _title = Win32.GetText(_unity);
                 Win32.SetParent(_unity, IntPtr.Zero);
-                Win32.SetWindowLong(_unity, Win32.GWL_STYLE, Win32.WS_POPUP | Win32.WS_VISIBLE);
                 // 자식 창이던 동안 두 프로세스의 입력 큐가 묶여 있었다 → 풀어 둔다 (묶인 채면 마우스 잡기·포커스가 서로 넘어가 프로그램 창 클릭이 끊긴다)
                 Win32.DetachInput(_unity);
                 _overlay = true;
             }
+            int style = framed ? Win32.WS_CAPTION | Win32.WS_THICKFRAME | Win32.WS_VISIBLE : Win32.WS_POPUP | Win32.WS_VISIBLE;
             // 작업 표시줄·Alt+Tab에 나오지 않게(TOOLWINDOW). 클릭 통과일 때는 게임에서 포커스를 뺏지 않게(NOACTIVATE), 조정 모드는 클릭을 받아야 하므로 뺀다
-            int ex = Win32.WS_EX_TOOLWINDOW | (clickThrough ? Win32.WS_EX_LAYERED | Win32.WS_EX_TRANSPARENT | Win32.WS_EX_NOACTIVATE : 0);
+            int ex = framed ? Win32.WS_EX_APPWINDOW : Win32.WS_EX_TOOLWINDOW | (clickThrough ? Win32.WS_EX_LAYERED | Win32.WS_EX_TRANSPARENT | Win32.WS_EX_NOACTIVATE : 0);
+            Win32.SetWindowLong(_unity, Win32.GWL_STYLE, style);
             Win32.SetWindowLong(_unity, Win32.GWL_EXSTYLE, ex);
-            if (clickThrough) Win32.SetLayeredWindowAttributes(_unity, 0, 255, Win32.LWA_ALPHA);
-            Win32.SetWindowPos(_unity, topmost ? Win32.HWND_TOPMOST : Win32.HWND_NOTOPMOST, x, y, w, h, Win32.SWP_SHOWWINDOW | Win32.SWP_FRAMECHANGED | Win32.SWP_NOACTIVATE);
+            if (!framed && clickThrough) Win32.SetLayeredWindowAttributes(_unity, 0, 255, Win32.LWA_ALPHA);
+            Win32.SetWindowText(_unity, framed ? title! : _title);
+            if (framed)
+            {
+                // 그림 칸이 w×h가 되게 바깥 크기를 넓힌다
+                var r = new Win32.RECT { Left = x, Top = y, Right = x + w, Bottom = y + h };
+                Win32.AdjustWindowRectEx(ref r, style, false, ex);
+                x = r.Left; y = r.Top; w = r.Right - r.Left; h = r.Bottom - r.Top;
+            }
+            Win32.SetWindowPos(_unity, topmost && !framed ? Win32.HWND_TOPMOST : Win32.HWND_NOTOPMOST, x, y, w, h, Win32.SWP_SHOWWINDOW | Win32.SWP_FRAMECHANGED | Win32.SWP_NOACTIVATE);
             return true;
         }
+        string _title = "";
 
         /// <summary>미리보기로 되돌린다. 미리보기 자식 창이 없으면(닫는 중 등) 숨기기만 하고, 자식 창이 다시 생기면 붙인다.</summary>
         public void ExitOverlay()
@@ -82,6 +96,7 @@ namespace VrcProto.AvHost
             // 맨 위 표시는 스타일 값만 지워서는 남는다 → 먼저 풀고 붙인다
             Win32.SetWindowPos(_unity, Win32.HWND_NOTOPMOST, 0, 0, 0, 0, Win32.SWP_NOMOVE | Win32.SWP_NOSIZE | Win32.SWP_NOACTIVATE);
             Win32.SetWindowLong(_unity, Win32.GWL_EXSTYLE, 0);
+            Win32.SetWindowText(_unity, _title);
             if (_host == IntPtr.Zero || !Win32.IsWindow(_host)) { Win32.ShowWindow(_unity, Win32.SW_HIDE); return; }
             Attach();
         }
@@ -127,6 +142,7 @@ namespace VrcProto.AvHost
         public const int WS_CHILD = 0x40000000, WS_VISIBLE = 0x10000000, WS_CLIPCHILDREN = 0x02000000;
         public const int WM_ACTIVATE = 0x0006, WA_ACTIVE = 1, WA_INACTIVE = 0;
         public const int WS_POPUP = unchecked((int)0x80000000), GWL_STYLE = -16, GWL_EXSTYLE = -20;
+        public const int WS_CAPTION = 0x00C00000, WS_THICKFRAME = 0x00040000, WS_EX_APPWINDOW = 0x40000;
         public const int WS_EX_LAYERED = 0x80000, WS_EX_TRANSPARENT = 0x20, WS_EX_TOOLWINDOW = 0x80, WS_EX_NOACTIVATE = 0x08000000, LWA_ALPHA = 2;
         public const int SW_HIDE = 0, SWP_NOACTIVATE = 0x10;
         public const int SWP_NOSIZE = 1, SWP_NOMOVE = 2, SWP_NOZORDER = 4, SWP_FRAMECHANGED = 0x20, SWP_SHOWWINDOW = 0x40;
@@ -147,6 +163,10 @@ namespace VrcProto.AvHost
         [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr hwnd, int cmd);
         [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr hwnd, out RECT r);
         [DllImport("user32.dll")] public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint key, byte alpha, int flags);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] public static extern bool SetWindowText(IntPtr hwnd, string text);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)] static extern int GetWindowText(IntPtr hwnd, System.Text.StringBuilder sb, int max);
+        public static string GetText(IntPtr hwnd) { var sb = new System.Text.StringBuilder(512); GetWindowText(hwnd, sb, sb.Capacity); return sb.ToString(); }
+        [DllImport("user32.dll")] public static extern bool AdjustWindowRectEx(ref RECT r, int style, bool menu, int exStyle);
 
         [StructLayout(LayoutKind.Sequential)] public struct RECT { public int Left, Top, Right, Bottom; }
         public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);

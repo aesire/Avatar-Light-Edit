@@ -837,6 +837,6 @@ namespace VrcProto.AvHost
         public const string ChevronUp = "\uE70E", Hide = "\uED1A", Headset = "\uE7F6";
         public const string ChevronDown = "\uE70D", ChevronRight = "\uE76C", ClosePane = "\uE89F", OpenPane = "\uE8A0", DockLeft = "\uE90C", DockRight = "\uE90D", View = "\uE890", Physics = "\uE945", Mirror = "\uE8B9", Avatar = "\uE77B", Pose = "\uE805";
         public const string Add = "\uE710", Delete = "\uE74D", Pin = "\uE718", Place = "\uE81D", Move = "\uE7C2", Emoji = "\uE76E",Optimize = "\uE9F5", Edit = "\uE70F", Upload = "\uE898", Record = "\uE7C8", Stop = "\uE71A", Play = "\uE768", More = "\uE712", Keyboard = "\uE765", Settings = "\uE713";
-        public const string Unpin = "\uE77A", Close = "\uE711", PopOut = "\uE8A7", DockBack = "\uE73F", Package = "\uE7B8", Link = "\uE71B";
+        public const string Unpin = "\uE77A", Close = "\uE711", PopOut = "\uE8A7", DockBack = "\uE73F", Package = "\uE7B8", Link = "\uE71B", History = "\uE81C";
     }
 }

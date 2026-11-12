@@ -135,6 +135,7 @@ Host 역할로 렌더러를 띄워(창 없이 -batchmode) 장면 로드 → 셰�
 |---|---|
 | (없음) | 기본 왕복 |
 | `physbones` · `collide` · `pbfeel` · `pbvr` · `pbrules` | PhysBone 되돌아오기 · 다리 뚫림 · 떨림·무게감 · VR 움직임 · 값 규칙(시험 체인, `sample.ir.json`으로) |
+| `pbmove` · `pbrest` | PhysBone 움직임마다 뜬 높이·프레임률끼리 견주기·계산 시간(`E2E_FPS` · `E2E_TIME=1`) · 자세별 쉬는 자리에서 벗어난 거리 |
 | `env` · `envplus` | 조명·후처리·배경 색 · 추가 조명·라이트 볼륨·미러·AudioLink |
 | `pose` · `limits` · `handles` | 자세·본 조작·대칭·손·바닥 맞추기 · 원본 근육 범위 · 이동·회전 핸들 |
 | `face [얼굴 사진]` | 표정·트래킹·연결 방식·말하기 |

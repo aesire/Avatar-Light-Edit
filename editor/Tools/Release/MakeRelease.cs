@@ -68,8 +68,11 @@ static class MakeRelease
 
             Step("빌드 PC 경로 지우기·점검");
             ScrubPdbPaths(Path.Combine(stage, "Renderer", "VrcProtoRenderer_Data", "Managed"));
+            // 파일 목록 (2026-11-12): 업데이트가 다음 판에서 빠진 파일을 지울 때 쓴다 (AvHost/Updater.cs · Host/Core/UpdateFiles.cs)
+            //   점검(Check)이 이 파일도 찾으므로 그 앞에 쓴다 (2026-11-12 고침: 뒤에 있어 "빠진 파일: files.txt"로 실패했다)
+            File.WriteAllLines(Path.Combine(stage, "files.txt"), Directory.EnumerateFiles(stage, "*", SearchOption.AllDirectories)
+                .Select(f => Path.GetRelativePath(stage, f).Replace('/', '\\')).Where(f => f != "files.txt").OrderBy(f => f, StringComparer.OrdinalIgnoreCase));
             Check(stage);
-
             Step("압축");
             var zip = Path.Combine(outDir, folder + ".zip");
             File.Delete(zip);
@@ -318,7 +321,7 @@ static class MakeRelease
             var dir = Path.GetDirectoryName(rel) ?? "";
             if (dir.Replace('\\', '/').EndsWith("StreamingAssets/ShaderPacks") && !packOk.IsMatch(Path.GetFileName(f))) problems.Add("기본 팩이 아닌 셰이더 팩: " + rel);
         }
-        foreach (var need in new[] { ExeName, "VrcProtoAv.deps.json", "Shoot.deps.json", "Shoot.exe", "Shoot.dll", "Shoot.runtimeconfig.json", "AGENTS.md", "SHOOT.md", "EDIT.md", "shoot-poses/peace_cheek.pose.json", "hostfxr.dll", "hostpolicy.dll", "coreclr.dll", "Renderer/VrcProtoRenderer.exe", "Renderer/UnityPlayer.dll", "licenses/dotnet_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/ShaderPacks/licenses/lilToon_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/FaceModel/NOTICE.txt" })
+        foreach (var need in new[] { ExeName, "files.txt", "VrcProtoAv.deps.json", "Shoot.deps.json", "Shoot.exe", "Shoot.dll", "Shoot.runtimeconfig.json", "AGENTS.md", "SHOOT.md", "EDIT.md", "shoot-poses/peace_cheek.pose.json", "hostfxr.dll", "hostpolicy.dll", "coreclr.dll", "Renderer/VrcProtoRenderer.exe", "Renderer/UnityPlayer.dll", "licenses/dotnet_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/ShaderPacks/licenses/lilToon_LICENSE.txt", "Renderer/VrcProtoRenderer_Data/StreamingAssets/FaceModel/NOTICE.txt" })
             if (!File.Exists(Path.Combine(stage, need))) problems.Add("빠진 파일: " + need);
         // 보안 패치 (2026-11-03, CVE-2025-59489): 고치기 전 2022.3.22f1 UnityPlayer.dll이면 실패 — Unity Application Patcher로 고친 것만
         var player = Path.Combine(stage, "Renderer", "UnityPlayer.dll");

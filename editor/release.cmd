@@ -4,6 +4,7 @@ setlocal
 cd /d "%~dp0"
 set "SH="
 for /f "delims=" %%s in ('where sh 2^>nul') do if not defined SH set "SH=%%s"
+for /f "delims=" %%g in ('where git 2^>nul') do if not defined SH if exist "%%~dpg..\bin\sh.exe" set "SH=%%~dpg..\bin\sh.exe"
 if not defined SH if exist "%ProgramFiles%\Git\bin\sh.exe" set "SH=%ProgramFiles%\Git\bin\sh.exe"
 if not defined SH (
   echo [release] sh.exe not found. Install Git for Windows.

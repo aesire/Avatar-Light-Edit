@@ -168,6 +168,7 @@ namespace VrcProto.AvHost
                 MessageBoxW(IntPtr.Zero, "프로그램 폴더 경로가 너무 깁니다.\n\nC:\\ALEdit처럼 짧은 경로로 폴더를 이동한 뒤 다시 실행해 주세요.\n\n지금 위치: " + AppContext.BaseDirectory, "Avatar Light Edit", 0x10);
                 return 1;
             }
+            if (!args.Contains("--test") && !args.Contains("--ui-shots")) NoteAppPath();
             int code;
             // 멀티코어 JIT (2026-10-27, 시작 속도): 지난 실행에서 쓴 메서드를 다른 코어에서 미리 컴파일해 둔다 — 창·페이지를 처음 만들 때의 JIT 기다림이 준다.
             //   기록은 %LOCALAPPDATA%\ALEdit\jit (빌드가 바뀐 어셈블리는 런타임이 알아서 건너뛰고 다시 적는다)
@@ -196,6 +197,25 @@ namespace VrcProto.AvHost
             // 창이 다 닫힌 뒤에도 남은 전경 스레드(장치·파이프 등)가 프로세스를 붙잡지 않게 여기서 끝낸다 ("종료가 안 된다", 2026-10-22)
             Environment.Exit(code);
             return code;
+        }
+
+        /// <summary>
+        /// 설치 위치 남기기 (2026-11-12): VRC Tools 런처가 ALE를 찾아 켤 수 있게 %APPDATA%\ALEdit\app-path.txt 에 실행 파일 경로를 적는다
+        ///   (zip을 푼 폴더라 레지스트리에 흔적이 없다). 개발 빌드는 dotnet.exe가 dll을 켜므로 dll 경로를 적는다. 테스트 모드·화면 찍기는 적지 않는다.
+        /// </summary>
+        static void NoteAppPath()
+        {
+            try
+            {
+                var exe = Environment.ProcessPath ?? "";
+                if (System.IO.Path.GetFileNameWithoutExtension(exe).Equals("dotnet", StringComparison.OrdinalIgnoreCase)) exe = typeof(App).Assembly.Location;
+                if (exe.Length == 0) return;
+                var dir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ALEdit");
+                System.IO.Directory.CreateDirectory(dir);
+                var file = System.IO.Path.Combine(dir, "app-path.txt");
+                if (!System.IO.File.Exists(file) || System.IO.File.ReadAllText(file) != exe) System.IO.File.WriteAllText(file, exe);
+            }
+            catch { }
         }
 
         /// <summary>

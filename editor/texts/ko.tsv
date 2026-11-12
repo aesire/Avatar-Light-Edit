@@ -7,6 +7,7 @@
 # · 테스트 모드(run_test.sh / run_test.cmd)로 띄워 두면 저장할 때마다 바로 화면에 반영된다.
 # · 표를 새로 뽑기: python -I Tools/Texts/extract_texts.py (적어 둔 바꿀 글은 남는다)
 # · 문자열을 + 로 이어 붙인 글은 조각마다 따로 나오지만, 화면에는 이어진 글 하나로 보여 표로는 바꿀 수 없다 — 그런 글은 코드의 조각을 직접 고친다.
+# · 용어 기준은 editor/NOTES.md "화면 글 용어 기준" 절을 따른다.
 
 # ==== AvHost/AssetsPanel.cs ====
 메시		AssetsPanel.cs:53 외 1곳
@@ -409,7 +410,7 @@ BlendShape {0}개		BlendShapePanel.Sets.cs:211 외 2곳
 이 세팅으로 되돌리기	이 프리셋으로 되돌리기	BlendShapePanel.Sets.cs:270
 블렌드쉐이프만 바꿔요 (Ctrl+Z로 취소)	BlendShape만 변경합니다 (Ctrl+Z로 취소)	BlendShapePanel.Sets.cs:270
 저장한 것	저장된 값	BlendShapePanel.Sets.cs:296
-지금	현재	BlendShapePanel.Sets.cs:297 외 5곳
+지금	현재	BlendShapePanel.Sets.cs:297 외 6곳
 찍는 중…	촬영 중…	BlendShapePanel.Sets.cs:297 외 2곳
 미리보기가 없어요	미리보기가 없습니다	BlendShapePanel.Sets.cs:297 외 1곳
 지금 얼굴 다시 찍기	지금 얼굴 다시 촬영	BlendShapePanel.Sets.cs:297
@@ -587,24 +588,24 @@ UI 예외 — 계속함		Crash.cs:103
 환경		EnvironmentPanel.cs:27 외 5곳
 환경 되돌리기		EnvironmentPanel.cs:34
 기본 환경으로 되돌리기: 모든 효과의 값을 처음대로	기본 환경으로 되돌리기: 모든 효과의 값을 초기화	EnvironmentPanel.cs:34
-미리보기가 켜지면 조명·후처리 설정이 나와요.	미리보기가 켜지면 조명·후처리 설정이 표시됩니다.	EnvironmentPanel.cs:72
-켜기: 		EnvironmentPanel.cs:87 외 1곳
-끄기: 		EnvironmentPanel.cs:87 외 1곳
-{0} 사용		EnvironmentPanel.cs:92
-켜져 있어요	켜져 있습니다	EnvironmentPanel.cs:92 외 2곳
-꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요	꺼져 있습니다 · 켜면 아래 값이 미리보기에 들어갑니다	EnvironmentPanel.cs:92
-조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 옮겨요	조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 이동합니다	EnvironmentPanel.cs:97
-켜짐		EnvironmentPanel.cs:117 외 3곳
-꺼짐		EnvironmentPanel.cs:117 외 15곳
-\n기본값: 		EnvironmentPanel.cs:187
-환경 되돌리기: 		EnvironmentPanel.cs:196
-기본값으로 되돌리기		EnvironmentPanel.cs:197
-환경: 		EnvironmentPanel.cs:210 외 7곳
-색 고르기	색 선택	EnvironmentPanel.cs:225
-R, G, B (0~1) 또는 #RRGGBB		EnvironmentPanel.cs:235
-파일 경로		EnvironmentPanel.cs:247
-찾기…		EnvironmentPanel.cs:248
-파일 고르기	파일 선택	EnvironmentPanel.cs:259
+미리보기가 켜지면 조명·후처리 설정이 나와요.	미리보기가 켜지면 조명·후처리 설정이 표시됩니다.	EnvironmentPanel.cs:74
+켜기: 		EnvironmentPanel.cs:89 외 1곳
+끄기: 		EnvironmentPanel.cs:89 외 1곳
+{0} 사용		EnvironmentPanel.cs:94
+켜져 있어요	켜져 있습니다	EnvironmentPanel.cs:94 외 2곳
+꺼져 있어요 · 켜면 아래 값이 미리보기에 들어가요	꺼져 있습니다 · 켜면 아래 값이 미리보기에 들어갑니다	EnvironmentPanel.cs:94
+조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 옮겨요	조명 배치 — 위에서 본 아바타 둘레, 점을 끌어 이동합니다	EnvironmentPanel.cs:99
+켜짐		EnvironmentPanel.cs:119 외 3곳
+꺼짐		EnvironmentPanel.cs:119 외 15곳
+\n기본값: 		EnvironmentPanel.cs:189
+환경 되돌리기: 		EnvironmentPanel.cs:198
+기본값으로 되돌리기		EnvironmentPanel.cs:199
+환경: 		EnvironmentPanel.cs:212 외 7곳
+색 고르기	색 선택	EnvironmentPanel.cs:227
+R, G, B (0~1) 또는 #RRGGBB		EnvironmentPanel.cs:237
+파일 경로		EnvironmentPanel.cs:249
+찾기…		EnvironmentPanel.cs:250
+파일 고르기	파일 선택	EnvironmentPanel.cs:261
 
 # ==== AvHost/ExportWindow.cs ====
 Unity 프로젝트로 내보내기		ExportWindow.cs:35 외 3곳
@@ -916,6 +917,9 @@ Windows에서만 돼요	Windows에서만 지원됩니다	ImageClipboard.cs:16
 PNG를 읽지 못했어요	PNG를 읽지 못했습니다	ImageClipboard.cs:20 외 1곳
 다른 프로그램이 클립보드를 쓰는 중이에요	다른 프로그램이 클립보드를 사용하는 중입니다	ImageClipboard.cs:21
 
+# ==== AvHost/ImageFiles.cs ====
+이미지를 읽지 못했어요: 		ImageFiles.cs:59 외 1곳
+
 # ==== AvHost/ImportWindow.cs ====
 다른 색의 텍스처도 함께 가져오기		ImportWindow.cs:40
 Unity에서 가져오기		ImportWindow.cs:63
@@ -1128,16 +1132,16 @@ Modular Avatar Merge Armature 설정이 있어요 (그대로 따라요).	Modular
 구글 번역 API 키가 맞지 않거나 Cloud Translation API가 켜져 있지 않아요 (설정 › 블렌드쉐이프 이름 번역). 지금은 번역 표로만 보여요.	Google 번역 API 키가 맞지 않거나 Cloud Translation API가 켜져 있지 않습니다 (설정 › BlendShape 이름 번역). 지금은 번역 표로만 표시됩니다.	MachineNames.cs:131
 
 # ==== AvHost/MainWindow.Boot.cs ====
-장면 보임		MainWindow.Boot.cs:29
-시작 시간 (ms, 프로세스 시작부터): 		MainWindow.Boot.cs:31
-Host 메모리 {0} MB · 관리 힙(치운 뒤) {1} MB		MainWindow.Boot.cs:38
-페이지 돌아보기 {0}바퀴: 합 {1} ms · 가장 긴 것 {2} ms		MainWindow.Boot.cs:78
- — 30 ms 넘음: 		MainWindow.Boot.cs:78
-예열이 안 끝남: 		MainWindow.Boot.cs:102
-(찾지 못함)		MainWindow.Boot.cs:102
- · 미룬 일 남음		MainWindow.Boot.cs:102
-메시 바꾸기: 고른 순간 {0} ms · 바로 머티리얼 {1} ms | 다시 고른 순간 {2} ms · 쉰 뒤({3} ms 동안 예열) 머티리얼 {4} ms		MainWindow.Boot.cs:103
-끝난 뒤 Host 메모리 {0} MB · 관리 힙(치운 뒤) {1} MB		MainWindow.Boot.cs:106
+장면 보임		MainWindow.Boot.cs:32
+시작 시간 (ms, 프로세스 시작부터): 		MainWindow.Boot.cs:34
+Host 메모리 {0} MB · 관리 힙(치운 뒤) {1} MB · 치운 뒤 Host 메모리 {2} MB		MainWindow.Boot.cs:42
+페이지 돌아보기 {0}바퀴: 합 {1} ms · 가장 긴 것 {2} ms		MainWindow.Boot.cs:84
+ — 30 ms 넘음: 		MainWindow.Boot.cs:84
+예열이 안 끝남: 		MainWindow.Boot.cs:108
+(찾지 못함)		MainWindow.Boot.cs:108
+ · 미룬 일 남음		MainWindow.Boot.cs:108
+메시 바꾸기: 고른 순간 {0} ms · 바로 머티리얼 {1} ms | 다시 고른 순간 {2} ms · 쉰 뒤({3} ms 동안 예열) 머티리얼 {4} ms		MainWindow.Boot.cs:109
+끝난 뒤 Host 메모리 {0} MB · 관리 힙(치운 뒤) {1} MB		MainWindow.Boot.cs:112
 
 # ==== AvHost/MainWindow.Check.cs ====
 아바타를 열면 올리기 전에 볼 것이 여기에 나와요.	아바타를 열면 업로드 전에 볼 것이 여기에 표시됩니다.	MainWindow.Check.cs:23
@@ -1230,49 +1234,62 @@ zip에서 꺼냄: 		MainWindow.Files.cs:208
 이 에디터에서 "세션 넣기"를 켜고 촬영한 PNG만 같은 상태로 다시 열 수 있습니다.\n		MainWindow.Files.cs:322
 이미지에서 세션을 열었어요 · {0}	이미지에서 세션을 열었습니다 · {0}	MainWindow.Files.cs:330
 파일 읽기 시작		MainWindow.Files.cs:337
-가져온 파일을 열지 못했어요	가져온 파일을 열지 못했습니다	MainWindow.Files.cs:339
-파일 읽음		MainWindow.Files.cs:340
-페이지에 문서 채움		MainWindow.Files.cs:360
-페이지 채우기 		MainWindow.Files.cs:361
-페이지 예열		MainWindow.Files.cs:364
-페이지 예열 {0} ms — {1}		MainWindow.Files.cs:365
-{0} · 미리보기 기다리는 중		MainWindow.Files.cs:369
-{0} 열림 · 메시 {1}개 · 머티리얼 {2}개		MainWindow.Files.cs:370
-마지막 파일이 없어 열지 않았습니다: 		MainWindow.Files.cs:395
-마지막 세션의 아바타 파일이 없어 열지 않았습니다: 		MainWindow.Files.cs:398
-마지막 세션을 읽지 못했습니다: 		MainWindow.Files.cs:399
-지난번에 작업하던 파일을 열었습니다 · 		MainWindow.Files.cs:405
- (설정에서 끌 수 있습니다)		MainWindow.Files.cs:405
-파일까지 담아 저장		MainWindow.Files.cs:426
-세션 저장		MainWindow.Files.cs:426 외 1곳
-파일까지 담은 세션		MainWindow.Files.cs:428
-아바타 파일·텍스처를 담는 중… · 		MainWindow.Files.cs:439
-묶음: 파일이 없어 담지 못했습니다 · 		MainWindow.Files.cs:444
-묶음 저장: 파일 {0}개 · {1} MB → {2}		MainWindow.Files.cs:445
-저장했습니다 · 		MainWindow.Files.cs:452
-저장하지 못했어요	저장하지 못했습니다	MainWindow.Files.cs:455 외 1곳
-저장하지 않은 변경이 있어요	저장하지 않은 변경이 있습니다	MainWindow.Files.cs:462
-지금까지 바꾼 값을 세션으로 저장할까요?	지금까지 변경한 값을 세션으로 저장하시겠습니까?	MainWindow.Files.cs:462
-저장		MainWindow.Files.cs:462 외 3곳
-저장 안 함		MainWindow.Files.cs:462
-[테스트] 		MainWindow.Files.cs:478
-열린 파일 없음		MainWindow.Files.cs:481
-변경한 값 {0}개 · 		MainWindow.Files.cs:483
-저장 안 됨	저장되지 않음	MainWindow.Files.cs:483
-저장됨		MainWindow.Files.cs:483
-실행 취소 (Ctrl+Z)		MainWindow.Files.cs:490 외 1곳
-다시 실행 (Ctrl+Y)		MainWindow.Files.cs:492 외 1곳
-더 되돌릴 것이 없어요	더 되돌릴 것이 없습니다	MainWindow.Files.cs:500
-되돌렸습니다: 		MainWindow.Files.cs:502
-마지막 변경		MainWindow.Files.cs:502
- (다시 하기 Ctrl+Y)		MainWindow.Files.cs:502
-다시 할 것이 없어요	다시 할 것이 없습니다	MainWindow.Files.cs:507
-다시 했습니다: 		MainWindow.Files.cs:509
-변경		MainWindow.Files.cs:509
+가져온 파일을 열지 못했어요	가져온 파일을 열지 못했습니다	MainWindow.Files.cs:344
+파일 읽음		MainWindow.Files.cs:348
+페이지에 문서 채움		MainWindow.Files.cs:371
+페이지 채우기 		MainWindow.Files.cs:372
+페이지 예열		MainWindow.Files.cs:375
+페이지 예열 {0} ms — {1}		MainWindow.Files.cs:376
+{0} · 미리보기 기다리는 중		MainWindow.Files.cs:380
+{0} 열림 · 메시 {1}개 · 머티리얼 {2}개		MainWindow.Files.cs:381
+마지막 파일이 없어 열지 않았습니다: 		MainWindow.Files.cs:406
+마지막 세션의 아바타 파일이 없어 열지 않았습니다: 		MainWindow.Files.cs:409
+마지막 세션을 읽지 못했습니다: 		MainWindow.Files.cs:410
+지난번에 작업하던 파일을 열었습니다 · 		MainWindow.Files.cs:416
+ (설정에서 끌 수 있습니다)		MainWindow.Files.cs:416
+파일까지 담아 저장		MainWindow.Files.cs:437
+세션 저장		MainWindow.Files.cs:437 외 1곳
+파일까지 담은 세션		MainWindow.Files.cs:439
+아바타 파일·텍스처를 담는 중… · 		MainWindow.Files.cs:450
+묶음: 파일이 없어 담지 못했습니다 · 		MainWindow.Files.cs:455
+묶음 저장: 파일 {0}개 · {1} MB → {2}		MainWindow.Files.cs:456
+저장했습니다 · 		MainWindow.Files.cs:463
+저장하지 못했어요	저장하지 못했습니다	MainWindow.Files.cs:466 외 1곳
+저장하지 않은 변경이 있어요	저장하지 않은 변경이 있습니다	MainWindow.Files.cs:473
+지금까지 바꾼 값을 세션으로 저장할까요?	지금까지 변경한 값을 세션으로 저장하시겠습니까?	MainWindow.Files.cs:473
+저장		MainWindow.Files.cs:473 외 3곳
+저장 안 함		MainWindow.Files.cs:473
+[테스트] 		MainWindow.Files.cs:489
+열린 파일 없음		MainWindow.Files.cs:492
+변경한 값 {0}개 · 		MainWindow.Files.cs:494
+저장 안 됨	저장되지 않음	MainWindow.Files.cs:494
+저장됨		MainWindow.Files.cs:494
+실행 취소 (Ctrl+Z)		MainWindow.Files.cs:501 외 1곳
+다시 실행 (Ctrl+Y)		MainWindow.Files.cs:503 외 1곳
+더 되돌릴 것이 없어요	더 되돌릴 것이 없습니다	MainWindow.Files.cs:511
+되돌렸습니다: 		MainWindow.Files.cs:513
+마지막 변경		MainWindow.Files.cs:513
+ (다시 하기 Ctrl+Y)		MainWindow.Files.cs:513
+다시 할 것이 없어요	다시 할 것이 없습니다	MainWindow.Files.cs:518
+다시 했습니다: 		MainWindow.Files.cs:520
+변경		MainWindow.Files.cs:520 외 1곳
 
 # ==== AvHost/MainWindow.Guests.cs ====
 함께 세우기	함께 배치	MainWindow.Guests.cs:19
 미리보기가 켜져야 고를 수 있어요.	미리보기가 켜져야 선택할 수 있습니다.	MainWindow.Guests.cs:34 외 1곳
+
+# ==== AvHost/MainWindow.History.cs ====
+아바타를 먼저 열어 주세요		MainWindow.History.cs:19
+아직 바꾼 것이 없어 원본과 같아요		MainWindow.History.cs:20
+원본을 보는 중이에요 (O를 다시 누르면 고친 모습)		MainWindow.History.cs:23
+고친 모습으로 돌아왔어요		MainWindow.History.cs:23
+작업 기록		MainWindow.History.cs:42 외 1곳
+줄을 누르면 그 시점으로 돌아가요. 아래쪽 흐린 줄은 되돌린 것이라 누르면 다시 적용돼요. 되돌린 뒤 새로 바꾸면 흐린 줄은 사라져요.		MainWindow.History.cs:43
+열린 아바타가 없어요.		MainWindow.History.cs:76
+처음 상태 (연 직후)		MainWindow.History.cs:109
+아직 바꾼 것이 없어요.		MainWindow.History.cs:112
+{0}단계 되돌렸습니다 (다시 하기 Ctrl+Y)		MainWindow.History.cs:125
+{0}단계 다시 했습니다		MainWindow.History.cs:125
 
 # ==== AvHost/MainWindow.Items.cs ====
 이 아바타에는 붙일 수 없어요	이 아바타에는 장착할 수 없습니다	MainWindow.Items.cs:28
@@ -1334,6 +1351,7 @@ VRChat에 올리기 · Unity 프로젝트로 내보내기	VRChat 업로드 · Un
 편집·이동		MainWindow.Keys.cs:22
 실행 취소		MainWindow.Keys.cs:24 외 2곳
 다시 실행		MainWindow.Keys.cs:24 외 1곳
+작업 기록 (고른 시점으로 돌아가기)		MainWindow.Keys.cs:24
 페이지 (아바타 · 머티리얼 · 블렌드쉐이프 · 자세 · 환경 · 스튜디오 · 최적화 · 올리기)	페이지 (아바타 · 머티리얼 · BlendShape · 자세 · 환경 · 스튜디오 · 최적화 · 업로드)	MainWindow.Keys.cs:25
 페이지·설정·명령 찾기		MainWindow.Keys.cs:26
 설정		MainWindow.Keys.cs:26 외 4곳
@@ -1345,6 +1363,7 @@ VRChat에 올리기 · Unity 프로젝트로 내보내기	VRChat 업로드 · Un
 바닥 격자		MainWindow.Keys.cs:31 외 1곳
 거울		MainWindow.Keys.cs:31 외 2곳
 아바타만 보기 (배경·소품 빼기)	아바타만 보기 (배경·소품 제거)	MainWindow.Keys.cs:31
+원본과 비교 (고치기 전 모습 보기)		MainWindow.Keys.cs:31
 조작 핸들 (자세 본)		MainWindow.Keys.cs:32
 메시 편집		MainWindow.Keys.cs:32 외 2곳
 저장한 카메라 위치		MainWindow.Keys.cs:32
@@ -1387,85 +1406,87 @@ PhysBone 느낌	PhysBone 튜닝	MainWindow.PhysBoneFeel.cs:23 외 1곳
 조작		MainWindow.Preview.cs:49 외 1곳
 조작 (P): 관절을 끌어 자세를 바꿔요 · 더블클릭으로 본·아이템·아바타 고르기 → 이동 화살표·회전 고리로 옮기고 돌리기 · 잡은 채 휠로 돌리기(양쪽 버튼+휠: 대각선 축, Shift+휠: 비틀기). 켜 두면 PhysBone 관절 잡기는 쉬어요	조작 (P): 관절을 끌어 자세를 변경합니다 · 더블클릭으로 본·아이템·아바타 선택 → 이동 화살표·회전 고리로 조정 · 잡은 채 휠로 회전(양쪽 버튼+휠: 대각선 축, Shift+휠: 비틀기). 켜 두면 PhysBone 관절 잡기는 비활성화됩니다	MainWindow.Preview.cs:49
 메시 편집 (E): 정점을 골라 지우기(X)·합치기(M)·면 만들기(F)·끌어 옮기기, 누르기 브러시(B). 편집할 메시는 더블클릭으로 골라요	메시 편집 (E): 정점을 선택해 삭제(X)·합치기(M)·면 만들기(F)·끌어 이동, 누르기 브러시(B). 편집할 메시는 더블클릭으로 선택합니다	MainWindow.Preview.cs:51
-미리보기 다시 시작		MainWindow.Preview.cs:58
-가로 세밀 조정 막대 열기\n슬라이더나 숫자를 누르면 그 값을 큰 가로 막대로 조정해요 · 입력 칸을 길게 누르면 여기에 입력 키가 떠요	가로 정밀 조정 바 열기\n슬라이더나 숫자를 누르면 해당 값을 큰 가로 바로 조정합니다 · 입력 칸을 길게 누르면 여기에 입력 키가 표시됩니다	MainWindow.Preview.cs:107
-3D 미리보기는 방송 오버레이로 나가 있어요	3D 미리보기는 방송 오버레이로 나가 있습니다	MainWindow.Preview.cs:115
-오버레이 끄기		MainWindow.Preview.cs:117
-미리보기로 되돌려요	미리보기로 되돌립니다	MainWindow.Preview.cs:117
-컨트롤 보드		MainWindow.Preview.cs:118 외 2곳
-방송 화면에 보이지 않는 작은 창		MainWindow.Preview.cs:118
-메시 편집을 켰어요. 편집할 메시를 더블클릭한 뒤 정점을 고르세요. 실행 취소(Ctrl+Z)로 되돌려요.	메시 편집을 켰습니다. 편집할 메시를 더블클릭한 뒤 정점을 선택하세요. 실행 취소(Ctrl+Z)로 되돌립니다.	MainWindow.Preview.cs:146
-메시 편집을 껐어요.	메시 편집을 껐습니다.	MainWindow.Preview.cs:146
-{0} · 정점 {1} · 삼각형 {2} · 고른 정점 {3}	{0} · 정점 {1} · 삼각형 {2} · 선택한 정점 {3}	MainWindow.Preview.cs:168
-메시 편집: 		MainWindow.Preview.cs:170
-거울 보기 (좌우 반전)		MainWindow.Preview.cs:185 외 1곳
-더 보기: 정면 · 측면 · 후면 · 거울		MainWindow.Preview.cs:192
-조작을 켰어요. 관절을 끌거나, 본·아이템·아바타를 더블클릭으로 고른 뒤 화살표·고리를 끌어 보세요. 실행 취소(Ctrl+Z)로 되돌려요.	조작을 켰습니다. 관절을 끌거나, 본·아이템·아바타를 더블클릭으로 선택한 뒤 화살표·고리를 끌어 보세요. 실행 취소(Ctrl+Z)로 되돌립니다.	MainWindow.Preview.cs:203
-조작을 껐어요.	조작을 껐습니다.	MainWindow.Preview.cs:203
-아바타 전체		MainWindow.Preview.cs:235
-핸들 축: 월드 (X 오른쪽 · Y 위 · Z 앞)		MainWindow.Preview.cs:248
-핸들 축: 고른 것 기준 (로컬)	핸들 축: 선택한 것 기준 (로컬)	MainWindow.Preview.cs:248
-이 아이템은 옮기지 않았어요.	이 아이템은 이동하지 않았습니다.	MainWindow.Preview.cs:259
-아이템 자리 되돌리기	아이템 위치 되돌리기	MainWindow.Preview.cs:260
-아이템을 붙인 자리로 되돌렸어요.	아이템을 장착한 위치로 되돌렸습니다.	MainWindow.Preview.cs:260
-아바타는 원점에 있어요.	아바타는 원점에 있습니다.	MainWindow.Preview.cs:262
-아바타 자리 되돌리기	아바타 위치 되돌리기	MainWindow.Preview.cs:263
-아바타를 원점으로 되돌렸어요.	아바타를 원점으로 되돌렸습니다.	MainWindow.Preview.cs:263
-누르기 브러시 · 끌기: 누르기 · Shift+끌기: 당기기 · B: 끄기		MainWindow.Preview.cs:272
-누르기 브러시\n끌기: 안쪽으로 누르기 · Shift+끌기: 당기기\nCtrl+휠: 반지름 · Ctrl+Shift+휠: 세기\nB: 브러시 끄기 · 오른쪽 드래그: 카메라 · E: 끝내기		MainWindow.Preview.cs:273
-메시 편집 · 더블클릭: 메시 고르기 · E: 끝내기	메시 편집 · 더블클릭: 메시 선택 · E: 끝내기	MainWindow.Preview.cs:274
-메시 편집\n더블클릭: 메시 고르기\n클릭/끌기: 정점 고르기 (Shift 더하기, Ctrl 빼기)\n고른 정점 끌기: 옮기기\nX 삭제 · M 합치기 · F 면 · N 노멀 · A 전체 · L 이어진 것 · B 브러시\n오른쪽 드래그: 카메라 · E: 끝내기	메시 편집\n더블클릭: 메시 선택\n클릭/끌기: 정점 선택 (Shift 추가, Ctrl 제거)\n선택한 정점 끌기: 이동\nX 삭제 · M 합치기 · F 면 · N 노멀 · A 전체 · L 이어진 것 · B 브러시\n오른쪽 드래그: 카메라 · E: 끝내기	MainWindow.Preview.cs:275
-조작 중 · 관절 끌기 · 더블클릭: 고르기 · P: 끄기	조작 중 · 관절 끌기 · 더블클릭: 선택 · P: 끄기	MainWindow.Preview.cs:277
-조작 중\n관절 끌기: 옮기기 (손·발은 팔·다리 전체)\n더블클릭: 본(관절)·아이템·아바타(메시) 고르기\n화살표: 그 축으로 옮기기 · 고리: 그 축으로 돌리기 (빨강 X·초록 Y·파랑 Z·흰색 화면)\nL: 로컬/월드 축 · 끄는 중 휠: 화면 축 · Shift+휠: 비틀기\nR: 고른 것 되돌리기 · C: 반대쪽 본에 복사\n오른쪽 드래그: 카메라 · P: 끄기	조작 중\n관절 끌기: 이동 (손·발은 팔·다리 전체)\n더블클릭: 본(관절)·아이템·아바타(메시) 선택\n화살표: 그 축으로 이동 · 고리: 그 축으로 돌리기 (빨강 X·초록 Y·파랑 Z·흰색 화면)\nL: 로컬/월드 축 · 끄는 중 휠: 화면 축 · Shift+휠: 비틀기\nR: 선택한 것 되돌리기 · C: 반대쪽 본에 복사\n오른쪽 드래그: 카메라 · P: 끄기	MainWindow.Preview.cs:278
-오른쪽 드래그+WASD·QE: 날기 · Alt+드래그: 공전 · 휠: 확대		MainWindow.Preview.cs:280
-Unity처럼 조작\n오른쪽 드래그: 둘러보기 · 누른 채 WASD 앞뒤·옆, Q·E 아래·위 (Shift 빠르게, 휠로 빠르기)\nAlt+왼쪽 드래그: 공전 · Alt+오른쪽 드래그: 확대 · 가운데 드래그·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봐요\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집\n조작 방식은 설정에서 바꿔요	Unity처럼 조작\n오른쪽 드래그: 둘러보기 · 누른 채 WASD 앞뒤·옆, Q·E 아래·위 (Shift 빠르게, 휠로 빠르기)\nAlt+왼쪽 드래그: 공전 · Alt+오른쪽 드래그: 확대 · 가운데 드래그·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봅니다\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집\n조작 방식은 설정에서 변경합니다	MainWindow.Preview.cs:281
-드래그·WSAD: 회전 · Shift+드래그·화살표: 이동 · 휠: 확대		MainWindow.Preview.cs:282
-드래그·WSAD: 회전 · Shift+드래그·휠 버튼·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봐요\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집	드래그·WSAD: 회전 · Shift+드래그·휠 버튼·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봅니다\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집	MainWindow.Preview.cs:283
-누르기 브러시		MainWindow.Preview.cs:286
-조작 · 		MainWindow.Preview.cs:286
-방향 기즈모		MainWindow.Preview.cs:318 외 1곳
-본 표시		MainWindow.Preview.cs:320
-구도 안내선 (3분할 · 촬영 비율)		MainWindow.Preview.cs:322
-직교 투영		MainWindow.Preview.cs:324
-그리기 방식	렌더링 방식	MainWindow.Preview.cs:325
-셰이딩		MainWindow.Preview.cs:326
-셰이딩 + 와이어프레임		MainWindow.Preview.cs:326
-와이어프레임		MainWindow.Preview.cs:326
-아바타만 보기 (소품·바닥·배경 빼고 단색)	아바타만 보기 (소품·바닥·배경 제외하고 단색)	MainWindow.Preview.cs:327
-배경		MainWindow.Preview.cs:328 외 3곳
-환경 설정 그대로		MainWindow.Preview.cs:329
-회색		MainWindow.Preview.cs:329
-흰색		MainWindow.Preview.cs:329 외 2곳
-검정		MainWindow.Preview.cs:329 외 2곳
-초록 (크로마키)		MainWindow.Preview.cs:329
-표시		MainWindow.Preview.cs:331
-미리보기에 보조 표시를 켜고 꺼요 (촬영에는 들어가지 않아요)	미리보기에 보조 표시를 켜고 끕니다 (촬영에는 들어가지 않습니다)	MainWindow.Preview.cs:331
-가볍게		MainWindow.Preview.cs:339
-보통		MainWindow.Preview.cs:339 외 4곳
-무겁게		MainWindow.Preview.cs:339
-단단함		MainWindow.Preview.cs:342
-중간		MainWindow.Preview.cs:342
-부드러움		MainWindow.Preview.cs:342
-PhysBone 켜기		MainWindow.Preview.cs:348 외 1곳
-체인·콜라이더 표시 (끌어 잡기 · 오른쪽 클릭 고정)		MainWindow.Preview.cs:351
-켜면 흔들리는 뼈(초록)와 콜라이더(주황·보라)가 보여요. 관절을 왼쪽 버튼으로 끌면 손으로 잡은 것처럼 당겨지고, 잡은 채 오른쪽 클릭하면 그 자리에 고정돼요(빨강). 고정한 관절을 오른쪽 클릭하면 풀려요	켜면 PhysBone 체인(초록)과 콜라이더(주황·보라)가 표시됩니다. 관절을 왼쪽 버튼으로 끌면 잡아당길 수 있고, 잡은 채 오른쪽 클릭하면 해당 위치에 고정됩니다(빨강). 고정한 관절을 오른쪽 클릭하면 해제됩니다	MainWindow.Preview.cs:352
-고정 모두 풀기	고정 모두 해제	MainWindow.Preview.cs:356
-제자리에 다시 놓기 (고정도 풀기)	초기 위치로 되돌리기 (고정도 해제)	MainWindow.Preview.cs:359
-가슴 PhysBone(이름에 breast·bust·胸 등)에 가슴 물리를 더해요: 눌리면 납작해지며 옆으로 퍼지고, 누우면 납작·숙이면 늘어지고, 더 크게 출렁여요. 체인을 잡아 몸 쪽으로 밀면 눌려요. 이 미리보기에서만 쓰는 효과예요	가슴 PhysBone(이름에 breast·bust·胸 등)에 가슴 물리를 추가합니다: 눌리면 납작해지며 옆으로 퍼지고, 누우면 납작해지고 숙이면 늘어지며, 더 크게 출렁입니다. 체인을 잡아 몸 쪽으로 밀면 눌립니다. 미리보기 전용 효과입니다	MainWindow.Preview.cs:364
-치마·코트 자락처럼 엉덩이 아래로 늘어진 PhysBone이 다리를 뚫지 않게 허벅지·종아리에 콜라이더(하늘색)를 더해요. 크기는 다리 메시로 재요. 이 미리보기에서만 쓰는 보조라 VRChat에서는 원본에 넣은 콜라이더만 쓰여요	치마·코트 자락처럼 엉덩이 아래로 늘어진 PhysBone이 다리를 관통하지 않도록 허벅지·종아리에 콜라이더(하늘색)를 추가합니다. 크기는 다리 메시로 측정합니다. 미리보기 전용 보조 기능이며 VRChat에서는 원본의 콜라이더만 사용됩니다	MainWindow.Preview.cs:375
-머리카락·옷이 얼마나 묵직하게 움직일지예요. 무거울수록 몸을 따라 늦게 오고 천천히 제자리로 돌아오며, 빠르게 휙휙 튀지 않아요 (출렁이는 정도는 원본 값 그대로). 이 미리보기에서만 쓰는 값이에요	머리카락·의상의 무게감을 조절합니다. 무거울수록 몸을 늦게 따라오고 천천히 원위치로 돌아오며, 급격히 튀지 않습니다 (출렁임은 원본 값 유지). 미리보기 전용 값입니다	MainWindow.Preview.cs:380
-좌우로 흔들기		MainWindow.Preview.cs:390
-몸 돌리기		MainWindow.Preview.cs:390
-점프		MainWindow.Preview.cs:390
-앞으로 걷기		MainWindow.Preview.cs:390
-흔들리는 머리카락·옷(VRChat PhysBone)을 미리 봐요. VRChat과 같은 계산이 아니라 비슷하게 흉내 낸 거예요	머리카락·의상의 PhysBone 흔들림을 미리 봅니다. VRChat과 같은 계산은 아니며 근사한 결과입니다	MainWindow.Preview.cs:401
-가슴 물리 활성화 (가슴 PhysBone을 찾지 못했어요)	가슴 물리 활성화 (가슴 PhysBone을 찾지 못했습니다)	MainWindow.Preview.cs:413
-가슴 물리 활성화: {0}		MainWindow.Preview.cs:413
- (체인 {0}개)		MainWindow.Preview.cs:413
-무게감: 		MainWindow.Preview.cs:418
-다리 관통 방지 (에디터 전용)		MainWindow.Preview.cs:419
- · 체인 {0}개		MainWindow.Preview.cs:419
- · 해당 체인 없음		MainWindow.Preview.cs:419
+원본		MainWindow.Preview.cs:53
+원본과 비교 (O): 고치기 전 모습을 잠깐 봐요. 다시 누르거나 값을 바꾸면 고친 모습으로 돌아와요.\n머티리얼·블렌드쉐이프·켜고 끄기·메시·아이템 위치만 원본으로 보이고, 자세·표정·조명은 그대로예요.		MainWindow.Preview.cs:53
+미리보기 다시 시작		MainWindow.Preview.cs:60
+가로 세밀 조정 막대 열기\n슬라이더나 숫자를 누르면 그 값을 큰 가로 막대로 조정해요 · 입력 칸을 길게 누르면 여기에 입력 키가 떠요	가로 정밀 조정 바 열기\n슬라이더나 숫자를 누르면 해당 값을 큰 가로 바로 조정합니다 · 입력 칸을 길게 누르면 여기에 입력 키가 표시됩니다	MainWindow.Preview.cs:109
+3D 미리보기는 방송 오버레이로 나가 있어요	3D 미리보기는 방송 오버레이로 나가 있습니다	MainWindow.Preview.cs:117
+오버레이 끄기		MainWindow.Preview.cs:119
+미리보기로 되돌려요	미리보기로 되돌립니다	MainWindow.Preview.cs:119
+컨트롤 보드		MainWindow.Preview.cs:120 외 2곳
+방송 화면에 보이지 않는 작은 창		MainWindow.Preview.cs:120
+메시 편집을 켰어요. 편집할 메시를 더블클릭한 뒤 정점을 고르세요. 실행 취소(Ctrl+Z)로 되돌려요.	메시 편집을 켰습니다. 편집할 메시를 더블클릭한 뒤 정점을 선택하세요. 실행 취소(Ctrl+Z)로 되돌립니다.	MainWindow.Preview.cs:148
+메시 편집을 껐어요.	메시 편집을 껐습니다.	MainWindow.Preview.cs:148
+{0} · 정점 {1} · 삼각형 {2} · 고른 정점 {3}	{0} · 정점 {1} · 삼각형 {2} · 선택한 정점 {3}	MainWindow.Preview.cs:170
+메시 편집: 		MainWindow.Preview.cs:172
+거울 보기 (좌우 반전)		MainWindow.Preview.cs:187 외 1곳
+더 보기: 정면 · 측면 · 후면 · 거울		MainWindow.Preview.cs:194
+조작을 켰어요. 관절을 끌거나, 본·아이템·아바타를 더블클릭으로 고른 뒤 화살표·고리를 끌어 보세요. 실행 취소(Ctrl+Z)로 되돌려요.	조작을 켰습니다. 관절을 끌거나, 본·아이템·아바타를 더블클릭으로 선택한 뒤 화살표·고리를 끌어 보세요. 실행 취소(Ctrl+Z)로 되돌립니다.	MainWindow.Preview.cs:205
+조작을 껐어요.	조작을 껐습니다.	MainWindow.Preview.cs:205
+아바타 전체		MainWindow.Preview.cs:237
+핸들 축: 월드 (X 오른쪽 · Y 위 · Z 앞)		MainWindow.Preview.cs:250
+핸들 축: 고른 것 기준 (로컬)	핸들 축: 선택한 것 기준 (로컬)	MainWindow.Preview.cs:250
+이 아이템은 옮기지 않았어요.	이 아이템은 이동하지 않았습니다.	MainWindow.Preview.cs:261
+아이템 자리 되돌리기	아이템 위치 되돌리기	MainWindow.Preview.cs:262
+아이템을 붙인 자리로 되돌렸어요.	아이템을 장착한 위치로 되돌렸습니다.	MainWindow.Preview.cs:262
+아바타는 원점에 있어요.	아바타는 원점에 있습니다.	MainWindow.Preview.cs:264
+아바타 자리 되돌리기	아바타 위치 되돌리기	MainWindow.Preview.cs:265
+아바타를 원점으로 되돌렸어요.	아바타를 원점으로 되돌렸습니다.	MainWindow.Preview.cs:265
+누르기 브러시 · 끌기: 누르기 · Shift+끌기: 당기기 · B: 끄기		MainWindow.Preview.cs:274
+누르기 브러시\n끌기: 안쪽으로 누르기 · Shift+끌기: 당기기\nCtrl+휠: 반지름 · Ctrl+Shift+휠: 세기\nB: 브러시 끄기 · 오른쪽 드래그: 카메라 · E: 끝내기		MainWindow.Preview.cs:275
+메시 편집 · 더블클릭: 메시 고르기 · E: 끝내기	메시 편집 · 더블클릭: 메시 선택 · E: 끝내기	MainWindow.Preview.cs:276
+메시 편집\n더블클릭: 메시 고르기\n클릭/끌기: 정점 고르기 (Shift 더하기, Ctrl 빼기)\n고른 정점 끌기: 옮기기\nX 삭제 · M 합치기 · F 면 · N 노멀 · A 전체 · L 이어진 것 · B 브러시\n오른쪽 드래그: 카메라 · E: 끝내기	메시 편집\n더블클릭: 메시 선택\n클릭/끌기: 정점 선택 (Shift 추가, Ctrl 제거)\n선택한 정점 끌기: 이동\nX 삭제 · M 합치기 · F 면 · N 노멀 · A 전체 · L 이어진 것 · B 브러시\n오른쪽 드래그: 카메라 · E: 끝내기	MainWindow.Preview.cs:277
+조작 중 · 관절 끌기 · 더블클릭: 고르기 · P: 끄기	조작 중 · 관절 끌기 · 더블클릭: 선택 · P: 끄기	MainWindow.Preview.cs:279
+조작 중\n관절 끌기: 옮기기 (손·발은 팔·다리 전체)\n더블클릭: 본(관절)·아이템·아바타(메시) 고르기\n화살표: 그 축으로 옮기기 · 고리: 그 축으로 돌리기 (빨강 X·초록 Y·파랑 Z·흰색 화면)\nL: 로컬/월드 축 · 끄는 중 휠: 화면 축 · Shift+휠: 비틀기\nR: 고른 것 되돌리기 · C: 반대쪽 본에 복사\n오른쪽 드래그: 카메라 · P: 끄기	조작 중\n관절 끌기: 이동 (손·발은 팔·다리 전체)\n더블클릭: 본(관절)·아이템·아바타(메시) 선택\n화살표: 그 축으로 이동 · 고리: 그 축으로 돌리기 (빨강 X·초록 Y·파랑 Z·흰색 화면)\nL: 로컬/월드 축 · 끄는 중 휠: 화면 축 · Shift+휠: 비틀기\nR: 선택한 것 되돌리기 · C: 반대쪽 본에 복사\n오른쪽 드래그: 카메라 · P: 끄기	MainWindow.Preview.cs:280
+오른쪽 드래그+WASD·QE: 날기 · Alt+드래그: 공전 · 휠: 확대		MainWindow.Preview.cs:282
+Unity처럼 조작\n오른쪽 드래그: 둘러보기 · 누른 채 WASD 앞뒤·옆, Q·E 아래·위 (Shift 빠르게, 휠로 빠르기)\nAlt+왼쪽 드래그: 공전 · Alt+오른쪽 드래그: 확대 · 가운데 드래그·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봐요\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집\n조작 방식은 설정에서 바꿔요	Unity처럼 조작\n오른쪽 드래그: 둘러보기 · 누른 채 WASD 앞뒤·옆, Q·E 아래·위 (Shift 빠르게, 휠로 빠르기)\nAlt+왼쪽 드래그: 공전 · Alt+오른쪽 드래그: 확대 · 가운데 드래그·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봅니다\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집\n조작 방식은 설정에서 변경합니다	MainWindow.Preview.cs:283
+드래그·WSAD: 회전 · Shift+드래그·화살표: 이동 · 휠: 확대		MainWindow.Preview.cs:284
+드래그·WSAD: 회전 · Shift+드래그·휠 버튼·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봐요\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집	드래그·WSAD: 회전 · Shift+드래그·휠 버튼·화살표: 이동 · 휠: 확대\n오른쪽 위 축을 누르면 그 방향에서 봅니다\n1 전신 · 2 상반신 · 3 얼굴 · F 정면 · B 후면\n5: 원근/직교 · G: 격자 · M: 거울\nP: 조작 (본·아이템·아바타) · E: 메시 편집	MainWindow.Preview.cs:285
+누르기 브러시		MainWindow.Preview.cs:288
+조작 · 		MainWindow.Preview.cs:288
+방향 기즈모		MainWindow.Preview.cs:320 외 1곳
+본 표시		MainWindow.Preview.cs:322
+구도 안내선 (3분할 · 촬영 비율)		MainWindow.Preview.cs:324
+직교 투영		MainWindow.Preview.cs:326
+그리기 방식	렌더링 방식	MainWindow.Preview.cs:327
+셰이딩		MainWindow.Preview.cs:328
+셰이딩 + 와이어프레임		MainWindow.Preview.cs:328
+와이어프레임		MainWindow.Preview.cs:328
+아바타만 보기 (소품·바닥·배경 빼고 단색)	아바타만 보기 (소품·바닥·배경 제외하고 단색)	MainWindow.Preview.cs:329
+배경		MainWindow.Preview.cs:330 외 4곳
+환경 설정 그대로		MainWindow.Preview.cs:331
+회색		MainWindow.Preview.cs:331
+흰색		MainWindow.Preview.cs:331 외 2곳
+검정		MainWindow.Preview.cs:331 외 2곳
+초록 (크로마키)		MainWindow.Preview.cs:331
+표시		MainWindow.Preview.cs:333
+미리보기에 보조 표시를 켜고 꺼요 (촬영에는 들어가지 않아요)	미리보기에 보조 표시를 켜고 끕니다 (촬영에는 들어가지 않습니다)	MainWindow.Preview.cs:333
+가볍게		MainWindow.Preview.cs:341
+보통		MainWindow.Preview.cs:341 외 4곳
+무겁게		MainWindow.Preview.cs:341
+단단함		MainWindow.Preview.cs:344
+중간		MainWindow.Preview.cs:344
+부드러움		MainWindow.Preview.cs:344
+PhysBone 켜기		MainWindow.Preview.cs:350 외 1곳
+체인·콜라이더 표시 (끌어 잡기 · 오른쪽 클릭 고정)		MainWindow.Preview.cs:353
+켜면 흔들리는 뼈(초록)와 콜라이더(주황·보라)가 보여요. 관절을 왼쪽 버튼으로 끌면 손으로 잡은 것처럼 당겨지고, 잡은 채 오른쪽 클릭하면 그 자리에 고정돼요(빨강). 고정한 관절을 오른쪽 클릭하면 풀려요	켜면 PhysBone 체인(초록)과 콜라이더(주황·보라)가 표시됩니다. 관절을 왼쪽 버튼으로 끌면 잡아당길 수 있고, 잡은 채 오른쪽 클릭하면 해당 위치에 고정됩니다(빨강). 고정한 관절을 오른쪽 클릭하면 해제됩니다	MainWindow.Preview.cs:354
+고정 모두 풀기	고정 모두 해제	MainWindow.Preview.cs:358
+제자리에 다시 놓기 (고정도 풀기)	초기 위치로 되돌리기 (고정도 해제)	MainWindow.Preview.cs:361
+가슴 PhysBone(이름에 breast·bust·胸 등)에 가슴 물리를 더해요: 눌리면 납작해지며 옆으로 퍼지고, 누우면 납작·숙이면 늘어지고, 더 크게 출렁여요. 체인을 잡아 몸 쪽으로 밀면 눌려요. 이 미리보기에서만 쓰는 효과예요	가슴 PhysBone(이름에 breast·bust·胸 등)에 가슴 물리를 추가합니다: 눌리면 납작해지며 옆으로 퍼지고, 누우면 납작해지고 숙이면 늘어지며, 더 크게 출렁입니다. 체인을 잡아 몸 쪽으로 밀면 눌립니다. 미리보기 전용 효과입니다	MainWindow.Preview.cs:366
+치마·코트 자락처럼 엉덩이 아래로 늘어진 PhysBone이 다리를 뚫지 않게 허벅지·종아리에 콜라이더(하늘색)를 더해요. 크기는 다리 메시로 재요. 이 미리보기에서만 쓰는 보조라 VRChat에서는 원본에 넣은 콜라이더만 쓰여요	치마·코트 자락처럼 엉덩이 아래로 늘어진 PhysBone이 다리를 관통하지 않도록 허벅지·종아리에 콜라이더(하늘색)를 추가합니다. 크기는 다리 메시로 측정합니다. 미리보기 전용 보조 기능이며 VRChat에서는 원본의 콜라이더만 사용됩니다	MainWindow.Preview.cs:377
+머리카락·옷이 얼마나 묵직하게 움직일지예요. 무거울수록 몸을 따라 늦게 오고 천천히 제자리로 돌아오며, 빠르게 휙휙 튀지 않아요 (출렁이는 정도는 원본 값 그대로). 이 미리보기에서만 쓰는 값이에요	머리카락·의상의 무게감을 조절합니다. 무거울수록 몸을 늦게 따라오고 천천히 원위치로 돌아오며, 급격히 튀지 않습니다 (출렁임은 원본 값 유지). 미리보기 전용 값입니다	MainWindow.Preview.cs:382
+좌우로 흔들기		MainWindow.Preview.cs:392
+몸 돌리기		MainWindow.Preview.cs:392
+점프		MainWindow.Preview.cs:392
+앞으로 걷기		MainWindow.Preview.cs:392
+흔들리는 머리카락·옷(VRChat PhysBone)을 미리 봐요. VRChat과 같은 계산이 아니라 비슷하게 흉내 낸 거예요	머리카락·의상의 PhysBone 흔들림을 미리 봅니다. VRChat과 같은 계산은 아니며 근사한 결과입니다	MainWindow.Preview.cs:403
+가슴 물리 활성화 (가슴 PhysBone을 찾지 못했어요)	가슴 물리 활성화 (가슴 PhysBone을 찾지 못했습니다)	MainWindow.Preview.cs:415
+가슴 물리 활성화: {0}		MainWindow.Preview.cs:415
+ (체인 {0}개)		MainWindow.Preview.cs:415
+무게감: 		MainWindow.Preview.cs:420
+다리 관통 방지 (에디터 전용)		MainWindow.Preview.cs:421
+ · 체인 {0}개		MainWindow.Preview.cs:421
+ · 해당 체인 없음		MainWindow.Preview.cs:421
 
 # ==== AvHost/MainWindow.Recent.cs ====
 최근 파일		MainWindow.Recent.cs:54 외 3곳
@@ -1549,228 +1570,235 @@ VRChat에 올리기	VRChat 업로드	MainWindow.Search.cs:109 외 4곳
 강조 색	강조색	MainWindow.Settings.cs:89
 고른 것·스위치·슬라이더·강조 단추 색 (비우면 Windows 강조색)	선택한 것·스위치·슬라이더·강조 버튼 색 (비우면 Windows 강조색)	MainWindow.Settings.cs:89
 바꾸면 바로 저장돼요. 아바타·세션 파일과는 상관없는 이 PC의 설정이에요.	변경하면 바로 저장됩니다. 아바타·세션 파일과는 상관없는 이 PC의 설정입니다.	MainWindow.Settings.cs:120
-Windows 언어 따르기		MainWindow.Settings.cs:127
-한국어		MainWindow.Settings.cs:127 외 1곳
-화면		MainWindow.Settings.cs:138
-언어		MainWindow.Settings.cs:140
-화면 글의 언어예요. 바꾸면 바로 바뀌어요 · Language · 言語		MainWindow.Settings.cs:140
-전문가 모드		MainWindow.Settings.cs:141 외 2곳
-끄면 쉬운 모드: 자주 쓰는 것만 보여요. 숨긴 세부 설정의 값과 기능은 그대로예요 (사이드바 왼쪽 아래 단추와 같아요)	끄면 간편 모드: 자주 사용하는 것만 표시됩니다. 숨긴 세부 설정의 값과 기능은 그대로입니다 (사이드바 왼쪽 아래 버튼과 같습니다)	MainWindow.Settings.cs:141
-작업 창을 오른쪽에		MainWindow.Settings.cs:142
-편집 창을 미리보기 오른쪽에 둬요 (제목 표시줄의 "작업 창" 단추와 같아요)	편집 창을 미리보기 오른쪽에 둡니다 (제목 표시줄의 "작업 창" 버튼과 같습니다)	MainWindow.Settings.cs:142
-플랫 (기본, 이어 붙인 판)	플랫 (기본, 연결된 패널)	MainWindow.Settings.cs:145
-카드 (예전 배치, 둥근 카드)		MainWindow.Settings.cs:145
-화면 배치		MainWindow.Settings.cs:147
-플랫(기본): 왼쪽 아이콘 막대와 판들을 가는 선으로 이어 붙여 화면을 넓게 써요. 카드: 예전처럼 사이드바·작업 창·미리보기가 떨어진 둥근 카드예요. 기능은 같고 언제든 바꿀 수 있어요.	플랫(기본): 왼쪽 아이콘 바와 패널을 가는 선으로 연결해 화면을 넓게 사용합니다. 카드: 사이드바·작업 창·미리보기가 분리된 둥근 카드 배치입니다. 기능은 같으며 언제든 변경할 수 있습니다.	MainWindow.Settings.cs:147
-배치		MainWindow.Settings.cs:148
-기본 (막대 슬라이더)	기본 (슬라이더)	MainWindow.Settings.cs:151
-다이얼 모드		MainWindow.Settings.cs:151
-플랫 (기본)		MainWindow.Settings.cs:153
-입체 (스큐어모픽)	입체	MainWindow.Settings.cs:153
-형광 노랑 (기본)		MainWindow.Settings.cs:156
-강조색 (테마)		MainWindow.Settings.cs:156
-조작 모양 · 다이얼	컨트롤 스타일 · 다이얼	MainWindow.Settings.cs:159
-다이얼 모드: 슬라이더는 가상 악기의 노브 같은 다이얼, 단추와 탭은 장비의 키, 토글은 로커 스위치가 돼요. 다이얼은 바깥 테를 잡고 돌리거나 가운데를 위아래로 끌고, 휠로도 돌려요 (Shift: 천천히). 하이라이트 색은 다이얼 호·탭 LED·스위치·세밀 조정 막대에 같이 쓰여요 — 형광 노랑이 테마와 너무 튀면 강조색으로 바꿔요.	다이얼 모드: 슬라이더는 가상 악기의 노브 같은 다이얼, 버튼과 탭은 장비의 키, 토글은 로커 스위치가 됩니다. 다이얼은 바깥 테를 잡고 돌리거나 가운데를 위아래로 끌고, 휠로도 돌립니다 (Shift: 천천히). 하이라이트 색은 다이얼 호·탭 LED·스위치·정밀 조정 바에 같이 사용됩니다 — 형광 노랑이 테마와 너무 튀면 강조색으로 변경합니다.	MainWindow.Settings.cs:159
-조작 모양	컨트롤 스타일	MainWindow.Settings.cs:161
-기본 또는 다이얼 모드. 값과 기능은 같아요	기본 또는 다이얼 모드. 값과 기능은 같습니다	MainWindow.Settings.cs:161
-다이얼 모드 단추	다이얼 모드 버튼	MainWindow.Settings.cs:162
-플랫: 납작하게 다른 UI와 어우러지게 · 입체: 그라데이션과 음영		MainWindow.Settings.cs:162
-UI 전체 통일		MainWindow.Settings.cs:163
-다이얼 모드에서 카드·입력 칸·콤보·체크 상자도 장비 모양으로 맞춰요	다이얼 모드에서 카드·입력 칸·콤보·체크 상자도 장비 모양으로 맞춥니다	MainWindow.Settings.cs:163
-하이라이트 색		MainWindow.Settings.cs:164
-다이얼 호·탭 LED·스위치·세밀 조정 막대. 밝은 테마에서 형광 노랑은 조금 진하게 보여요	다이얼 호·탭 LED·스위치·정밀 조정 바. 밝은 테마에서 형광 노랑은 조금 진하게 표시됩니다	MainWindow.Settings.cs:164
-기본 (드래그 공전 · WSAD 회전)		MainWindow.Settings.cs:167
-Unity처럼 (씬 뷰)		MainWindow.Settings.cs:167
-미리보기 카메라		MainWindow.Settings.cs:170 외 1곳
-3D 미리보기를 돌리고 옮기는 방법이에요. 화살표 키(↑↓ 앞뒤 · ←→ 옆)와 휠 확대는 둘 다 같아요.	3D 미리보기를 돌리고 이동하는 방법입니다. 화살표 키(↑↓ 앞뒤 · ←→ 옆)와 휠 확대는 둘 다 같습니다.	MainWindow.Settings.cs:170
-조작 방식		MainWindow.Settings.cs:172
-기본: 왼쪽·오른쪽 드래그로 공전, Shift+드래그·가운데 드래그로 이동, WSAD로 회전 · Unity처럼: Unity 씬 뷰와 같아요 — 오른쪽 드래그로 둘러보고 누른 채 WASD(앞뒤·옆)·QE(아래·위)로 날아다녀요(Shift 빠르게, 휠로 빠르기), Alt+왼쪽 드래그 공전, Alt+오른쪽 드래그 확대, 가운데 드래그 이동. 왼쪽 드래그는 카메라를 돌리지 않아요	기본: 왼쪽·오른쪽 드래그로 공전, Shift+드래그·가운데 드래그로 이동, WSAD로 회전 · Unity처럼: Unity 씬 뷰와 같습니다 — 오른쪽 드래그로 둘러보고 누른 채 WASD(앞뒤·옆)·QE(아래·위)로 이동합니다(Shift 빠르게, 휠로 빠르기), Alt+왼쪽 드래그 공전, Alt+오른쪽 드래그 확대, 가운데 드래그 이동. 왼쪽 드래그는 카메라를 돌리지 않습니다	MainWindow.Settings.cs:172
-굵은 선 (기본)		MainWindow.Settings.cs:175
-입체		MainWindow.Settings.cs:175
-미니멀		MainWindow.Settings.cs:175
-얇은 선 (예전)		MainWindow.Settings.cs:175
-작게		MainWindow.Settings.cs:178 외 4곳
-크게		MainWindow.Settings.cs:178 외 4곳
-아주 크게 (VR)		MainWindow.Settings.cs:178
-원 (기본)		MainWindow.Settings.cs:181
-큐브		MainWindow.Settings.cs:181
-미니		MainWindow.Settings.cs:181
-기즈모		MainWindow.Settings.cs:184
-미리보기에서 본·아이템·아바타를 옮기고 돌리는 핸들과 오른쪽 위 방향 기즈모의 모양이에요. 잡는 방법은 같아요.	미리보기에서 본·아이템·아바타를 이동하고 돌리는 핸들과 오른쪽 위 방향 기즈모의 모양입니다. 잡는 방법은 같습니다.	MainWindow.Settings.cs:184
-핸들 모양		MainWindow.Settings.cs:186
-굵은 선: 어두운 테두리로 어디서나 잘 보여요 · 입체: 음영 있는 원뿔과 관 · 미니멀: 가늘고 동그란 손잡이 · 얇은 선: 예전 모양	굵은 선: 어두운 테두리로 어디서나 잘 표시됩니다 · 입체: 음영 있는 원뿔과 관 · 미니멀: 가늘고 동그란 손잡이 · 얇은 선: 예전 모양	MainWindow.Settings.cs:186
-핸들 크기		MainWindow.Settings.cs:187
-크게 하면 잡는 범위도 같이 커져요	크게 하면 잡는 범위도 같이 커집니다	MainWindow.Settings.cs:187
-원: 축 끝 원 · 큐브: 면을 눌러 정면·옆·위로 · 미니: 축 세 줄만		MainWindow.Settings.cs:188
-테마		MainWindow.Settings.cs:191
-바탕·단추·강조 색을 바꿔요. 프리셋을 고르거나 "직접 고르기"로 #RRGGBB를 넣어요. 바꾸면 바로 보이고 저장돼요.	배경·버튼·강조 색을 변경합니다. 프리셋을 선택하거나 "직접 선택"으로 #RRGGBB를 입력합니다. 변경하면 바로 적용되고 저장됩니다.	MainWindow.Settings.cs:191
-미리보기 PhysBone		MainWindow.Settings.cs:208
-미리보기 도구 줄의 "PhysBone" 메뉴와 같은 값이에요. 이 에디터에서만 쓰여요	미리보기 툴바의 "PhysBone" 메뉴와 같은 값입니다. 이 에디터에서만 사용됩니다	MainWindow.Settings.cs:208
-흔들리는 머리카락·옷을 미리보기에서 움직여요	흔들리는 머리카락·옷을 미리보기에서 움직입니다	MainWindow.Settings.cs:210
-무게감		MainWindow.Settings.cs:211
-무거울수록 몸을 늦게 따라오고 천천히 돌아오며, 빠르게 휙휙 튀지 않아요	무거울수록 몸을 늦게 따라오고 천천히 돌아오며, 급격히 튀지 않습니다	MainWindow.Settings.cs:211
-다리 뚫림 막기	다리 관통 방지	MainWindow.Settings.cs:212
-치마·코트 자락이 다리를 뚫지 않게 허벅지·종아리에 콜라이더를 더해요	치마·코트 자락이 다리를 관통하지 않도록 허벅지·종아리에 콜라이더를 추가합니다	MainWindow.Settings.cs:212
-느낌	튜닝	MainWindow.Settings.cs:213
-관성·복원력·흔들림 빠르기·중력·닿았을 때를 따로 창에서 보며 바꿔요	관성·복원력·흔들림 빠르기·중력·닿았을 때를 따로 창에서 보며 변경합니다	MainWindow.Settings.cs:213
-느낌 조절…	튜닝…	MainWindow.Settings.cs:213
-PhysBone 느낌 창을 열어요. 열어 둔 채 미리보기를 보며 바꿀 수 있어요	PhysBone 튜닝 창을 엽니다. 열어 둔 채 미리보기를 확인하며 변경할 수 있습니다	MainWindow.Settings.cs:213
-60 (기본)		MainWindow.Settings.cs:217
-모니터 주사율에 맞춤 (VSync)		MainWindow.Settings.cs:217
-제한 없음		MainWindow.Settings.cs:217
-미리보기 속도		MainWindow.Settings.cs:221
-3D 미리보기를 그리는 속도예요. 스튜디오 고화질은 스튜디오 페이지에서 켜고 꺼요	3D 미리보기를 그리는 속도입니다. 스튜디오 고화질은 스튜디오 페이지에서 켜고 끕니다	MainWindow.Settings.cs:221
-프레임 제한		MainWindow.Settings.cs:223 외 1곳
-1초에 몇 장까지 그릴지예요. 낮추면 GPU·전기를 덜 써요 — 방송 오버레이로 게임과 같이 쓸 때 30~60을 권해요. 제한 없음은 GPU를 끝까지 써요. 촬영·녹화 결과에는 영향이 없어요	1초에 몇 장까지 그릴지입니다. 낮추면 GPU·전기를 덜 사용합니다 — 방송 오버레이로 게임과 같이 사용할 때 30~60을 권장합니다. 제한 없음은 GPU를 끝까지 사용합니다. 촬영·녹화 결과에는 영향이 없습니다	MainWindow.Settings.cs:223
-떠 있는 창을 다시 띄우면 바뀌어요.	플로팅 창을 다시 띄우면 변경됩니다.	MainWindow.Settings.cs:228
-방송 오버레이 · 컨트롤 보드		MainWindow.Settings.cs:229
-맨 위 고정·방송 화면에서 숨기기는 컨트롤 보드 위쪽 단추로 바꿔요	맨 위 고정·방송 화면에서 숨기기는 컨트롤 보드 위쪽 버튼으로 변경합니다	MainWindow.Settings.cs:229
-오버레이를 켜면 보드도 열기		MainWindow.Settings.cs:231
-방송 오버레이를 켤 때 컨트롤 보드를 같이 띄워요	방송 오버레이를 켤 때 컨트롤 보드를 같이 띄웁니다	MainWindow.Settings.cs:231
-보드를 열면 에디터 숨기기		MainWindow.Settings.cs:232
-보드만 남기고 에디터 창을 숨겨요. 보드의 "에디터 열기"로 다시 보여요	보드만 남기고 에디터 창을 숨깁니다. 보드의 "에디터 열기"로 다시 표시됩니다	MainWindow.Settings.cs:232
-떠 있는 창을 화면 공유에 보이기	플로팅 창을 화면 공유에 보이기	MainWindow.Settings.cs:233
-떠 있는 창·다이얼 창을 에디터 창 안에 넣어, 디스코드·OBS에서 에디터 "창"만 공유해도 함께 보여요. 끄면 예전처럼 따로 뜬 창이라 화면 전체 공유에서만 보여요 (새로 띄우는 창부터)	플로팅 창·다이얼 창을 에디터 창 안에 넣어, Discord·OBS에서 에디터 "창"만 공유해도 함께 표시됩니다. 끄면 예전처럼 별도 창이라 화면 전체 공유에서만 표시됩니다 (새로 띄우는 창부터)	MainWindow.Settings.cs:233
-구글 번역 API 키를 저장했어요. 블렌드쉐이프 페이지에서 "구글 번역"을 켜면 써요.	Google 번역 API 키를 저장했습니다. BlendShape 페이지에서 "Google 번역"을 켜면 사용합니다.	MainWindow.Settings.cs:242
-구글 번역 API 키를 지웠어요.	Google 번역 API 키를 삭제했습니다.	MainWindow.Settings.cs:242
-블렌드쉐이프 이름 번역	BlendShape 이름 번역	MainWindow.Settings.cs:244
-번역 표에 없는 이름은 구글 Cloud Translation API로 옮길 수 있어요. 블렌드쉐이프 페이지의 "구글 번역"을 켰을 때만 이름이 구글로 보내져요	번역 표에 없는 이름은 Google Cloud Translation API로 번역할 수 있습니다. BlendShape 페이지의 "Google 번역"을 켰을 때만 이름이 Google로 전송됩니다	MainWindow.Settings.cs:244
-API 키		MainWindow.Settings.cs:246
-Google Cloud 콘솔에서 Cloud Translation API를 켜고 만든 API 키예요. 쓴 만큼 Google Cloud에 요금이 붙을 수 있어요 (매달 무료 사용량 있음). 이 PC의 설정 파일에만 저장해요	Google Cloud 콘솔에서 Cloud Translation API를 켜고 만든 API 키입니다. 사용한 만큼 Google Cloud에 요금이 붙을 수 있습니다 (매달 무료 사용량 있음). 이 PC의 설정 파일에만 저장합니다	MainWindow.Settings.cs:246
-지금 확인…	업데이트 확인…	MainWindow.Settings.cs:252
-최신 릴리스를 확인하고, 새 버전이면 받아요	최신 릴리스를 확인하고, 새 버전이면 받습니다	MainWindow.Settings.cs:252
-개발 빌드 (version.txt 없음)		MainWindow.Settings.cs:253 외 1곳
-아직 없음		MainWindow.Settings.cs:254
-업데이트		MainWindow.Settings.cs:255 외 4곳
-GitHub 릴리스에서 새 버전을 받아요. 새 버전이 있을 때만 사이드바에 "업데이트"가 보여요	GitHub 릴리스에서 새 버전을 받습니다. 새 버전이 있을 때만 사이드바에 "업데이트"가 표시됩니다	MainWindow.Settings.cs:255
-지금 버전	현재 버전	MainWindow.Settings.cs:257
-{0} · 마지막 확인 {1}		MainWindow.Settings.cs:257
-저장소		MainWindow.Settings.cs:258 외 1곳
-업데이트를 받을 GitHub 저장소 (owner/name)		MainWindow.Settings.cs:258
-시작할 때 확인		MainWindow.Settings.cs:259 외 1곳
-프로그램을 열 때마다 새 버전이 있는지 몰래 확인해요 (개발 빌드는 확인하지 않아요)	프로그램을 열 때마다 새 버전이 있는지 백그라운드에서 확인합니다 (개발 빌드는 확인하지 않습니다)	MainWindow.Settings.cs:259
-원본 설정대로 압축 (기본)	원본 설정대로 압축 (기본)	MainWindow.Settings.cs:264
-압축 안 함 (가장 선명)	압축 안 함 (가장 선명)	MainWindow.Settings.cs:264
-모두 압축 (가장 가벼움)	모두 압축 (가장 가벼움)	MainWindow.Settings.cs:264
-끄기		MainWindow.Settings.cs:264 외 2곳
-텍스처 캐시: 다음에 아바타를 열 때부터 바뀌어요.	텍스처 캐시: 다음에 아바타를 열 때부터 변경됩니다.	MainWindow.Settings.cs:271
-크기 재는 중…	크기 계산 중…	MainWindow.Settings.cs:274 외 1곳
-캐시 크기		MainWindow.Settings.cs:275
-텍스처 {0}장 · {1} GB (4 GB를 넘으면 오래 안 쓴 것부터 지워요) · {2}	텍스처 {0}장 · {1} GB (4 GB를 넘으면 오래된 항목부터 삭제합니다) · {2}	MainWindow.Settings.cs:280
-비우기		MainWindow.Settings.cs:283 외 1곳
-텍스처 캐시를 비웠어요. 다음에 열 때 다시 만들어요.	텍스처 캐시를 비웠습니다. 다음에 열 때 다시 만듭니다.	MainWindow.Settings.cs:286
-저장해 둔 텍스처를 모두 지워요 (원본은 그대로)	저장해 둔 텍스처를 모두 삭제합니다 (원본은 그대로)	MainWindow.Settings.cs:288
-불러오기 속도		MainWindow.Settings.cs:289
-텍스처 캐시: 원본 PNG를 풀고 줄인 결과를 저장해 두고 다음엔 바로 읽어요. 원본 파일은 바뀌지 않아요	텍스처 캐시: 원본 PNG를 디코딩·축소한 결과를 저장해 다음부터 바로 읽습니다. 원본 파일은 변경되지 않습니다	MainWindow.Settings.cs:289
-텍스처 캐시		MainWindow.Settings.cs:291
-원본 설정대로: 원본 Unity 설정이 압축하는 텍스처만 VRChat처럼 압축해요 — 보이는 모습은 VRChat과 같고 메모리는 줄어요 · 압축 안 함: 모두 원본 그대로 선명하게 (메모리를 더 써요) · 모두 압축: 메모리가 가장 적지만 조금 덜 선명해요 · 끄기: 저장하지 않고 매번 원본을 풀어요. 노멀맵은 늘 그대로예요	원본 설정대로: 원본 Unity 설정이 압축하는 텍스처만 VRChat처럼 압축합니다 — 보이는 모습은 VRChat과 같고 메모리는 줄어듭니다 · 압축 안 함: 모두 원본 그대로 선명하게 (메모리를 더 사용합니다) · 모두 압축: 메모리가 가장 적지만 약간 덜 선명합니다 · 끄기: 저장하지 않고 매번 원본을 디코딩합니다. 노멀 맵은 항상 그대로입니다	MainWindow.Settings.cs:291
-폴더 열기		MainWindow.Settings.cs:297 외 3곳
-저장 위치		MainWindow.Settings.cs:300
-켤 때 마지막 파일 열기		MainWindow.Settings.cs:302
-에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 열어요	에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 엽니다	MainWindow.Settings.cs:302
-설정 파일		MainWindow.Settings.cs:303
-{0}개 · {1} GB · {2}		MainWindow.Settings.cs:311
- 파일이 없습니다.		MainWindow.Settings.cs:320
-사용 안내	사용 설명서	MainWindow.Settings.cs:326
-이용 조건	이용 약관	MainWindow.Settings.cs:327
-라이선스		MainWindow.Settings.cs:328
-정보		MainWindow.Settings.cs:329
-무료 프로그램 · 		MainWindow.Settings.cs:331
- · VRChat이나 Unity가 만들거나 승인한 도구가 아닙니다		MainWindow.Settings.cs:331
-문서		MainWindow.Settings.cs:332
-사용법·조건	사용법·약관	MainWindow.Settings.cs:332
-문제 알리기	문제 신고	MainWindow.Settings.cs:333
-꺼지거나 오류가 나면 최근 기록 파일을 보내 주세요. 아바타 이름·PC 경로가 적혀 있을 수 있어요	종료되거나 오류가 발생하면 최근 로그 파일을 보내 주세요. 아바타 이름·PC 경로가 포함될 수 있습니다	MainWindow.Settings.cs:333
+Windows 언어 따르기		MainWindow.Settings.cs:130
+한국어		MainWindow.Settings.cs:130 외 1곳
+화면		MainWindow.Settings.cs:141
+언어		MainWindow.Settings.cs:143
+화면 글의 언어예요. 바꾸면 바로 바뀌어요 · Language · 言語		MainWindow.Settings.cs:143
+전문가 모드		MainWindow.Settings.cs:144 외 2곳
+끄면 쉬운 모드: 자주 쓰는 것만 보여요. 숨긴 세부 설정의 값과 기능은 그대로예요 (사이드바 왼쪽 아래 단추와 같아요)	끄면 간편 모드: 자주 사용하는 것만 표시됩니다. 숨긴 세부 설정의 값과 기능은 그대로입니다 (사이드바 왼쪽 아래 버튼과 같습니다)	MainWindow.Settings.cs:144
+작업 창을 오른쪽에		MainWindow.Settings.cs:145
+편집 창을 미리보기 오른쪽에 둬요 (제목 표시줄의 "작업 창" 단추와 같아요)	편집 창을 미리보기 오른쪽에 둡니다 (제목 표시줄의 "작업 창" 버튼과 같습니다)	MainWindow.Settings.cs:145
+플랫 (기본, 이어 붙인 판)	플랫 (기본, 연결된 패널)	MainWindow.Settings.cs:148
+카드 (예전 배치, 둥근 카드)		MainWindow.Settings.cs:148
+화면 배치		MainWindow.Settings.cs:150
+플랫(기본): 왼쪽 아이콘 막대와 판들을 가는 선으로 이어 붙여 화면을 넓게 써요. 카드: 예전처럼 사이드바·작업 창·미리보기가 떨어진 둥근 카드예요. 기능은 같고 언제든 바꿀 수 있어요.	플랫(기본): 왼쪽 아이콘 바와 패널을 가는 선으로 연결해 화면을 넓게 사용합니다. 카드: 사이드바·작업 창·미리보기가 분리된 둥근 카드 배치입니다. 기능은 같으며 언제든 변경할 수 있습니다.	MainWindow.Settings.cs:150
+배치		MainWindow.Settings.cs:151
+기본 (막대 슬라이더)	기본 (슬라이더)	MainWindow.Settings.cs:154
+다이얼 모드		MainWindow.Settings.cs:154
+플랫 (기본)		MainWindow.Settings.cs:156
+입체 (스큐어모픽)	입체	MainWindow.Settings.cs:156
+형광 노랑 (기본)		MainWindow.Settings.cs:159
+강조색 (테마)		MainWindow.Settings.cs:159
+조작 모양 · 다이얼	컨트롤 스타일 · 다이얼	MainWindow.Settings.cs:162
+다이얼 모드: 슬라이더는 가상 악기의 노브 같은 다이얼, 단추와 탭은 장비의 키, 토글은 로커 스위치가 돼요. 다이얼은 바깥 테를 잡고 돌리거나 가운데를 위아래로 끌고, 휠로도 돌려요 (Shift: 천천히). 하이라이트 색은 다이얼 호·탭 LED·스위치·세밀 조정 막대에 같이 쓰여요 — 형광 노랑이 테마와 너무 튀면 강조색으로 바꿔요.	다이얼 모드: 슬라이더는 가상 악기의 노브 같은 다이얼, 버튼과 탭은 장비의 키, 토글은 로커 스위치가 됩니다. 다이얼은 바깥 테를 잡고 돌리거나 가운데를 위아래로 끌고, 휠로도 돌립니다 (Shift: 천천히). 하이라이트 색은 다이얼 호·탭 LED·스위치·정밀 조정 바에 같이 사용됩니다 — 형광 노랑이 테마와 너무 튀면 강조색으로 변경합니다.	MainWindow.Settings.cs:162
+조작 모양	컨트롤 스타일	MainWindow.Settings.cs:164
+기본 또는 다이얼 모드. 값과 기능은 같아요	기본 또는 다이얼 모드. 값과 기능은 같습니다	MainWindow.Settings.cs:164
+다이얼 모드 단추	다이얼 모드 버튼	MainWindow.Settings.cs:165
+플랫: 납작하게 다른 UI와 어우러지게 · 입체: 그라데이션과 음영		MainWindow.Settings.cs:165
+UI 전체 통일		MainWindow.Settings.cs:166
+다이얼 모드에서 카드·입력 칸·콤보·체크 상자도 장비 모양으로 맞춰요	다이얼 모드에서 카드·입력 칸·콤보·체크 상자도 장비 모양으로 맞춥니다	MainWindow.Settings.cs:166
+하이라이트 색		MainWindow.Settings.cs:167
+다이얼 호·탭 LED·스위치·세밀 조정 막대. 밝은 테마에서 형광 노랑은 조금 진하게 보여요	다이얼 호·탭 LED·스위치·정밀 조정 바. 밝은 테마에서 형광 노랑은 조금 진하게 표시됩니다	MainWindow.Settings.cs:167
+기본 (드래그 공전 · WSAD 회전)		MainWindow.Settings.cs:170
+Unity처럼 (씬 뷰)		MainWindow.Settings.cs:170
+미리보기 카메라		MainWindow.Settings.cs:173 외 1곳
+3D 미리보기를 돌리고 옮기는 방법이에요. 화살표 키(↑↓ 앞뒤 · ←→ 옆)와 휠 확대는 둘 다 같아요.	3D 미리보기를 돌리고 이동하는 방법입니다. 화살표 키(↑↓ 앞뒤 · ←→ 옆)와 휠 확대는 둘 다 같습니다.	MainWindow.Settings.cs:173
+조작 방식		MainWindow.Settings.cs:175
+기본: 왼쪽·오른쪽 드래그로 공전, Shift+드래그·가운데 드래그로 이동, WSAD로 회전 · Unity처럼: Unity 씬 뷰와 같아요 — 오른쪽 드래그로 둘러보고 누른 채 WASD(앞뒤·옆)·QE(아래·위)로 날아다녀요(Shift 빠르게, 휠로 빠르기), Alt+왼쪽 드래그 공전, Alt+오른쪽 드래그 확대, 가운데 드래그 이동. 왼쪽 드래그는 카메라를 돌리지 않아요	기본: 왼쪽·오른쪽 드래그로 공전, Shift+드래그·가운데 드래그로 이동, WSAD로 회전 · Unity처럼: Unity 씬 뷰와 같습니다 — 오른쪽 드래그로 둘러보고 누른 채 WASD(앞뒤·옆)·QE(아래·위)로 이동합니다(Shift 빠르게, 휠로 빠르기), Alt+왼쪽 드래그 공전, Alt+오른쪽 드래그 확대, 가운데 드래그 이동. 왼쪽 드래그는 카메라를 돌리지 않습니다	MainWindow.Settings.cs:175
+굵은 선 (기본)		MainWindow.Settings.cs:178
+입체		MainWindow.Settings.cs:178
+미니멀		MainWindow.Settings.cs:178
+얇은 선 (예전)		MainWindow.Settings.cs:178
+작게		MainWindow.Settings.cs:181 외 4곳
+크게		MainWindow.Settings.cs:181 외 4곳
+아주 크게 (VR)		MainWindow.Settings.cs:181
+원 (기본)		MainWindow.Settings.cs:184
+큐브		MainWindow.Settings.cs:184
+미니		MainWindow.Settings.cs:184
+기즈모		MainWindow.Settings.cs:187
+미리보기에서 본·아이템·아바타를 옮기고 돌리는 핸들과 오른쪽 위 방향 기즈모의 모양이에요. 잡는 방법은 같아요.	미리보기에서 본·아이템·아바타를 이동하고 돌리는 핸들과 오른쪽 위 방향 기즈모의 모양입니다. 잡는 방법은 같습니다.	MainWindow.Settings.cs:187
+핸들 모양		MainWindow.Settings.cs:189
+굵은 선: 어두운 테두리로 어디서나 잘 보여요 · 입체: 음영 있는 원뿔과 관 · 미니멀: 가늘고 동그란 손잡이 · 얇은 선: 예전 모양	굵은 선: 어두운 테두리로 어디서나 잘 표시됩니다 · 입체: 음영 있는 원뿔과 관 · 미니멀: 가늘고 동그란 손잡이 · 얇은 선: 예전 모양	MainWindow.Settings.cs:189
+핸들 크기		MainWindow.Settings.cs:190
+크게 하면 잡는 범위도 같이 커져요	크게 하면 잡는 범위도 같이 커집니다	MainWindow.Settings.cs:190
+원: 축 끝 원 · 큐브: 면을 눌러 정면·옆·위로 · 미니: 축 세 줄만		MainWindow.Settings.cs:191
+테마		MainWindow.Settings.cs:194
+바탕·단추·강조 색을 바꿔요. 프리셋을 고르거나 "직접 고르기"로 #RRGGBB를 넣어요. 바꾸면 바로 보이고 저장돼요.	배경·버튼·강조 색을 변경합니다. 프리셋을 선택하거나 "직접 선택"으로 #RRGGBB를 입력합니다. 변경하면 바로 적용되고 저장됩니다.	MainWindow.Settings.cs:194
+미리보기 PhysBone		MainWindow.Settings.cs:211
+미리보기 도구 줄의 "PhysBone" 메뉴와 같은 값이에요. 이 에디터에서만 쓰여요	미리보기 툴바의 "PhysBone" 메뉴와 같은 값입니다. 이 에디터에서만 사용됩니다	MainWindow.Settings.cs:211
+흔들리는 머리카락·옷을 미리보기에서 움직여요	흔들리는 머리카락·옷을 미리보기에서 움직입니다	MainWindow.Settings.cs:213
+무게감		MainWindow.Settings.cs:214
+무거울수록 몸을 늦게 따라오고 천천히 돌아오며, 빠르게 휙휙 튀지 않아요	무거울수록 몸을 늦게 따라오고 천천히 돌아오며, 급격히 튀지 않습니다	MainWindow.Settings.cs:214
+다리 뚫림 막기	다리 관통 방지	MainWindow.Settings.cs:215
+치마·코트 자락이 다리를 뚫지 않게 허벅지·종아리에 콜라이더를 더해요	치마·코트 자락이 다리를 관통하지 않도록 허벅지·종아리에 콜라이더를 추가합니다	MainWindow.Settings.cs:215
+느낌	튜닝	MainWindow.Settings.cs:216
+관성·복원력·흔들림 빠르기·중력·닿았을 때를 따로 창에서 보며 바꿔요	관성·복원력·흔들림 빠르기·중력·닿았을 때를 따로 창에서 보며 변경합니다	MainWindow.Settings.cs:216
+느낌 조절…	튜닝…	MainWindow.Settings.cs:216
+PhysBone 느낌 창을 열어요. 열어 둔 채 미리보기를 보며 바꿀 수 있어요	PhysBone 튜닝 창을 엽니다. 열어 둔 채 미리보기를 확인하며 변경할 수 있습니다	MainWindow.Settings.cs:216
+60 (기본)		MainWindow.Settings.cs:220
+모니터 주사율에 맞춤 (VSync)		MainWindow.Settings.cs:220
+제한 없음		MainWindow.Settings.cs:220
+미리보기 속도		MainWindow.Settings.cs:224
+3D 미리보기를 그리는 속도예요. 스튜디오 고화질은 스튜디오 페이지에서 켜고 꺼요	3D 미리보기를 그리는 속도입니다. 스튜디오 고화질은 스튜디오 페이지에서 켜고 끕니다	MainWindow.Settings.cs:224
+프레임 제한		MainWindow.Settings.cs:226 외 1곳
+1초에 몇 장까지 그릴지예요. 낮추면 GPU·전기를 덜 써요 — 방송 오버레이로 게임과 같이 쓸 때 30~60을 권해요. 제한 없음은 GPU를 끝까지 써요. 촬영·녹화 결과에는 영향이 없어요	1초에 몇 장까지 그릴지입니다. 낮추면 GPU·전기를 덜 사용합니다 — 방송 오버레이로 게임과 같이 사용할 때 30~60을 권장합니다. 제한 없음은 GPU를 끝까지 사용합니다. 촬영·녹화 결과에는 영향이 없습니다	MainWindow.Settings.cs:226
+떠 있는 창을 다시 띄우면 바뀌어요.	플로팅 창을 다시 띄우면 변경됩니다.	MainWindow.Settings.cs:231
+방송 오버레이 · 컨트롤 보드		MainWindow.Settings.cs:232
+맨 위 고정·방송 화면에서 숨기기는 컨트롤 보드 위쪽 단추로 바꿔요	맨 위 고정·방송 화면에서 숨기기는 컨트롤 보드 위쪽 버튼으로 변경합니다	MainWindow.Settings.cs:232
+오버레이를 켜면 보드도 열기		MainWindow.Settings.cs:234
+방송 오버레이를 켤 때 컨트롤 보드를 같이 띄워요	방송 오버레이를 켤 때 컨트롤 보드를 같이 띄웁니다	MainWindow.Settings.cs:234
+보드를 열면 에디터 숨기기		MainWindow.Settings.cs:235
+보드만 남기고 에디터 창을 숨겨요. 보드의 "에디터 열기"로 다시 보여요	보드만 남기고 에디터 창을 숨깁니다. 보드의 "에디터 열기"로 다시 표시됩니다	MainWindow.Settings.cs:235
+떠 있는 창을 화면 공유에 보이기	플로팅 창을 화면 공유에 보이기	MainWindow.Settings.cs:236
+떠 있는 창·다이얼 창을 에디터 창 안에 넣어, 디스코드·OBS에서 에디터 "창"만 공유해도 함께 보여요. 끄면 예전처럼 따로 뜬 창이라 화면 전체 공유에서만 보여요 (새로 띄우는 창부터)	플로팅 창·다이얼 창을 에디터 창 안에 넣어, Discord·OBS에서 에디터 "창"만 공유해도 함께 표시됩니다. 끄면 예전처럼 별도 창이라 화면 전체 공유에서만 표시됩니다 (새로 띄우는 창부터)	MainWindow.Settings.cs:236
+구글 번역 API 키를 저장했어요. 블렌드쉐이프 페이지에서 "구글 번역"을 켜면 써요.	Google 번역 API 키를 저장했습니다. BlendShape 페이지에서 "Google 번역"을 켜면 사용합니다.	MainWindow.Settings.cs:245
+구글 번역 API 키를 지웠어요.	Google 번역 API 키를 삭제했습니다.	MainWindow.Settings.cs:245
+블렌드쉐이프 이름 번역	BlendShape 이름 번역	MainWindow.Settings.cs:247
+번역 표에 없는 이름은 구글 Cloud Translation API로 옮길 수 있어요. 블렌드쉐이프 페이지의 "구글 번역"을 켰을 때만 이름이 구글로 보내져요	번역 표에 없는 이름은 Google Cloud Translation API로 번역할 수 있습니다. BlendShape 페이지의 "Google 번역"을 켰을 때만 이름이 Google로 전송됩니다	MainWindow.Settings.cs:247
+API 키		MainWindow.Settings.cs:249
+Google Cloud 콘솔에서 Cloud Translation API를 켜고 만든 API 키예요. 쓴 만큼 Google Cloud에 요금이 붙을 수 있어요 (매달 무료 사용량 있음). 이 PC의 설정 파일에만 저장해요	Google Cloud 콘솔에서 Cloud Translation API를 켜고 만든 API 키입니다. 사용한 만큼 Google Cloud에 요금이 붙을 수 있습니다 (매달 무료 사용량 있음). 이 PC의 설정 파일에만 저장합니다	MainWindow.Settings.cs:249
+지금 확인…	업데이트 확인…	MainWindow.Settings.cs:255
+최신 릴리스를 확인하고, 새 버전이면 받아요	최신 릴리스를 확인하고, 새 버전이면 받습니다	MainWindow.Settings.cs:255
+개발 빌드 (version.txt 없음)		MainWindow.Settings.cs:256 외 1곳
+아직 없음		MainWindow.Settings.cs:257
+업데이트		MainWindow.Settings.cs:258 외 4곳
+GitHub 릴리스에서 새 버전을 받아요. 새 버전이 있을 때만 사이드바에 "업데이트"가 보여요	GitHub 릴리스에서 새 버전을 받습니다. 새 버전이 있을 때만 사이드바에 "업데이트"가 표시됩니다	MainWindow.Settings.cs:258
+지금 버전	현재 버전	MainWindow.Settings.cs:260
+{0} · 마지막 확인 {1}		MainWindow.Settings.cs:260
+저장소		MainWindow.Settings.cs:261 외 1곳
+업데이트를 받을 GitHub 저장소 (owner/name)		MainWindow.Settings.cs:261
+시작할 때 확인		MainWindow.Settings.cs:262 외 1곳
+프로그램을 열 때마다 새 버전이 있는지 몰래 확인해요 (개발 빌드는 확인하지 않아요)	프로그램을 열 때마다 새 버전이 있는지 백그라운드에서 확인합니다 (개발 빌드는 확인하지 않습니다)	MainWindow.Settings.cs:262
+원본 설정대로 압축 (기본)	원본 설정대로 압축 (기본)	MainWindow.Settings.cs:267
+압축 안 함 (가장 선명)	압축 안 함 (가장 선명)	MainWindow.Settings.cs:267
+모두 압축 (가장 가벼움)	모두 압축 (가장 가벼움)	MainWindow.Settings.cs:267
+끄기		MainWindow.Settings.cs:267 외 2곳
+텍스처 캐시: 다음에 아바타를 열 때부터 바뀌어요.	텍스처 캐시: 다음에 아바타를 열 때부터 변경됩니다.	MainWindow.Settings.cs:274
+크기 재는 중…	크기 계산 중…	MainWindow.Settings.cs:277 외 1곳
+캐시 크기		MainWindow.Settings.cs:278
+텍스처 {0}장 · {1} GB (4 GB를 넘으면 오래 안 쓴 것부터 지워요) · {2}	텍스처 {0}장 · {1} GB (4 GB를 넘으면 오래된 항목부터 삭제합니다) · {2}	MainWindow.Settings.cs:283
+비우기		MainWindow.Settings.cs:286 외 1곳
+텍스처 캐시를 비웠어요. 다음에 열 때 다시 만들어요.	텍스처 캐시를 비웠습니다. 다음에 열 때 다시 만듭니다.	MainWindow.Settings.cs:289
+저장해 둔 텍스처를 모두 지워요 (원본은 그대로)	저장해 둔 텍스처를 모두 삭제합니다 (원본은 그대로)	MainWindow.Settings.cs:291
+불러오기 속도		MainWindow.Settings.cs:292
+텍스처 캐시: 원본 PNG를 풀고 줄인 결과를 저장해 두고 다음엔 바로 읽어요. 원본 파일은 바뀌지 않아요	텍스처 캐시: 원본 PNG를 디코딩·축소한 결과를 저장해 다음부터 바로 읽습니다. 원본 파일은 변경되지 않습니다	MainWindow.Settings.cs:292
+텍스처 캐시		MainWindow.Settings.cs:294
+원본 설정대로: 원본 Unity 설정이 압축하는 텍스처만 VRChat처럼 압축해요 — 보이는 모습은 VRChat과 같고 메모리는 줄어요 · 압축 안 함: 모두 원본 그대로 선명하게 (메모리를 더 써요) · 모두 압축: 메모리가 가장 적지만 조금 덜 선명해요 · 끄기: 저장하지 않고 매번 원본을 풀어요. 노멀맵은 늘 그대로예요	원본 설정대로: 원본 Unity 설정이 압축하는 텍스처만 VRChat처럼 압축합니다 — 보이는 모습은 VRChat과 같고 메모리는 줄어듭니다 · 압축 안 함: 모두 원본 그대로 선명하게 (메모리를 더 사용합니다) · 모두 압축: 메모리가 가장 적지만 약간 덜 선명합니다 · 끄기: 저장하지 않고 매번 원본을 디코딩합니다. 노멀 맵은 항상 그대로입니다	MainWindow.Settings.cs:294
+폴더 열기		MainWindow.Settings.cs:300 외 3곳
+저장 위치		MainWindow.Settings.cs:303
+켤 때 마지막 파일 열기		MainWindow.Settings.cs:305
+에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 열어요	에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 엽니다	MainWindow.Settings.cs:305
+설정 파일		MainWindow.Settings.cs:306
+{0}개 · {1} GB · {2}		MainWindow.Settings.cs:314
+ 파일이 없습니다.		MainWindow.Settings.cs:323
+사용 안내	사용 설명서	MainWindow.Settings.cs:329
+이용 조건	이용 약관	MainWindow.Settings.cs:330
+라이선스		MainWindow.Settings.cs:331
+정보		MainWindow.Settings.cs:332
+무료 프로그램 · 		MainWindow.Settings.cs:334
+ · VRChat이나 Unity가 만들거나 승인한 도구가 아닙니다		MainWindow.Settings.cs:334
+문서		MainWindow.Settings.cs:335
+사용법·조건	사용법·약관	MainWindow.Settings.cs:335
+문제 알리기	문제 신고	MainWindow.Settings.cs:336
+꺼지거나 오류가 나면 최근 기록 파일을 보내 주세요. 아바타 이름·PC 경로가 적혀 있을 수 있어요	종료되거나 오류가 발생하면 최근 로그 파일을 보내 주세요. 아바타 이름·PC 경로가 포함될 수 있습니다	MainWindow.Settings.cs:336
 
 # ==== AvHost/MainWindow.Shots.cs ====
-laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:281
-laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:303
-laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:305
-VR 시험 단추		MainWindow.Shots.cs:346
-VR 시험 창		MainWindow.Shots.cs:348
-떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:348
-{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:524
-{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:555
-skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:561
-FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:571
-UI 시험 묶음		MainWindow.Shots.cs:578 외 2곳
-{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:598
-{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:610
-FAIL rocker 없음		MainWindow.Shots.cs:639
-{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:685
-FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:696
-슬롯		MainWindow.Shots.cs:700
-기타 		MainWindow.Shots.cs:710
-{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:728
- 쓰기	 사용	MainWindow.Shots.cs:732
-꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:737
-{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:740
-FAIL palette: 탭이 없음		MainWindow.Shots.cs:754
- · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:763
-자세 › 손 모양 띄우기		MainWindow.Shots.cs:860
-에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:865
-밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:868
-핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:870
-핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:872
-핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:875
-다시 붙이기	다시 도킹	MainWindow.Shots.cs:879 외 1곳
-가져온 파일 창		MainWindow.Shots.cs:887
-가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:893
-가져온 파일 창 닫기		MainWindow.Shots.cs:896
-머티리얼·에셋 창		MainWindow.Shots.cs:902
-머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:907
-머티리얼·에셋 창 닫기		MainWindow.Shots.cs:915
-텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:940
-텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:960
-텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:962
-텍스처 합치기: 적용 → 		MainWindow.Shots.cs:968
-텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:973
-텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:976
-search:눈 감기		MainWindow.Shots.cs:994
-search:웃음		MainWindow.Shots.cs:994
-save:웃는 얼굴		MainWindow.Shots.cs:1003
-쥐기		MainWindow.Shots.cs:1015 외 1곳
-그림자		MainWindow.Shots.cs:1015 외 2곳
-오버레이		MainWindow.Shots.cs:1015 외 4곳
-토글		MainWindow.Shots.cs:1015 외 1곳
-찾기 "{0}" → {1}		MainWindow.Shots.cs:1018
-찾기 색인 {0}개		MainWindow.Shots.cs:1020
+[ui-shots] 실패: 		MainWindow.Shots.cs:59
+laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:288
+laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:310
+laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:312
+VR 시험 단추		MainWindow.Shots.cs:353
+VR 시험 창		MainWindow.Shots.cs:355
+떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:355
+{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:531
+{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:562
+skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:568
+FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:578
+UI 시험 묶음		MainWindow.Shots.cs:585 외 2곳
+{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:605
+{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:617
+FAIL rocker 없음		MainWindow.Shots.cs:646
+{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:700
+FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:711
+슬롯		MainWindow.Shots.cs:715
+기타 		MainWindow.Shots.cs:725
+{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:743
+ 쓰기	 사용	MainWindow.Shots.cs:747
+꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:752
+{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:755
+FAIL palette: 탭이 없음		MainWindow.Shots.cs:769
+ · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:778
+블렌드쉐이프: 		MainWindow.Shots.cs:845 외 1곳
+자세 › 손 모양 띄우기		MainWindow.Shots.cs:888
+에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:893
+밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:896
+핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:898
+핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:900
+핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:903
+다시 붙이기	다시 도킹	MainWindow.Shots.cs:907 외 1곳
+가져온 파일 창		MainWindow.Shots.cs:915
+가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:921
+가져온 파일 창 닫기		MainWindow.Shots.cs:924
+머티리얼·에셋 창		MainWindow.Shots.cs:930
+머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:935
+머티리얼·에셋 창 닫기		MainWindow.Shots.cs:943
+텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:968
+텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:988
+텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:990
+텍스처 합치기: 적용 → 		MainWindow.Shots.cs:996
+텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:1001
+텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:1004
+search:눈 감기		MainWindow.Shots.cs:1022
+search:웃음		MainWindow.Shots.cs:1022
+save:웃는 얼굴		MainWindow.Shots.cs:1031
+쥐기		MainWindow.Shots.cs:1043 외 1곳
+그림자		MainWindow.Shots.cs:1043 외 2곳
+오버레이		MainWindow.Shots.cs:1043 외 4곳
+토글		MainWindow.Shots.cs:1043 외 1곳
+찾기 "{0}" → {1}		MainWindow.Shots.cs:1046
+찾기 색인 {0}개		MainWindow.Shots.cs:1048
 
 # ==== AvHost/MainWindow.TestEdit.cs ====
 촬영 		MainWindow.TestEdit.cs:48 외 1곳
 { "background": { "mode": "gradient", "top": [0.2, 0.4, 0.9], "bottom": [0.8, 0.9, 1] }, "exposure": 1.5, "floor": { "enabled": true, "mode": "solid", "strength": 0.7, "color": [0.8, 0.2, 0.2] },\n                "dof": { "enabled": true, "strength": 0.3 }, "quality": { "studio": true, "ao": 0.2, "aa": 4 }, "avatarOnly": { "on": false, "color": [0, 1, 0] }, "transparent": false,\n                "adjust": { "brightness": 0.1, "contrast": 1.1, "saturation": 1.2 }, "shot": { "width": 1080, "height": 1920, "embed": false }, "sticker": { "spec": "kakao", "color": "black", "outline": 9 },\n                "record": { "motion": "fixed", "seconds": 5, "fps": 24, "width": 1280, "height": 720, "format": "png", "transparent": true },\n                "cameras": [ { "name": "위치 A", "state": { "pivot": [0, 1, 0], "yaw": 180, "pitch": 0, "distance": 3, "fov": 30 } } ] }		MainWindow.TestEdit.cs:58
-시험 A.studio.json		MainWindow.TestEdit.cs:66
-저장: 		MainWindow.TestEdit.cs:68
-시험 A		MainWindow.TestEdit.cs:69
-목록에 나옴		MainWindow.TestEdit.cs:69
-B 세팅은 A와 다름		MainWindow.TestEdit.cs:77
-불러오면 A 세팅: 		MainWindow.TestEdit.cs:82
-불러오기 전으로: 		MainWindow.TestEdit.cs:87
-끌어다 놓기 안내		MainWindow.TestEdit.cs:90
-끌어다 놓기로 불러오기		MainWindow.TestEdit.cs:93
-{ "format": "다른 것" }		MainWindow.TestEdit.cs:96
-잘못된 파일은 세팅을 바꾸지 않음		MainWindow.TestEdit.cs:98
-{ "background": { "mode": "image", "path": "C:/없는 폴더/없는 배경.png" } }		MainWindow.TestEdit.cs:101
-이미지가 없어도 값은 들어감		MainWindow.TestEdit.cs:103
-없는 파일을 알림		MainWindow.TestEdit.cs:104
-FAIL 장면을 불러오지 못했어요\n		MainWindow.TestEdit.cs:149
-자세가 세션 값 (몸 방향 포함)		MainWindow.TestEdit.cs:154
-표정이 세션 값: 		MainWindow.TestEdit.cs:155
-조명이 세션 값		MainWindow.TestEdit.cs:156
-숨긴 렌더러가 숨겨짐		MainWindow.TestEdit.cs:157
-스튜디오 페이지로 열림: 		MainWindow.TestEdit.cs:158
-배경이 세션 값: {0} {1} {2}		MainWindow.TestEdit.cs:160
-바닥이 세션 값: {0} {1}		MainWindow.TestEdit.cs:161
-카메라가 세션 값: yaw 		MainWindow.TestEdit.cs:162
-열었을 때는 저장할 것이 없음		MainWindow.TestEdit.cs:163
-머슬 고치기: {0} → {1}		MainWindow.TestEdit.cs:170
-고쳐도 몸 방향이 남음		MainWindow.TestEdit.cs:171
-배경 고치기		MainWindow.TestEdit.cs:174
-되돌리기: 머슬이 세션 값으로		MainWindow.TestEdit.cs:179
-다시 하기		MainWindow.TestEdit.cs:182
-저장한 세션에 고친 자세		MainWindow.TestEdit.cs:190
-에디터가 저장한 세션에는 studio를 적지 않음 (설정에 남음)		MainWindow.TestEdit.cs:191
-저장하면 깨끗함		MainWindow.TestEdit.cs:192
+시험 조명		MainWindow.TestEdit.cs:70
+시험 A.studio.json		MainWindow.TestEdit.cs:78
+저장: 		MainWindow.TestEdit.cs:80
+시험 A		MainWindow.TestEdit.cs:81
+목록에 나옴		MainWindow.TestEdit.cs:81
+B 세팅은 A와 다름		MainWindow.TestEdit.cs:90
+불러오면 A 세팅: 		MainWindow.TestEdit.cs:95
+불러오면 A 조명: 		MainWindow.TestEdit.cs:96
+불러오기 전으로: 		MainWindow.TestEdit.cs:101
+불러오기 전 조명으로: 		MainWindow.TestEdit.cs:102
+조명 빼고 불러오기: 		MainWindow.TestEdit.cs:106
+조명 빼고 되돌리기: 		MainWindow.TestEdit.cs:108
+끌어다 놓기 안내		MainWindow.TestEdit.cs:112
+끌어다 놓기로 불러오기		MainWindow.TestEdit.cs:115
+{ "format": "다른 것" }		MainWindow.TestEdit.cs:118
+잘못된 파일은 세팅을 바꾸지 않음		MainWindow.TestEdit.cs:120
+{ "background": { "mode": "image", "path": "C:/없는 폴더/없는 배경.png" } }		MainWindow.TestEdit.cs:123
+이미지가 없어도 값은 들어감		MainWindow.TestEdit.cs:125
+없는 파일을 알림		MainWindow.TestEdit.cs:126
+FAIL 장면을 불러오지 못했어요\n		MainWindow.TestEdit.cs:171
+자세가 세션 값 (몸 방향 포함)		MainWindow.TestEdit.cs:176
+표정이 세션 값: 		MainWindow.TestEdit.cs:177
+조명이 세션 값		MainWindow.TestEdit.cs:178
+숨긴 렌더러가 숨겨짐		MainWindow.TestEdit.cs:179
+스튜디오 페이지로 열림: 		MainWindow.TestEdit.cs:180
+배경이 세션 값: {0} {1} {2}		MainWindow.TestEdit.cs:182
+바닥이 세션 값: {0} {1}		MainWindow.TestEdit.cs:183
+카메라가 세션 값: yaw 		MainWindow.TestEdit.cs:184
+열었을 때는 저장할 것이 없음		MainWindow.TestEdit.cs:185
+머슬 고치기: {0} → {1}		MainWindow.TestEdit.cs:192
+고쳐도 몸 방향이 남음		MainWindow.TestEdit.cs:193
+배경 고치기		MainWindow.TestEdit.cs:196
+되돌리기: 머슬이 세션 값으로		MainWindow.TestEdit.cs:201
+다시 하기		MainWindow.TestEdit.cs:204
+저장한 세션에 고친 자세		MainWindow.TestEdit.cs:212
+에디터가 저장한 세션에는 studio를 적지 않음 (설정에 남음)		MainWindow.TestEdit.cs:213
+저장하면 깨끗함		MainWindow.TestEdit.cs:214
 
 # ==== AvHost/MainWindow.Update.cs ====
 새 버전을 받아요 (GitHub 릴리스)	새 버전을 받습니다 (GitHub 릴리스)	MainWindow.Update.cs:26
@@ -2013,12 +2041,15 @@ VR 에디터 창 {0}: {1}×{2} · {3} m · 그리기 {4} ms		MainWindow.VrPanel.
 
 # ==== AvHost/MainWindow.Warm.cs ====
 {0} {1}ms/{2}MB/{3}개		MainWindow.Warm.cs:53
-편집 창 준비 중 오류: 		MainWindow.Warm.cs:97
-장면 뒤 편집 창 준비 {0} ms (다시 그리기 {1} · 예열 {2} — 		MainWindow.Warm.cs:99
- · 탭 밖 섹션 만들기 {0})		MainWindow.Warm.cs:100
-준비됐어요. 편집 창에서 값을 바꾸면 미리보기에 바로 보여요.	준비되었습니다. 편집 창에서 값을 변경하면 미리보기에 바로 표시됩니다.	MainWindow.Warm.cs:103
- (보임 {0}, 크기 {1}x{2})		MainWindow.Warm.cs:152
- 의 숨은 탭		MainWindow.Warm.cs:158
+편집 창 준비 중 오류: 		MainWindow.Warm.cs:105 외 1곳
+장면 뒤 편집 창 준비 {0} ms (다시 그리기 {1} · 예열 {2} — 		MainWindow.Warm.cs:109
+ · 탭 밖 섹션 만들기 {0})		MainWindow.Warm.cs:110
+준비됐어요. 편집 창에서 값을 바꾸면 미리보기에 바로 보여요.	준비되었습니다. 편집 창에서 값을 변경하면 미리보기에 바로 표시됩니다.	MainWindow.Warm.cs:113
+숨은 페이지·탭 준비 {0} ms ({1}조각 · 가장 긴 조각 {2} ms · 장면이 보인 뒤 {3} ms에 끝남)		MainWindow.Warm.cs:151
+다 준비된 뒤 Host 메모리 {0} MB · 관리 힙(치운 뒤) {1} MB · {2}		MainWindow.Warm.cs:156
+메모리 돌려주기 {0} → {1} MB ({2} ms)		MainWindow.Warm.cs:175
+ (보임 {0}, 크기 {1}x{2})		MainWindow.Warm.cs:229
+ 의 숨은 탭		MainWindow.Warm.cs:235
 
 # ==== AvHost/MainWindow.cs ====
 장면	씬	MainWindow.cs:44
@@ -2035,84 +2066,85 @@ Unity 씬·프리팹·패키지 가져오기…		MainWindow.cs:107
 VRChat에 올리기…	VRChat 업로드…	MainWindow.cs:120
 Unity 프로젝트로 내보내기…		MainWindow.cs:120
 VRChat에 올리기: 패키지에서 가져온 아바타는 업로드용 Unity 프로젝트를 만들고, Unity 프로젝트에서 가져온 아바타는 그 프로젝트에서 올려요 · Unity 프로젝트로 내보내기: 내 프로젝트에 새 장면으로 만들어요 (원본은 그대로)		MainWindow.cs:121
-페이지·탭·설정 찾기 (Ctrl+K) · 단축키 목록은 Ctrl+/		MainWindow.cs:130
-페이지 만들기 시작		MainWindow.cs:176
-의상·헤어·악세서리를 붙이고, 기본 옷과 메시를 켜고 꺼 봐요.	의상·헤어·액세서리를 장착하고, 기본 의상과 메시를 켜고 끕니다.	MainWindow.cs:177
-색·텍스처·셰이더 값을 바꿔 봐요. 원본 파일은 그대로 남아요.	색·텍스처·셰이더 값을 변경합니다. 원본 파일은 그대로 유지됩니다.	MainWindow.cs:181
-얼굴 표정과 체형 값을 슬라이더로 조절해요.	얼굴 표정과 체형 값을 슬라이더로 조절합니다.	MainWindow.cs:182
-프리셋·애니메이션·머슬 값으로 아바타의 자세를 바꿔요. 머슬 값이라 다른 아바타에도 같은 자세로 옮겨져요.	프리셋·애니메이션·Muscle 값으로 아바타의 자세를 변경합니다. Muscle 값이므로 다른 아바타에도 같은 자세로 적용됩니다.	MainWindow.cs:183
-자세를 바닥에 맞춰요.	자세를 바닥에 맞춥니다.	MainWindow.cs:184
-바닥에 맞추기를 껐어요 (몸 높이는 자세 값 그대로).	바닥에 맞추기를 껐습니다 (몸 높이는 자세 값 그대로).	MainWindow.cs:184
-표정·페이셜 트래킹을 쓰고, 배경을 깔고 카메라 위치를 저장해 두었다가 고해상도로 촬영·녹화해요.	표정·페이셜 트래킹을 사용하고, 배경을 깔고 카메라 위치를 저장해 두었다가 고해상도로 촬영·녹화합니다.	MainWindow.cs:185
-월드의 조명과 분위기를 바꿔 아바타가 어떻게 보이는지 확인해요.	월드의 조명과 분위기를 변경해 아바타의 외형을 확인합니다.	MainWindow.cs:188
-VRChat 퍼포먼스 등급을 예상하고 정점·폴리곤을 줄여요. 원본 메시는 그대로 남아요.	VRChat Performance Rank를 예상하고 정점·폴리곤을 줄입니다. 원본 메시는 그대로 유지됩니다.	MainWindow.cs:189
-편집한 아바타를 VRChat에 올릴 Unity 프로젝트를 준비해요.	편집한 아바타를 VRChat에 업로드할 Unity 프로젝트를 준비합니다.	MainWindow.cs:190
-미리보기 프로그램과 주고받은 기록이에요. 문제가 생기면 여기를 확인하세요.	미리보기 프로그램과 주고받은 기록입니다. 문제가 생기면 여기를 확인하세요.	MainWindow.cs:191
-페이지 다 만듦		MainWindow.cs:194
-창 열림		MainWindow.cs:250
-아바타 파일을 열거나 창에 끌어다 놓으세요.		MainWindow.cs:252
-미리보기 준비 중		MainWindow.cs:253
-글 표를 읽지 못했습니다: 		MainWindow.cs:264
-글 표를 다시 읽었어요 · 바꾼 글 {0}줄 ({1})	글 표를 다시 읽었습니다 · 바꾼 글 {0}줄 ({1})	MainWindow.cs:264
-창 만들기 끝		MainWindow.cs:266
-테스트 모드 · 설정 {0} · 글 표 {1} ({2}줄, 저장하면 바로 반영)		MainWindow.cs:267
-아바타를 열어 시작하세요		MainWindow.cs:293
-Unity 씬·프리팹·.unitypackage를 가져오거나 파일을 이 창에 끌어다 놓아요.	Unity 씬·프리팹·.unitypackage를 가져오거나 파일을 이 창에 끌어다 놓습니다.	MainWindow.cs:295
-올리기 전에 확인	업로드 전에 확인	MainWindow.cs:310
-올리기 전에 한 번 보면 좋은 것들이에요. 항목을 누르면 고칠 수 있는 페이지로 가요.	업로드 전에 한 번 보면 좋은 것들입니다. 항목을 누르면 수정할 수 있는 페이지로 갑니다.	MainWindow.cs:310
-업로드용 Unity 프로젝트를 만들어 편집을 적용해요	업로드용 Unity 프로젝트를 만들어 편집을 적용합니다	MainWindow.cs:313
-1. 프로젝트 준비: 업로드용 Unity 프로젝트를 만들고 VRChat SDK와 선택한 기믹을 공식 저장소에서 설치합니다.\n		MainWindow.cs:314
-2. 편집 적용: 머티리얼·BlendShape·켜고 끄기·메시 편집·아이템 위치를 원본 아바타에 적용합니다.\n		MainWindow.cs:315
-3. Unity에서 업로드: 열린 Unity의 VRChat SDK 창에서 직접 로그인한 뒤 "ALEdit 업로드" 창으로 업로드합니다.\n\n		MainWindow.cs:316
-이 프로그램은 VRChat 계정 정보를 다루지 않습니다.		MainWindow.cs:317
-올리기 준비…	업로드 준비…	MainWindow.cs:318
-내 프로젝트에 새 장면으로 만들어요	내 프로젝트에 새 씬으로 만듭니다	MainWindow.cs:319
-원본 장면·프리팹·기믹 설정은 그대로 두고, 바뀐 사본만 더해 새 장면을 만들어요. 내 Unity 프로젝트에서 직접 고치거나 올릴 때 써요.	원본 씬·프리팹·기믹 설정은 그대로 두고, 변경된 사본만 추가해 새 씬을 만듭니다. 내 Unity 프로젝트에서 직접 수정하거나 업로드할 때 사용합니다.	MainWindow.cs:320
-내보내기…		MainWindow.cs:321
-자세·환경·아바타 전체 자리·카메라는 미리보기 전용이라 올라가지 않아요.	자세·환경·아바타 전체 위치·카메라는 미리보기 전용이라 업로드되지 않습니다.	MainWindow.cs:322
-작업 창을 미리보기 왼쪽으로 옮기기	작업 창을 미리보기 왼쪽으로 이동	MainWindow.cs:386
-작업 창을 미리보기 오른쪽으로 옮기기	작업 창을 미리보기 오른쪽으로 이동	MainWindow.cs:386
-미리보기 창 준비		MainWindow.cs:459
-미리보기를 켜지 못했어요 · 편집만 돼요	미리보기를 켜지 못했습니다 · 편집만 됩니다	MainWindow.cs:474
-미리보기 준비됨		MainWindow.cs:497
-렌더러 연결		MainWindow.cs:498
-미리보기 연결됨 · Unity {0}		MainWindow.cs:499
-장면 도착	씬 도착	MainWindow.cs:517
-장면 처리 시작	씬 처리 시작	MainWindow.cs:518
-편집 값 적용 중		MainWindow.cs:520
-씬 · 메시 {0} · 머티리얼 {1}		MainWindow.cs:532
- · 미지원 셰이더 {0}		MainWindow.cs:533
- · 근사 표시 {0}		MainWindow.cs:533
-씬 뒤 페이지 갱신 		MainWindow.cs:540
-장면 불러오기 {0}초 (미리보기 {1}초 · 편집기 값 적용 {2}초)	씬 불러오기 {0}초 (미리보기 {1}초 · 에디터 값 적용 {2}초)	MainWindow.cs:546
-편집 창을 준비하는 중…		MainWindow.cs:551
-옮기기: {0}	이동: {0}	MainWindow.cs:573
-아바타 옮기기	아바타 이동	MainWindow.cs:577
-장면 불러오는 중	씬 불러오는 중	MainWindow.cs:641 외 1곳
-장면 마무리 중	씬 마무리 중	MainWindow.cs:660
-텍스처 {0}/{1}		MainWindow.cs:666
-메시 {0}/{1}		MainWindow.cs:666
-씬 불러오는 중 · 		MainWindow.cs:667
-글 표의 바꾼 글로 보여요	글 표의 바꾼 글로 표시됩니다	MainWindow.cs:724
-코드의 원문으로 보여요 (Ctrl+Shift+T로 되돌리기)	코드의 원문으로 표시됩니다 (Ctrl+Shift+T로 되돌리기)	MainWindow.cs:724
-바닥 격자를 켰어요 (G)	바닥 격자를 켰습니다 (G)	MainWindow.cs:769
-바닥 격자를 껐어요 (G)	바닥 격자를 껐습니다 (G)	MainWindow.cs:769
-거울을 켰어요 (M)	거울을 켰습니다 (M)	MainWindow.cs:770
-거울을 껐어요 (M)	거울을 껐습니다 (M)	MainWindow.cs:770
-아바타만 보여요 (H로 되돌리기)	아바타만 표시됩니다 (H로 되돌리기)	MainWindow.cs:771
-장면을 다시 보여요	씬을 다시 표시합니다	MainWindow.cs:771
-쉬운 모드: 자주 쓰는 것만 · 전문가 모드: 세부 설정까지 모두 (눌러서 바꾸기)	간편 모드: 자주 사용하는 것만 · 전문가 모드: 세부 설정까지 모두 (눌러서 변경)	MainWindow.cs:797
-쉬운 모드	간편 모드	MainWindow.cs:807 외 1곳
-전문가 모드: 세부 설정까지 모두 보여요.	전문가 모드: 세부 설정까지 모두 표시됩니다.	MainWindow.cs:811
-쉬운 모드: 자주 쓰는 것만 보여요. 바꾼 값은 그대로예요.	간편 모드: 자주 사용하는 것만 표시됩니다. 변경한 값은 그대로입니다.	MainWindow.cs:811
-전역 단축키를 사용할 수 없습니다: 		MainWindow.cs:818
-Shift+{0}에 토글이 없어요. 아바타 페이지 "내 토글"에서 만들어요.	Shift+{0}에 토글이 없습니다. 아바타 페이지 "내 토글"에서 만듭니다.	MainWindow.cs:875
-토글 {0} {1} (Shift+{2})		MainWindow.cs:877
-F{0}에 표정이 없어요. 표정 페이지에서 표정 단추를 오른쪽 클릭해 넣어요.	F{0}에 표정이 없습니다. 표정 페이지에서 표정 버튼을 오른쪽 클릭해 넣습니다.	MainWindow.cs:885
-표정을 뺐어요 (F{0})	표정을 해제했습니다 (F{0})	MainWindow.cs:885
-{0} 표정 (F{1})		MainWindow.cs:885
-놓으면: {0} · {1}		MainWindow.cs:907
-이 파일은 놓을 수 없어요 · {0}	이 파일은 놓을 수 없습니다 · {0}	MainWindow.cs:907
+작업 기록 (Ctrl+H): 지금까지 바꾼 것을 차례로 보고, 고른 시점으로 한 번에 돌아가요		MainWindow.cs:127
+페이지·탭·설정 찾기 (Ctrl+K) · 단축키 목록은 Ctrl+/		MainWindow.cs:131
+페이지 만들기 시작		MainWindow.cs:177
+의상·헤어·악세서리를 붙이고, 기본 옷과 메시를 켜고 꺼 봐요.	의상·헤어·액세서리를 장착하고, 기본 의상과 메시를 켜고 끕니다.	MainWindow.cs:178
+색·텍스처·셰이더 값을 바꿔 봐요. 원본 파일은 그대로 남아요.	색·텍스처·셰이더 값을 변경합니다. 원본 파일은 그대로 유지됩니다.	MainWindow.cs:182
+얼굴 표정과 체형 값을 슬라이더로 조절해요.	얼굴 표정과 체형 값을 슬라이더로 조절합니다.	MainWindow.cs:183
+프리셋·애니메이션·머슬 값으로 아바타의 자세를 바꿔요. 머슬 값이라 다른 아바타에도 같은 자세로 옮겨져요.	프리셋·애니메이션·Muscle 값으로 아바타의 자세를 변경합니다. Muscle 값이므로 다른 아바타에도 같은 자세로 적용됩니다.	MainWindow.cs:184
+자세를 바닥에 맞춰요.	자세를 바닥에 맞춥니다.	MainWindow.cs:185
+바닥에 맞추기를 껐어요 (몸 높이는 자세 값 그대로).	바닥에 맞추기를 껐습니다 (몸 높이는 자세 값 그대로).	MainWindow.cs:185
+표정·페이셜 트래킹을 쓰고, 배경을 깔고 카메라 위치를 저장해 두었다가 고해상도로 촬영·녹화해요.	표정·페이셜 트래킹을 사용하고, 배경을 깔고 카메라 위치를 저장해 두었다가 고해상도로 촬영·녹화합니다.	MainWindow.cs:186
+월드의 조명과 분위기를 바꿔 아바타가 어떻게 보이는지 확인해요.	월드의 조명과 분위기를 변경해 아바타의 외형을 확인합니다.	MainWindow.cs:189
+VRChat 퍼포먼스 등급을 예상하고 정점·폴리곤을 줄여요. 원본 메시는 그대로 남아요.	VRChat Performance Rank를 예상하고 정점·폴리곤을 줄입니다. 원본 메시는 그대로 유지됩니다.	MainWindow.cs:190
+편집한 아바타를 VRChat에 올릴 Unity 프로젝트를 준비해요.	편집한 아바타를 VRChat에 업로드할 Unity 프로젝트를 준비합니다.	MainWindow.cs:191
+미리보기 프로그램과 주고받은 기록이에요. 문제가 생기면 여기를 확인하세요.	미리보기 프로그램과 주고받은 기록입니다. 문제가 생기면 여기를 확인하세요.	MainWindow.cs:192
+페이지 다 만듦		MainWindow.cs:195
+창 열림		MainWindow.cs:251
+아바타 파일을 열거나 창에 끌어다 놓으세요.		MainWindow.cs:253
+미리보기 준비 중		MainWindow.cs:254
+글 표를 읽지 못했습니다: 		MainWindow.cs:265
+글 표를 다시 읽었어요 · 바꾼 글 {0}줄 ({1})	글 표를 다시 읽었습니다 · 바꾼 글 {0}줄 ({1})	MainWindow.cs:265
+창 만들기 끝		MainWindow.cs:267
+테스트 모드 · 설정 {0} · 글 표 {1} ({2}줄, 저장하면 바로 반영)		MainWindow.cs:268
+아바타를 열어 시작하세요		MainWindow.cs:294
+Unity 씬·프리팹·.unitypackage를 가져오거나 파일을 이 창에 끌어다 놓아요.	Unity 씬·프리팹·.unitypackage를 가져오거나 파일을 이 창에 끌어다 놓습니다.	MainWindow.cs:296
+올리기 전에 확인	업로드 전에 확인	MainWindow.cs:311
+올리기 전에 한 번 보면 좋은 것들이에요. 항목을 누르면 고칠 수 있는 페이지로 가요.	업로드 전에 한 번 보면 좋은 것들입니다. 항목을 누르면 수정할 수 있는 페이지로 갑니다.	MainWindow.cs:311
+업로드용 Unity 프로젝트를 만들어 편집을 적용해요	업로드용 Unity 프로젝트를 만들어 편집을 적용합니다	MainWindow.cs:314
+1. 프로젝트 준비: 업로드용 Unity 프로젝트를 만들고 VRChat SDK와 선택한 기믹을 공식 저장소에서 설치합니다.\n		MainWindow.cs:315
+2. 편집 적용: 머티리얼·BlendShape·켜고 끄기·메시 편집·아이템 위치를 원본 아바타에 적용합니다.\n		MainWindow.cs:316
+3. Unity에서 업로드: 열린 Unity의 VRChat SDK 창에서 직접 로그인한 뒤 "ALEdit 업로드" 창으로 업로드합니다.\n\n		MainWindow.cs:317
+이 프로그램은 VRChat 계정 정보를 다루지 않습니다.		MainWindow.cs:318
+올리기 준비…	업로드 준비…	MainWindow.cs:319
+내 프로젝트에 새 장면으로 만들어요	내 프로젝트에 새 씬으로 만듭니다	MainWindow.cs:320
+원본 장면·프리팹·기믹 설정은 그대로 두고, 바뀐 사본만 더해 새 장면을 만들어요. 내 Unity 프로젝트에서 직접 고치거나 올릴 때 써요.	원본 씬·프리팹·기믹 설정은 그대로 두고, 변경된 사본만 추가해 새 씬을 만듭니다. 내 Unity 프로젝트에서 직접 수정하거나 업로드할 때 사용합니다.	MainWindow.cs:321
+내보내기…		MainWindow.cs:322
+자세·환경·아바타 전체 자리·카메라는 미리보기 전용이라 올라가지 않아요.	자세·환경·아바타 전체 위치·카메라는 미리보기 전용이라 업로드되지 않습니다.	MainWindow.cs:323
+작업 창을 미리보기 왼쪽으로 옮기기	작업 창을 미리보기 왼쪽으로 이동	MainWindow.cs:387
+작업 창을 미리보기 오른쪽으로 옮기기	작업 창을 미리보기 오른쪽으로 이동	MainWindow.cs:387
+미리보기 창 준비		MainWindow.cs:460
+미리보기를 켜지 못했어요 · 편집만 돼요	미리보기를 켜지 못했습니다 · 편집만 됩니다	MainWindow.cs:475
+미리보기 준비됨		MainWindow.cs:498
+렌더러 연결		MainWindow.cs:499
+미리보기 연결됨 · Unity {0}		MainWindow.cs:500
+장면 도착	씬 도착	MainWindow.cs:518
+장면 처리 시작	씬 처리 시작	MainWindow.cs:519
+편집 값 적용 중		MainWindow.cs:521
+씬 · 메시 {0} · 머티리얼 {1}		MainWindow.cs:533
+ · 미지원 셰이더 {0}		MainWindow.cs:534
+ · 근사 표시 {0}		MainWindow.cs:534
+씬 뒤 페이지 갱신 		MainWindow.cs:541
+장면 불러오기 {0}초 (미리보기 {1}초 · 편집기 값 적용 {2}초)	씬 불러오기 {0}초 (미리보기 {1}초 · 에디터 값 적용 {2}초)	MainWindow.cs:547
+편집 창을 준비하는 중…		MainWindow.cs:552
+옮기기: {0}	이동: {0}	MainWindow.cs:574
+아바타 옮기기	아바타 이동	MainWindow.cs:578
+장면 불러오는 중	씬 불러오는 중	MainWindow.cs:643 외 1곳
+장면 마무리 중	씬 마무리 중	MainWindow.cs:662
+텍스처 {0}/{1}		MainWindow.cs:668
+메시 {0}/{1}		MainWindow.cs:668
+씬 불러오는 중 · 		MainWindow.cs:669
+글 표의 바꾼 글로 보여요	글 표의 바꾼 글로 표시됩니다	MainWindow.cs:726
+코드의 원문으로 보여요 (Ctrl+Shift+T로 되돌리기)	코드의 원문으로 표시됩니다 (Ctrl+Shift+T로 되돌리기)	MainWindow.cs:726
+바닥 격자를 켰어요 (G)	바닥 격자를 켰습니다 (G)	MainWindow.cs:772
+바닥 격자를 껐어요 (G)	바닥 격자를 껐습니다 (G)	MainWindow.cs:772
+거울을 켰어요 (M)	거울을 켰습니다 (M)	MainWindow.cs:773
+거울을 껐어요 (M)	거울을 껐습니다 (M)	MainWindow.cs:773
+아바타만 보여요 (H로 되돌리기)	아바타만 표시됩니다 (H로 되돌리기)	MainWindow.cs:774
+장면을 다시 보여요	씬을 다시 표시합니다	MainWindow.cs:774
+쉬운 모드: 자주 쓰는 것만 · 전문가 모드: 세부 설정까지 모두 (눌러서 바꾸기)	간편 모드: 자주 사용하는 것만 · 전문가 모드: 세부 설정까지 모두 (눌러서 변경)	MainWindow.cs:801
+쉬운 모드	간편 모드	MainWindow.cs:811 외 1곳
+전문가 모드: 세부 설정까지 모두 보여요.	전문가 모드: 세부 설정까지 모두 표시됩니다.	MainWindow.cs:815
+쉬운 모드: 자주 쓰는 것만 보여요. 바꾼 값은 그대로예요.	간편 모드: 자주 사용하는 것만 표시됩니다. 변경한 값은 그대로입니다.	MainWindow.cs:815
+전역 단축키를 사용할 수 없습니다: 		MainWindow.cs:822
+Shift+{0}에 토글이 없어요. 아바타 페이지 "내 토글"에서 만들어요.	Shift+{0}에 토글이 없습니다. 아바타 페이지 "내 토글"에서 만듭니다.	MainWindow.cs:879
+토글 {0} {1} (Shift+{2})		MainWindow.cs:881
+F{0}에 표정이 없어요. 표정 페이지에서 표정 단추를 오른쪽 클릭해 넣어요.	F{0}에 표정이 없습니다. 표정 페이지에서 표정 버튼을 오른쪽 클릭해 넣습니다.	MainWindow.cs:889
+표정을 뺐어요 (F{0})	표정을 해제했습니다 (F{0})	MainWindow.cs:889
+{0} 표정 (F{1})		MainWindow.cs:889
+놓으면: {0} · {1}		MainWindow.cs:911
+이 파일은 놓을 수 없어요 · {0}	이 파일은 놓을 수 없습니다 · {0}	MainWindow.cs:911
 
 # ==== AvHost/MaterialPanel.Bake.cs ====
 굽기	베이크	MaterialPanel.Bake.cs:23
@@ -2191,8 +2223,8 @@ lilToon (테셀레이션)		MaterialPanel.cs:374
 R, G, B, A (HDR: 1보다 커도 돼요)	R, G, B, A (HDR: 1보다 커도 됩니다)	MaterialPanel.cs:550
 색상환		MaterialPanel.cs:568
 빨강		MaterialPanel.cs:602
-초록		MaterialPanel.cs:602 외 1곳
-파랑		MaterialPanel.cs:602 외 1곳
+초록		MaterialPanel.cs:602 외 2곳
+파랑		MaterialPanel.cs:602 외 2곳
 불투명도		MaterialPanel.cs:602
 호환만	호환 항목만	MaterialPanel.cs:655
 (없음)		MaterialPanel.cs:658 외 1곳
@@ -2236,88 +2268,141 @@ overlay:크기		OverlayBoard.cs:37
 에디터 창을 숨기고 이 보드만 남겨요	에디터 창을 숨기고 이 보드만 남깁니다	OverlayBoard.cs:323
 숨긴 에디터 창을 다시 열어요	숨긴 에디터 창을 다시 엽니다	OverlayBoard.cs:323
 게임 위에 아바타를 띄워요	게임 위에 아바타를 띄웁니다	OverlayBoard.cs:331
-위치 조정		OverlayBoard.cs:332 외 1곳
-끌어서 옮기기	끌어서 이동	OverlayBoard.cs:332
-클릭은 게임으로		OverlayBoard.cs:332
-켜면 오버레이를 끌어 옮기고 오른쪽 끌기·휠로 돌려요	켜면 오버레이를 끌어 이동하고 오른쪽 끌기·휠로 돌립니다	OverlayBoard.cs:332
-1.5초 정면		OverlayBoard.cs:364
-힘을 빼고 편한 자리에서 카메라를 정면으로 보세요	힘을 빼고 편한 위치에서 카메라를 정면으로 보세요	OverlayBoard.cs:364
-웹캠		OverlayBoard.cs:365
-외부 앱		OverlayBoard.cs:366
-트래커 앱		OverlayBoard.cs:367
-마이크로 입		OverlayBoard.cs:368
+위치 조정		OverlayBoard.cs:333 외 1곳
+끌어서 옮기기	끌어서 이동	OverlayBoard.cs:333
+클릭은 게임으로		OverlayBoard.cs:333
+켜면 오버레이를 끌어 옮기고 오른쪽 끌기·휠로 돌려요	켜면 오버레이를 끌어 이동하고 오른쪽 끌기·휠로 돌립니다	OverlayBoard.cs:333
+1.5초 정면		OverlayBoard.cs:365
+힘을 빼고 편한 자리에서 카메라를 정면으로 보세요	힘을 빼고 편한 위치에서 카메라를 정면으로 보세요	OverlayBoard.cs:365
+웹캠		OverlayBoard.cs:366
+외부 앱		OverlayBoard.cs:367
+트래커 앱		OverlayBoard.cs:368
+마이크로 입		OverlayBoard.cs:369
 
 # ==== AvHost/OverlayController.cs ====
-오른쪽 아래		OverlayController.cs:30
-왼쪽 아래		OverlayController.cs:30
-오른쪽 위		OverlayController.cs:30
-왼쪽 위		OverlayController.cs:30
-가운데		OverlayController.cs:30 외 2곳
-옮긴 자리	이동한 위치	OverlayController.cs:30
-미리보기가 켜져야 오버레이를 켤 수 있어요.	미리보기가 켜져야 오버레이를 켤 수 있습니다.	OverlayController.cs:50
-오버레이를 띄울 화면을 찾지 못했어요.	오버레이를 띄울 화면을 찾지 못했습니다.	OverlayController.cs:51
-방송 오버레이를 켰어요 (조정 모드: 끌어서 옮기고, 다 되면 조정을 끄세요).	방송 오버레이를 켰습니다 (조정 모드: 드래그해 이동하고, 완료되면 조정을 끄세요).	OverlayController.cs:55
-방송 오버레이를 켰어요. 끄려면 컨트롤 보드·스튜디오 페이지{0}에서 끄세요.	방송 오버레이를 켰습니다. 끄려면 컨트롤 보드·스튜디오 페이지{0}에서 끄세요.	OverlayController.cs:55
-오버레이를 끄고 미리보기로 돌아왔어요.	오버레이를 끄고 미리보기로 돌아왔습니다.	OverlayController.cs:65
-오버레이 켬		OverlayController.cs:75
-오버레이 끔		OverlayController.cs:75
-오버레이 위치 조정 켬		OverlayController.cs:76
-오버레이 위치 조정 끔 (클릭은 게임으로)		OverlayController.cs:76
-30 fps (디스코드 공유)	30 fps (Discord 공유)	OverlayController.cs:91
-평소 제한 그대로		OverlayController.cs:91
-세로 3:4 (전신)		OverlayController.cs:102
-정사각 1:1 (상반신)		OverlayController.cs:102
-가로 16:9		OverlayController.cs:102
-세로 9:16 (쇼츠)		OverlayController.cs:102
-1.5배		OverlayController.cs:154
-2배 (가장 깨끗, GPU 많이)		OverlayController.cs:154
-방송 창을 {0}배로 그려 줄여요. 머리카락 끝·반사광이 깨끗해지는 대신 GPU를 더 써요.	방송 창을 {0}배로 그려 줄입니다. 머리카락 끝·반사광이 깨끗해지는 대신 GPU를 더 사용합니다.	OverlayController.cs:163
-방송 창 슈퍼샘플링을 껐어요.	방송 창 슈퍼샘플링을 껐습니다.	OverlayController.cs:163
-위·앞 + 채움광 (기본)		OverlayController.cs:171
-정면 위에서 주광, 앞에서 채움광 — 입체감이 있으면서 얼굴이 밝아요	정면 위에서 주광, 앞에서 채움광 — 입체감이 있으면서 얼굴이 밝습니다	OverlayController.cs:171
-정면 고르게 (그림자 없음)		OverlayController.cs:172
-정면에서 낮게, 그림자 없이 — 가장 깨끗하고 납작한 애니메이션 느낌		OverlayController.cs:172
-나비 (위 정면 + 아래 채움)		OverlayController.cs:173
-높은 정면 주광과 턱 아래 채움광 — 뷰티 촬영에서 많이 쓰는 배치	높은 정면 주광과 턱 아래 채움광 — 뷰티 촬영에서 많이 사용하는 배치	OverlayController.cs:173
-45° 옆 (입체)		OverlayController.cs:174
-비스듬한 옆에서 주광, 반대쪽에서 약한 채움광 — 얼굴 굴곡이 살아요	비스듬한 옆에서 주광, 반대쪽에서 약한 채움광 — 얼굴 윤곽이 살아납니다	OverlayController.cs:174
-역광 + 앞 채움 (윤곽 빛)		OverlayController.cs:175
-뒤에서 비춰 머리카락 윤곽이 빛나고, 앞 채움광이 얼굴을 밝혀요	뒤에서 비춰 머리카락 윤곽이 빛나고, 앞 채움광이 얼굴을 밝힙니다	OverlayController.cs:175
-조명 배치: 		OverlayController.cs:188
-조명 배치 '{0}'. 환경 페이지에서 방향·높이·세기를 더 다듬을 수 있어요.	조명 배치 '{0}'. 환경 페이지에서 방향·높이·세기를 더 다듬을 수 있습니다.	OverlayController.cs:189
-방송 화질 프리셋		OverlayController.cs:196 외 1곳
-방송 화질 프리셋을 넣었어요: 조명 배치 + 반사·블룸·채도. 환경 페이지에서 더 다듬을 수 있고, 실행 취소로 되돌려요.	방송 화질 프리셋을 넣었습니다: 조명 배치 + 반사·블룸·채도. 환경 페이지에서 더 다듬을 수 있고, 실행 취소로 되돌립니다.	OverlayController.cs:197
+오른쪽 아래		OverlayController.cs:43
+왼쪽 아래		OverlayController.cs:43
+오른쪽 위		OverlayController.cs:43
+왼쪽 위		OverlayController.cs:43
+가운데		OverlayController.cs:43 외 2곳
+옮긴 자리	이동한 위치	OverlayController.cs:43
+게임 위에 띄우기		OverlayController.cs:60
+게임 위에 투명 창으로 아바타만 띄워요. 디스코드·OBS에서 화면(모니터) 전체를 공유할 때 써요		OverlayController.cs:60
+OBS로 보내기		OverlayController.cs:61 외 1곳
+아바타만 그린 창을 띄워요. 배경이 '투명'이면 OBS '게임 캡처' → '특정 창 캡처' → 'ALE 방송 출력 (OBS)' → '투명도 허용'으로, '크로마키'면 '윈도우 캡처'로 잡고 크로마키 필터로 배경 색을 빼요		OverlayController.cs:61
+게임 화면과 합치기		OverlayController.cs:62
+디스코드에서 게임 하나만 방송할 때: 고른 게임 창을 잡아 그 위에 아바타를 얹은 창을 띄워요. 디스코드에서 게임 대신 'ALE 방송 화면' 창을 방송하면 게임과 아바타가 함께 보여요		OverlayController.cs:62
+ALE 방송 출력 (OBS)		OverlayController.cs:64
+ALE 방송 화면		OverlayController.cs:64
+투명 (게임 캡처)		OverlayController.cs:81
+배경을 투명하게 보내요. OBS '게임 캡처'에서 '투명도 허용'을 켜야 해요 (내 화면에서는 배경이 검게 보여요). '윈도우 캡처'로 잡으면 검게 나오니 그때는 크로마키를 쓰세요		OverlayController.cs:81
+크로마키 (윈도우 캡처)		OverlayController.cs:82
+배경을 고른 색 하나로 칠해요. OBS '윈도우 캡처'로 잡고 필터 → '크로마 키'에서 같은 색을 빼요. 아바타에 없는 색을 고르세요		OverlayController.cs:82
+분홍		OverlayController.cs:84
+OBS 창 배경을 크로마키({0})로 칠해요. OBS '윈도우 캡처'에 필터 '크로마 키'를 넣고 색을 '사용자 지정' {1}로 맞추세요.		OverlayController.cs:94
+OBS 창 배경을 투명하게 보내요. OBS '게임 캡처'에서 '투명도 허용'을 켜세요.		OverlayController.cs:95
+미리보기가 켜져야 오버레이를 켤 수 있어요.	미리보기가 켜져야 오버레이를 켤 수 있습니다.	OverlayController.cs:153
+합칠 게임 창을 먼저 골라 주세요 (게임을 켠 뒤 '게임 창' 목록에서).		OverlayController.cs:154
+오버레이를 띄울 화면을 찾지 못했어요.	오버레이를 띄울 화면을 찾지 못했습니다.	OverlayController.cs:155
+OBS용 창 '{0}'을 띄웠어요 (배경 {1}). OBS에서 '윈도우 캡처'로 이 창을 고르고 필터 '크로마 키'의 색을 {2}로 맞추세요. 창은 게임 뒤로 보내도 돼요 (최소화는 안 돼요).		OverlayController.cs:160
+OBS용 창 '{0}'을 띄웠어요. OBS에서 '게임 캡처' → '특정 창 캡처'로 이 창을 고르고 '투명도 허용'을 켜세요 ('윈도우 캡처'로는 배경이 검게 나와요 — 그때는 배경을 크로마키로). 창은 게임 뒤로 보내도 돼요 (최소화는 안 돼요).		OverlayController.cs:161
+게임과 합친 창 '{0}'을 띄웠어요. 디스코드 화면 공유에서 게임 대신 이 창을 고르세요. 창은 게임 뒤로 보내도 돼요 (최소화는 안 돼요).		OverlayController.cs:162
+방송 오버레이를 켰어요 (조정 모드: 끌어서 옮기고, 다 되면 조정을 끄세요).	방송 오버레이를 켰습니다 (조정 모드: 드래그해 이동하고, 완료되면 조정을 끄세요).	OverlayController.cs:163
+방송 오버레이를 켰어요. 끄려면 컨트롤 보드·스튜디오 페이지{0}에서 끄세요.	방송 오버레이를 켰습니다. 끄려면 컨트롤 보드·스튜디오 페이지{0}에서 끄세요.	OverlayController.cs:163
+오버레이를 끄고 미리보기로 돌아왔어요.	오버레이를 끄고 미리보기로 돌아왔습니다.	OverlayController.cs:174
+오버레이 켬		OverlayController.cs:184
+오버레이 끔		OverlayController.cs:184
+오버레이 위치 조정 켬		OverlayController.cs:185
+오버레이 위치 조정 끔 (클릭은 게임으로)		OverlayController.cs:185
+30 fps (디스코드 공유)	30 fps (Discord 공유)	OverlayController.cs:200
+평소 제한 그대로		OverlayController.cs:200
+세로 3:4 (전신)		OverlayController.cs:211
+정사각 1:1 (상반신)		OverlayController.cs:211
+가로 16:9		OverlayController.cs:211
+세로 9:16 (쇼츠)		OverlayController.cs:211
+1.5배		OverlayController.cs:272
+2배 (가장 깨끗, GPU 많이)		OverlayController.cs:272
+방송 창을 {0}배로 그려 줄여요. 머리카락 끝·반사광이 깨끗해지는 대신 GPU를 더 써요.	방송 창을 {0}배로 그려 줄입니다. 머리카락 끝·반사광이 깨끗해지는 대신 GPU를 더 사용합니다.	OverlayController.cs:281
+방송 창 슈퍼샘플링을 껐어요.	방송 창 슈퍼샘플링을 껐습니다.	OverlayController.cs:281
+위·앞 + 채움광 (기본)		OverlayController.cs:289
+정면 위에서 주광, 앞에서 채움광 — 입체감이 있으면서 얼굴이 밝아요	정면 위에서 주광, 앞에서 채움광 — 입체감이 있으면서 얼굴이 밝습니다	OverlayController.cs:289
+정면 고르게 (그림자 없음)		OverlayController.cs:290
+정면에서 낮게, 그림자 없이 — 가장 깨끗하고 납작한 애니메이션 느낌		OverlayController.cs:290
+나비 (위 정면 + 아래 채움)		OverlayController.cs:291
+높은 정면 주광과 턱 아래 채움광 — 뷰티 촬영에서 많이 쓰는 배치	높은 정면 주광과 턱 아래 채움광 — 뷰티 촬영에서 많이 사용하는 배치	OverlayController.cs:291
+45° 옆 (입체)		OverlayController.cs:292
+비스듬한 옆에서 주광, 반대쪽에서 약한 채움광 — 얼굴 굴곡이 살아요	비스듬한 옆에서 주광, 반대쪽에서 약한 채움광 — 얼굴 윤곽이 살아납니다	OverlayController.cs:292
+역광 + 앞 채움 (윤곽 빛)		OverlayController.cs:293
+뒤에서 비춰 머리카락 윤곽이 빛나고, 앞 채움광이 얼굴을 밝혀요	뒤에서 비춰 머리카락 윤곽이 빛나고, 앞 채움광이 얼굴을 밝힙니다	OverlayController.cs:293
+환경 탭 조명 그대로		OverlayController.cs:303
+미리보기와 같은 조명을 써요. 환경 탭에서 바꾸면 방송에도 바로 들어가요		OverlayController.cs:303
+오버레이 전용 조명		OverlayController.cs:304
+오버레이가 켜 있는 동안만 따로 저장한 조명을 써요. 끄면 환경 탭 조명으로 돌아와요. '환경 탭 조명 가져오기'로 지금 조명을 저장해요		OverlayController.cs:304
+오버레이 전용 조명을 써요. 켜 있는 동안만 들어가고, 끄면 환경 탭 조명으로 돌아와요.		OverlayController.cs:319
+오버레이도 환경 탭 조명을 그대로 써요.		OverlayController.cs:319
+환경 탭의 조명을 오버레이 전용 조명으로 가져왔어요. 오버레이가 켜 있는 동안 이 조명을 써요.		OverlayController.cs:329
+오버레이 전용 조명에 배치 '{0}'를 넣었어요.		OverlayController.cs:352
+조명 배치: 		OverlayController.cs:357
+조명 배치 '{0}'. 환경 탭에서 방향·높이·세기를 더 다듬을 수 있어요.		OverlayController.cs:359
 
 # ==== AvHost/OverlayPanel.cs ====
-항상 맨 위		OverlayPanel.cs:21
-주광과 채움광의 자리를 골라요. 고르면 바로 들어가고, 실행 취소로 되돌려요. 세부는 환경 페이지에서	주광과 채움광의 위치를 선택합니다. 선택하면 바로 들어가고, 실행 취소로 되돌립니다. 세부는 환경 페이지에서	OverlayPanel.cs:36
-방송 창을 이만큼 크게 그려 줄여요. 머리카락 끝·반사광 띠·외곽선이 깨끗해지는 대신 GPU를 더 써요	방송 창을 이만큼 크게 그려 줄입니다. 머리카락 끝·반사광 띠·외곽선이 깨끗해지는 대신 GPU를 더 사용합니다	OverlayPanel.cs:37
-켜면 오버레이 창을 끌어서 옮기고, 오른쪽 아래 손잡이로 크기를, 오른쪽 끌기·휠로 카메라를 돌려요 (테두리가 보여요). 다 맞췄으면 꺼서 클릭이 게임으로 가게 해요	켜면 오버레이 창을 드래그해 이동하고, 오른쪽 아래 핸들로 크기를, 오른쪽 드래그·휠로 카메라를 조정합니다 (테두리가 표시됩니다). 조정이 끝나면 꺼서 클릭이 게임으로 전달되게 합니다	OverlayPanel.cs:41
-오버레이가 켜 있는 동안만 이만큼으로 그려요. 게임과 GPU를 나눠 쓰므로 낮을수록 게임이 덜 느려져요 (디스코드 화면 공유는 보통 30 fps)	오버레이가 켜 있는 동안만 이만큼으로 그립니다. 게임과 GPU를 나눠 쓰므로 낮을수록 게임이 덜 느려집니다 (Discord 화면 공유는 보통 30 fps)	OverlayPanel.cs:43
-직접 맞춘 비율		OverlayPanel.cs:44
-오버레이 창의 가로·세로 비율. 위치 조정에서 오른쪽 아래 손잡이를 끌면 비율도 자유롭게 바뀌어요	오버레이 창의 가로·세로 비율. 위치 조정에서 오른쪽 아래 손잡이를 끌면 비율도 자유롭게 변경됩니다	OverlayPanel.cs:45
-자리	위치	OverlayPanel.cs:52
-크기 (화면 높이 %)		OverlayPanel.cs:53
-비율		OverlayPanel.cs:54
-창		OverlayPanel.cs:55
-슈퍼샘플링		OverlayPanel.cs:57
-조명 배치		OverlayPanel.cs:58
-고른 조명 배치 + 반사 세게 · 블룸 약하게 · 노출·대비·채도 조금 — 쨍하고 반사광이 사는 방송용 조명·후처리를 넣어요 (환경 페이지 값, 실행 취소로 되돌려요)	선택한 조명 배치 + 반사 강하게 · 블룸 약하게 · 노출·대비·채도 소폭 — 선명하고 반사광이 돋보이는 방송용 조명·후처리를 적용합니다 (환경 페이지 값, 실행 취소로 되돌릴 수 있습니다)	OverlayPanel.cs:59
-화질		OverlayPanel.cs:60 외 1곳
-단축키: 켜기·끄기		OverlayPanel.cs:61
-단축키: 위치 조정		OverlayPanel.cs:62
-컨트롤 보드 열기		OverlayPanel.cs:68
-맨 위에 고정할 수 있고 방송 화면에는 보이지 않는 작은 창에서 오버레이·트래킹·표정·토글을 바로 다뤄요	맨 위에 고정할 수 있고 방송 화면에는 보이지 않는 작은 창에서 오버레이·트래킹·표정·토글을 바로 조작합니다	OverlayPanel.cs:68
-게임 위에 아바타만 띄워요.	게임 위에 아바타만 띄웁니다.	OverlayPanel.cs:71
-게임 위에 아바타만 띄웁니다. Discord "화면 공유"에서 게임 창이 아니라 화면(모니터) 전체를 선택하면 게임과 아바타가 함께 표시됩니다. 		OverlayPanel.cs:71
-"위치 조정"을 켜면 아바타 창을 끌어서 이동하고 오른쪽 끌기·휠로 돌려 볼 수 있습니다. 끄면 클릭이 게임으로 갑니다. 		OverlayPanel.cs:72
-컨트롤 보드는 방송 화면에 잡히지 않아 게임 옆에 띄워 두고 사용합니다.		OverlayPanel.cs:73
-켜짐 · 위치 조정 중 (끌어서 옮기기)	켜짐 · 위치 조정 중 (끌어서 이동)	OverlayPanel.cs:105
-켜짐 · 클릭은 게임으로 가요	켜짐 · 클릭은 게임으로 갑니다	OverlayPanel.cs:105
-눌러서 정하기		OverlayPanel.cs:121 외 2곳
-누른 다음 쓸 키 조합을 누르세요 (Esc = 취소, Backspace = 지우기). 게임 중에도 눌려요	누른 다음 사용할 키 조합을 누르세요 (Esc = 취소, Backspace = 삭제). 게임 중에도 동작합니다	OverlayPanel.cs:121
-없음 (눌러서 정하기)		OverlayPanel.cs:131
-쓸 키를 누르세요…	사용할 키를 누르세요…	OverlayPanel.cs:137 외 1곳
+항상 맨 위		OverlayPanel.cs:27
+크기 (화면 높이 %)		OverlayPanel.cs:42 외 1곳
+주광과 채움광의 자리를 골라요. 오버레이 전용 조명이면 그 조명에, 아니면 환경 탭 조명에 들어가요 (환경 탭이면 실행 취소로 되돌려요)		OverlayPanel.cs:52
+방송에 쓸 조명. 환경 탭 조명을 그대로 쓰거나, 오버레이가 켜 있는 동안만 따로 저장한 조명을 써요		OverlayPanel.cs:54
+방송 창을 이만큼 크게 그려 줄여요. 머리카락 끝·반사광 띠·외곽선이 깨끗해지는 대신 GPU를 더 써요	방송 창을 이만큼 크게 그려 줄입니다. 머리카락 끝·반사광 띠·외곽선이 깨끗해지는 대신 GPU를 더 사용합니다	OverlayPanel.cs:55
+켜면 오버레이 창을 끌어서 옮기고, 오른쪽 아래 손잡이로 크기를, 오른쪽 끌기·휠로 카메라를 돌려요 (테두리가 보여요). 다 맞췄으면 꺼서 클릭이 게임으로 가게 해요	켜면 오버레이 창을 드래그해 이동하고, 오른쪽 아래 핸들로 크기를, 오른쪽 드래그·휠로 카메라를 조정합니다 (테두리가 표시됩니다). 조정이 끝나면 꺼서 클릭이 게임으로 전달되게 합니다	OverlayPanel.cs:59
+오버레이가 켜 있는 동안만 이만큼으로 그려요. 게임과 GPU를 나눠 쓰므로 낮을수록 게임이 덜 느려져요 (디스코드 화면 공유는 보통 30 fps)	오버레이가 켜 있는 동안만 이만큼으로 그립니다. 게임과 GPU를 나눠 쓰므로 낮을수록 게임이 덜 느려집니다 (Discord 화면 공유는 보통 30 fps)	OverlayPanel.cs:61
+직접 맞춘 비율		OverlayPanel.cs:62
+오버레이 창의 가로·세로 비율. 위치 조정에서 오른쪽 아래 손잡이를 끌면 비율도 자유롭게 바뀌어요	오버레이 창의 가로·세로 비율. 위치 조정에서 오른쪽 아래 손잡이를 끌면 비율도 자유롭게 변경됩니다	OverlayPanel.cs:63
+아바타를 어디로 보낼지 골라요. 디스코드에서 게임 하나만 방송하거나 OBS에서 게임 캡처를 쓰면 게임 위 투명 창은 잡히지 않아요		OverlayPanel.cs:68
+아바타와 합칠 게임 창. 게임을 먼저 켜고 목록을 펼쳐 골라요 (펼칠 때마다 새로 읽어요)		OverlayPanel.cs:69
+OBS에서 '게임 캡처'로 잡으면 투명, '윈도우 캡처'로 잡으면 크로마키를 고르세요 (윈도우 캡처는 투명을 못 읽어 배경이 검게 나와요)		OverlayPanel.cs:72
+직접 고른 색		OverlayPanel.cs:73
+배경에 칠할 색. 아바타·옷에 없는 색을 고르면 크로마키로 깔끔하게 빠져요		OverlayPanel.cs:74
+#RRGGBB — OBS 크로마 키 필터의 '사용자 지정 색'에 같은 값을 넣으세요		OverlayPanel.cs:76
+보내는 곳		OverlayPanel.cs:85
+크로마키 색		OverlayPanel.cs:87
+게임 창		OverlayPanel.cs:88
+자리	위치	OverlayPanel.cs:90
+조명		OverlayPanel.cs:92 외 1곳
+환경 탭 조명 가져오기		OverlayPanel.cs:93
+지금 환경 탭의 조명·후처리를 오버레이 전용 조명으로 저장해요. 오버레이가 켜 있는 동안만 이 조명을 쓰고, 끄면 환경 탭 조명으로 돌아와요		OverlayPanel.cs:93
+단축키: 켜기·끄기		OverlayPanel.cs:96
+세부 설정		OverlayPanel.cs:102
+비율		OverlayPanel.cs:103
+창		OverlayPanel.cs:104
+슈퍼샘플링		OverlayPanel.cs:106
+조명 배치		OverlayPanel.cs:107
+단축키: 위치 조정		OverlayPanel.cs:108
+비율·프레임 제한·슈퍼샘플링·조명 배치는 전문가 모드에서 바꿔요.		OverlayPanel.cs:112
+컨트롤 보드 열기		OverlayPanel.cs:115
+맨 위에 고정할 수 있고 방송 화면에는 보이지 않는 작은 창에서 오버레이·트래킹·표정·토글을 바로 다뤄요	맨 위에 고정할 수 있고 방송 화면에는 보이지 않는 작은 창에서 오버레이·트래킹·표정·토글을 바로 조작합니다	OverlayPanel.cs:115
+게임 위에 아바타만 띄워요.	게임 위에 아바타만 띄웁니다.	OverlayPanel.cs:118
+게임 위에 아바타만 띄웁니다. Discord "화면 공유"에서 게임 창이 아니라 화면(모니터) 전체를 선택하면 게임과 아바타가 함께 표시됩니다. 		OverlayPanel.cs:118
+"위치 조정"을 켜면 아바타 창을 끌어서 이동하고 오른쪽 끌기·휠로 돌려 볼 수 있습니다. 끄면 클릭이 게임으로 갑니다. 		OverlayPanel.cs:119
+컨트롤 보드는 방송 화면에 잡히지 않아 게임 옆에 띄워 두고 사용합니다.		OverlayPanel.cs:120
+"보내는 곳"을 "OBS로 보내기"로 하고 오버레이를 켜면 'ALE 방송 출력 (OBS)' 창이 뜹니다. 		OverlayPanel.cs:121
+배경이 "투명"이면 OBS에서 소스 추가 → "게임 캡처" → 모드 "특정 창 캡처" → 창 'ALE 방송 출력 (OBS)'을 고르고 "투명도 허용"을 켜면 배경 없이 아바타만 들어갑니다. 		OverlayPanel.cs:122
+"윈도우 캡처"로 잡으면 투명을 읽지 못해 배경이 검게 나오므로, 그때는 배경을 "크로마키"로 하고 윈도우 캡처 소스에 필터 → "크로마 키"를 넣어 같은 색(사용자 지정 색에 #RRGGBB)을 빼세요. 		OverlayPanel.cs:123
+창은 게임 뒤로 보내도 되지만 최소화하면 멈춥니다. 창 안에서 오른쪽 끌기·휠로 카메라를 돌립니다.		OverlayPanel.cs:124
+디스코드에서 게임 하나만 방송할 때		OverlayPanel.cs:125
+디스코드가 게임 창 하나만 잡으면 그 위에 띄운 아바타 창은 보이지 않습니다. 		OverlayPanel.cs:125
+"보내는 곳"을 "게임 화면과 합치기"로 하고 "게임 창"에서 게임을 고른 뒤 오버레이를 켜면, 게임 화면 위에 아바타를 얹은 'ALE 방송 화면' 창이 뜹니다. 		OverlayPanel.cs:126
+디스코드 화면 공유에서 게임 대신 이 창을 고르세요. 자리·크기·비율은 그 화면 안 아바타의 자리입니다. 		OverlayPanel.cs:127
+디스코드는 고른 창의 프로그램 소리를 보내므로, 게임 소리가 필요하면 화면 공유의 소리 설정을 확인하세요. Windows 10 1903 이상에서 됩니다.		OverlayPanel.cs:128
+목록을 펼쳐 게임 창을 고르세요		OverlayPanel.cs:180
+크기 (방송 화면 높이 %)		OverlayPanel.cs:196
+켜짐 · OBS 윈도우 캡처에서 '{0}' 창을 고르고 크로마 키 {1}		OverlayPanel.cs:199
+켜짐 · OBS 게임 캡처에서 '{0}' 창을 고르고 투명도 허용		OverlayPanel.cs:200
+켜짐 · 디스코드에서 '{0}' 창을 방송하세요		OverlayPanel.cs:201
+켜짐 · 위치 조정 중 (끌어서 옮기기)	켜짐 · 위치 조정 중 (끌어서 이동)	OverlayPanel.cs:202
+켜짐 · 클릭은 게임으로 가요	켜짐 · 클릭은 게임으로 갑니다	OverlayPanel.cs:202
+보이는 창이 없어요 (게임을 먼저 켜세요)		OverlayPanel.cs:212
+눌러서 정하기		OverlayPanel.cs:232 외 2곳
+누른 다음 쓸 키 조합을 누르세요 (Esc = 취소, Backspace = 지우기). 게임 중에도 눌려요	누른 다음 사용할 키 조합을 누르세요 (Esc = 취소, Backspace = 삭제). 게임 중에도 동작합니다	OverlayPanel.cs:232
+없음 (눌러서 정하기)		OverlayPanel.cs:242
+쓸 키를 누르세요…	사용할 키를 누르세요…	OverlayPanel.cs:248 외 1곳
 
 # ==== AvHost/PhysBoneFeel.cs ====
 관성 (출렁임)		PhysBoneFeel.cs:15
@@ -2603,6 +2688,7 @@ Unity 패키지·프리팹·씬, FBX 모델, 가져온 파일		StudioPanel.More.
 옷이 겹친 곳·목 아래·발밑에 은은한 그늘을 넣어 입체감을 줘요 (0 = 끄기)	의상이 겹친 곳·목 아래·발밑에 부드러운 음영을 넣어 입체감을 더합니다 (0 = 끄기)	StudioPanel.More.cs:238
 촬영 매끄럽게	촬영 안티에일리어싱	StudioPanel.More.cs:239
 촬영·녹화 한 장을 카메라를 아주 조금씩 흔들며 여러 번 찍어 평균해요. 외곽선·머리카락 끝의 계단과 주변 가림 잡티가 사라져요. 장 수만큼 오래 걸려요	촬영·녹화 프레임마다 카메라를 미세하게 이동하며 여러 번 렌더링해 평균합니다. 외곽선·머리카락 끝의 계단 현상과 Ambient Occlusion 노이즈가 줄어듭니다. 샘플 수만큼 시간이 더 걸립니다	StudioPanel.More.cs:239
+화질		StudioPanel.More.cs:240
 세로 1080×1920		StudioPanel.More.cs:260 외 1곳
 정사각 1080×1080		StudioPanel.More.cs:260
 초		StudioPanel.More.cs:270
@@ -2649,27 +2735,31 @@ MP4를 만들지 못했습니다: 		StudioPanel.More.cs:474
 저장…		StudioPanel.Preset.cs:30
 지금 스튜디오 세팅을 파일로 저장해요	지금 스튜디오 설정을 파일로 저장합니다	StudioPanel.Preset.cs:30
 세팅 프리셋	설정 프리셋	StudioPanel.Preset.cs:32
-배경·바닥·소품·심도·화질·촬영·보정·스티커·녹화·카메라 위치를 한 파일로 저장해 두었다가 불러와요. 이미지와 소품은 파일 위치만 적어요. 조명은 환경 페이지에서 세션과 함께 저장돼요. 표정·트래킹·단축키·오버레이는 들어가지 않아요.	배경·바닥·소품·피사계 심도·화질·촬영·보정·스티커·녹화·카메라 위치를 한 파일로 저장해 두었다가 불러옵니다. 이미지와 소품은 파일 위치만 적습니다. 조명은 환경 페이지에서 세션과 함께 저장됩니다. 표정·트래킹·단축키·오버레이는 들어가지 않습니다.	StudioPanel.Preset.cs:32
+배경·바닥·소품·심도·화질·촬영·보정·스티커·녹화·카메라 위치·조명을 한 파일로 저장해 두었다가 불러와요. 이미지와 소품은 파일 위치만 적어요. 조명은 "조명도 가져오기"를 켜 두면 함께 들어가요. 표정·트래킹·단축키·오버레이는 들어가지 않아요.	배경·바닥·소품·피사계 심도·화질·촬영·보정·스티커·녹화·카메라 위치·조명을 한 파일로 저장해 두었다가 불러옵니다. 이미지와 소품은 파일 위치만 기록합니다. 조명은 "조명도 가져오기"를 켜 두면 함께 적용됩니다. 표정·트래킹·단축키·오버레이는 포함되지 않습니다.	StudioPanel.Preset.cs:32
 파일에서…		StudioPanel.Preset.cs:34 외 1곳
 다른 폴더의 프리셋 파일(.studio.json)을 불러와요. 창에 끌어다 놓아도 돼요	다른 폴더의 프리셋 파일(.studio.json)을 불러옵니다. 창에 끌어다 놓아도 됩니다	StudioPanel.Preset.cs:34
 불러오기 전으로		StudioPanel.Preset.cs:36
 프리셋을 불러오기 바로 전 세팅으로 돌아가요	프리셋을 불러오기 바로 전 설정으로 돌아갑니다	StudioPanel.Preset.cs:36
-저장한 프리셋이 없어요. 위 "저장…"으로 지금 세팅을 저장해요.	저장한 프리셋이 없습니다. 위 "저장…"으로 지금 설정을 저장합니다.	StudioPanel.Preset.cs:54
-누르면 불러와요 · 오른쪽 클릭: 덮어쓰기·지우기	누르면 불러옵니다 · 오른쪽 클릭: 덮어쓰기·삭제	StudioPanel.Preset.cs:58
-지금 세팅으로 덮어쓰기	지금 설정으로 덮어쓰기	StudioPanel.Preset.cs:60
-프리셋 {0}을(를) 지웠어요.	프리셋 {0}을(를) 삭제했습니다.	StudioPanel.Preset.cs:65
-저장했어요 → {0}	저장했습니다 → {0}	StudioPanel.Preset.cs:108
-스튜디오 세팅을 저장했어요 · {0}	스튜디오 설정을 저장했습니다 · {0}	StudioPanel.Preset.cs:109
-녹화가 끝난 뒤 불러와 주세요.		StudioPanel.Preset.cs:117
-불러왔습니다 · {0}		StudioPanel.Preset.cs:126
-\n찾지 못한 파일 {0}개: 		StudioPanel.Preset.cs:126
-스튜디오 설정을 불러왔습니다 · {0}		StudioPanel.Preset.cs:127
- (찾지 못한 파일 {0}개)		StudioPanel.Preset.cs:127
-불러오기 전 세팅으로 돌아왔어요.	불러오기 전 설정으로 돌아왔습니다.	StudioPanel.Preset.cs:136
-스튜디오 세팅 저장	스튜디오 설정 저장	StudioPanel.Preset.cs:146
-스튜디오 설정		StudioPanel.Preset.cs:146
-스튜디오 프리셋		StudioPanel.Preset.cs:148 외 1곳
-스튜디오 프리셋 불러오기		StudioPanel.Preset.cs:159
+조명도 가져오기		StudioPanel.Preset.cs:39
+프리셋을 불러올 때 저장해 둔 조명(환경 페이지의 조명·추가 조명·라이트 볼륨)도 함께 넣어요. 끄면 지금 조명을 그대로 둬요	프리셋을 불러올 때 저장해 둔 조명(환경 페이지의 조명·추가 조명·라이트 볼륨)도 함께 적용합니다. 끄면 지금 조명을 그대로 유지합니다	StudioPanel.Preset.cs:40
+저장한 프리셋이 없어요. 위 "저장…"으로 지금 세팅을 저장해요.	저장한 프리셋이 없습니다. 위 "저장…"으로 지금 설정을 저장합니다.	StudioPanel.Preset.cs:57
+누르면 불러와요 · 오른쪽 클릭: 덮어쓰기·지우기	누르면 불러옵니다 · 오른쪽 클릭: 덮어쓰기·삭제	StudioPanel.Preset.cs:61
+지금 세팅으로 덮어쓰기	지금 설정으로 덮어쓰기	StudioPanel.Preset.cs:63
+프리셋 {0}을(를) 지웠어요.	프리셋 {0}을(를) 삭제했습니다.	StudioPanel.Preset.cs:68
+스튜디오 프리셋 조명		StudioPanel.Preset.cs:132
+저장했어요 → {0}	저장했습니다 → {0}	StudioPanel.Preset.cs:144
+스튜디오 세팅을 저장했어요 · {0}	스튜디오 설정을 저장했습니다 · {0}	StudioPanel.Preset.cs:145
+녹화가 끝난 뒤 불러와 주세요.		StudioPanel.Preset.cs:153
+불러왔습니다 · {0}		StudioPanel.Preset.cs:164
+ · 조명 포함		StudioPanel.Preset.cs:164
+\n찾지 못한 파일 {0}개: 		StudioPanel.Preset.cs:164
+스튜디오 설정을 불러왔습니다 · {0}		StudioPanel.Preset.cs:165
+ (찾지 못한 파일 {0}개)		StudioPanel.Preset.cs:165
+불러오기 전 세팅으로 돌아왔어요.	불러오기 전 설정으로 돌아왔습니다.	StudioPanel.Preset.cs:175
+스튜디오 세팅 저장	스튜디오 설정 저장	StudioPanel.Preset.cs:185
+스튜디오 설정		StudioPanel.Preset.cs:185
+스튜디오 프리셋		StudioPanel.Preset.cs:187 외 1곳
+스튜디오 프리셋 불러오기		StudioPanel.Preset.cs:198
 
 # ==== AvHost/StudioPanel.Sticker.cs ====
 0 = 그대로. 찍은 PNG와 스티커에 함께 쓰여요	0 = 그대로. 촬영한 PNG와 스티커에 함께 사용됩니다	StudioPanel.Sticker.cs:37
@@ -2865,14 +2955,14 @@ Windows 설정 따라		Theme.cs:22
 \n이름을 좌우로 끌면 값이 변경됩니다 (Shift: 천천히)		Ui.cs:596
 
 # ==== AvHost/Updater.cs ====
-저장소는 "owner/name" 모양이어야 해요	저장소는 "owner/name" 모양이어야 합니다	Updater.cs:78
-릴리스가 없거나 저장소를 찾지 못했어요 (비공개 저장소는 쓸 수 없어요)	릴리스가 없거나 저장소를 찾지 못했습니다 (비공개 저장소는 사용할 수 없습니다)	Updater.cs:80
-GitHub가 잠시 확인을 막았어요 (같은 인터넷에서 요청이 많았을 때). 한 시간쯤 뒤에 다시 확인해 주세요		Updater.cs:83
-이 릴리스에 zip 파일이 없어요	이 릴리스에 zip 파일이 없습니다	Updater.cs:98
-받은 파일이 릴리스와 달라요 (해시가 맞지 않음). 다시 시도해 주세요	받은 파일이 릴리스와 다릅니다 (해시가 맞지 않음). 다시 시도해 주세요	Updater.cs:124
-zip 안에 VrcProtoAv.dll이 없어요 (이 프로그램의 릴리스가 아니에요)	zip 안에 VrcProtoAv.dll이 없습니다 (이 프로그램의 릴리스가 아닙니다)	Updater.cs:131
-ALEdit 업데이트: 프로그램이 끝나기를 기다려요...		Updater.cs:140
-업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요.		Updater.cs:148
+저장소는 "owner/name" 모양이어야 해요	저장소는 "owner/name" 모양이어야 합니다	Updater.cs:79
+릴리스가 없거나 저장소를 찾지 못했어요 (비공개 저장소는 쓸 수 없어요)	릴리스가 없거나 저장소를 찾지 못했습니다 (비공개 저장소는 사용할 수 없습니다)	Updater.cs:81
+GitHub가 잠시 확인을 막았어요 (같은 인터넷에서 요청이 많았을 때). 한 시간쯤 뒤에 다시 확인해 주세요		Updater.cs:84
+이 릴리스에 zip 파일이 없어요	이 릴리스에 zip 파일이 없습니다	Updater.cs:99
+받은 파일이 릴리스와 달라요 (해시가 맞지 않음). 다시 시도해 주세요	받은 파일이 릴리스와 다릅니다 (해시가 맞지 않음). 다시 시도해 주세요	Updater.cs:125
+zip 안에 VrcProtoAv.dll이 없어요 (이 프로그램의 릴리스가 아니에요)	zip 안에 VrcProtoAv.dll이 없습니다 (이 프로그램의 릴리스가 아닙니다)	Updater.cs:132
+ALEdit 업데이트: 프로그램이 끝나기를 기다려요...		Updater.cs:141
+업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요.		Updater.cs:149
 
 # ==== AvHost/Upload.Export.cs ====
 원본 패키지 복사: {0} {1}		Upload.Export.cs:77
@@ -3022,7 +3112,6 @@ VR 사진·영상 폴더를 데스크톱에서 열어요	VR 사진·영상 폴�
 
 # ==== Host/Shared/EditorContext.cs ====
 선택 		EditorContext.cs:64 외 1곳
-조명		EditorContext.cs:108
 주광 회전(°)		EditorContext.cs:108
 환경광 배율		EditorContext.cs:108
 밝은 월드		EditorContext.cs:108
@@ -3624,6 +3713,11 @@ ACES (영화 같은 대비)		PostProcess.cs:120
 그림자 없는 고른 빛		UnityLighting.cs:44
 
 # ==== 코드에서 사라진 원문 (바꿀 글을 옮겨 적은 뒤 지워도 된다) ====
+조명 배치 '{0}'. 환경 페이지에서 방향·높이·세기를 더 다듬을 수 있어요.	조명 배치 '{0}'. 환경 페이지에서 방향·높이·세기를 더 다듬을 수 있습니다.	(없음)
+방송 화질 프리셋을 넣었어요: 조명 배치 + 반사·블룸·채도. 환경 페이지에서 더 다듬을 수 있고, 실행 취소로 되돌려요.	방송 화질 프리셋을 넣었습니다: 조명 배치 + 반사·블룸·채도. 환경 페이지에서 더 다듬을 수 있고, 실행 취소로 되돌립니다.	(없음)
+주광과 채움광의 자리를 골라요. 고르면 바로 들어가고, 실행 취소로 되돌려요. 세부는 환경 페이지에서	주광과 채움광의 위치를 선택합니다. 선택하면 바로 들어가고, 실행 취소로 되돌립니다. 세부는 환경 페이지에서	(없음)
+고른 조명 배치 + 반사 세게 · 블룸 약하게 · 노출·대비·채도 조금 — 쨍하고 반사광이 사는 방송용 조명·후처리를 넣어요 (환경 페이지 값, 실행 취소로 되돌려요)	선택한 조명 배치 + 반사 강하게 · 블룸 약하게 · 노출·대비·채도 소폭 — 선명하고 반사광이 돋보이는 방송용 조명·후처리를 적용합니다 (환경 페이지 값, 실행 취소로 되돌릴 수 있습니다)	(없음)
+배경·바닥·소품·심도·화질·촬영·보정·스티커·녹화·카메라 위치를 한 파일로 저장해 두었다가 불러와요. 이미지와 소품은 파일 위치만 적어요. 조명은 환경 페이지에서 세션과 함께 저장돼요. 표정·트래킹·단축키·오버레이는 들어가지 않아요.	배경·바닥·소품·피사계 심도·화질·촬영·보정·스티커·녹화·카메라 위치를 한 파일로 저장해 두었다가 불러옵니다. 이미지와 소품은 파일 위치만 적습니다. 조명은 환경 페이지에서 세션과 함께 저장됩니다. 표정·트래킹·단축키·오버레이는 들어가지 않습니다.	(없음)
 echo ALEdit 업데이트: 프로그램이 끝나기를 기다려요...	echo ALEdit 업데이트: 프로그램이 끝나기를 기다립니다...	(없음)
 if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했습니다. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	(없음)
 VR로 보기를 켰어요. 내 키 {0} cm로 아바타 눈높이에 맞춰요	VR로 보기를 켰습니다. 내 키 {0} cm로 아바타 눈높이에 맞춥니다	(없음)

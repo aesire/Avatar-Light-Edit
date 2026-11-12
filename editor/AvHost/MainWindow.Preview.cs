@@ -50,6 +50,8 @@ namespace VrcProto.AvHost
             cams.Children.Add(_poseBtn);
             _meshBtn = Ui.Subtle(Glyph.Edit, "메시 편집", ToggleMeshEdit, "메시 편집 (E): 정점을 골라 지우기(X)·합치기(M)·면 만들기(F)·끌어 옮기기, 누르기 브러시(B). 편집할 메시는 더블클릭으로 골라요");
             cams.Children.Add(Ui.Expert(_meshBtn));   // 정점 편집은 전문가 모드에서만
+            _origBtn = Ui.Subtle(Glyph.Hide, "원본", ToggleOriginal, "원본과 비교 (O): 고치기 전 모습을 잠깐 봐요. 다시 누르거나 값을 바꾸면 고친 모습으로 돌아와요.\n머티리얼·블렌드쉐이프·켜고 끄기·메시·아이템 위치만 원본으로 보이고, 자세·표정·조명은 그대로예요.");
+            cams.Children.Add(Opt(_origBtn));
             cams.Children.Add(MoreMenu());
             var right = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
             right.Children.Add(VrMenu());

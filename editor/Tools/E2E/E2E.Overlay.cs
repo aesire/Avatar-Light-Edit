@@ -98,6 +98,41 @@ static partial class E2E
             RawShot(rawOff, false);
             RawShot(rawOn, true);
             Compare("face close-up");
+            // 크로마키 배경 (2026-11-12, OBS로 보내기): 빈 곳은 키 색·알파 1, 아바타(불투명)는 투명 배경일 때와 같은 색
+            void Keyed(float[] key, float ss)
+            {
+                string kp = Path.Combine(outDir, $"overlay_chroma_{(int)(key[0] * 255):X2}{(int)(key[1] * 255):X2}{(int)(key[2] * 255):X2}_ss{ss:0.#}.png");
+                ch.Send(Msg.Make(Msg.Overlay).Set("enabled", true).Set("hwnd", hwnd).Set("adjust", false).Set("supersample", ss).Set("mode", "obs").Set("chroma", JNode.FloatArray(key)));
+                Thread.Sleep(800);
+                ch.Send(Msg.Make(Msg.Capture).Set("path", kp).Set("width", 600).Set("height", 800).Set("supersample", 2).Set("alpha", "raw"));
+                var r = wait(Msg.CaptureDone, 60000);
+                Check(r["ok"].AsBool, $"capture {Path.GetFileName(kp)} {r["error"].AsString}");
+                var (kw, kh, kpx) = DecodePng(kp);
+                var (_, _, pOn) = DecodePng(rawOn);
+                if (kw != tw || kh != th) { Check(false, "chroma shot size"); return; }
+                int bg = 0, bgBad = 0, op = 0, opBad = 0;
+                for (int i = 0; i < tp.Length; i += 4)
+                {
+                    if (tp[i + 3] == 0)
+                    {
+                        bg++;
+                        if (kpx[i + 3] < 250 || Math.Abs(kpx[i] - key[0] * 255) > 6 || Math.Abs(kpx[i + 1] - key[1] * 255) > 6 || Math.Abs(kpx[i + 2] - key[2] * 255) > 6) bgBad++;
+                    }
+                    else if (tp[i + 3] >= 252)
+                    {
+                        op++;
+                        if (kpx[i + 3] < 250 || Math.Abs(kpx[i] - pOn[i]) + Math.Abs(kpx[i + 1] - pOn[i + 1]) + Math.Abs(kpx[i + 2] - pOn[i + 2]) > 12) opBad++;
+                    }
+                }
+                Console.WriteLine($"   chroma ×{ss:0.#}: background {bg - bgBad}/{bg} key color, avatar {op - opBad}/{op} unchanged");
+                Check(bg > 0 && bgBad <= bg / 500, $"chroma ×{ss:0.#}: empty background is the key color, opaque ({bgBad} of {bg} off)");
+                Check(op > 0 && opBad <= op / 200, $"chroma ×{ss:0.#}: avatar keeps its colors ({opBad} of {op} changed)");
+            }
+            Keyed(new float[] { 0, 1, 0 }, 1);
+            Keyed(new float[] { 0, 0, 1 }, 2);
+            // 투명으로 되돌리면 다시 알파 0
+            RawShot(rawOn, true);
+            { var (_, _, pBack) = DecodePng(rawOn); int left = 0; for (int i = 3; i < tp.Length; i += 4) if (tp[i] == 0 && pBack[i] > 8) left++; Check(left == 0, $"chroma off → background transparent again ({left} pixels left)"); }
             ch.Send(Msg.Make(Msg.Overlay).Set("enabled", false).Set("hwnd", hwnd));
             // 방송 화질 조명 비교 (눈으로 보는 용, 스튜디오 고화질에서): 위 주광 또렷한 그림자 · 위 주광 부드러운 그림자 + 머리 장식 그림자 끔 + 앞 채움광 · 정면 그림자 없음
             ch.Send(Msg.Make(Msg.SetQuality).Set("studio", true).Set("ao", 0.0));

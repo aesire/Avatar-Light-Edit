@@ -370,13 +370,12 @@ sealed partial class ShootServer : IDisposable
             moved = true;
         }
 
-        // PhysBone은 시간이 흘러야 자세를 따라간다 (pauseTime이면 멈춰 있다): 잠깐 풀어 머리카락·치마가 자리 잡게 한 뒤 다시 멈춘다
+        // PhysBone은 시간이 흘러야 자세를 따라간다 (pauseTime이면 멈춰 있다): 머리카락·치마가 자리 잡게 그 시간만큼 바로 돌린다.
+        // (2026-11-12: 예전에는 시간을 풀고 실제로 기다려 장마다 0.8초가 걸리고 결과가 프레임 시간에 따라 조금씩 달랐다)
         if (moved && s.PhysBones && s.Settle > 0)
         {
-            Send(Msg.Make(Msg.SetPhysBones).Set("reset", true));
-            Send(Msg.Make(Msg.SetView).Set("pauseTime", false));
-            Thread.Sleep(TimeSpan.FromSeconds(s.Settle));
-            Send(Msg.Make(Msg.SetView).Set("pauseTime", true));
+            Thread.Sleep(100);   // 자세·바닥 맞추기가 뼈에 들어간 다음 프레임부터
+            Send(Msg.Make(Msg.SetPhysBones).Set("reset", true).Set("advance", s.Settle));
         }
         else if (moved) Thread.Sleep(100);   // 스킨드 메시 범위가 새 자세로 바뀐 뒤에 구도를 잡게
         ApplyFace(s, problems, item);

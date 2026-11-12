@@ -53,6 +53,18 @@ namespace VrcProto.AvHost
             var buf = new byte[ps.Width * ps.Height * 4];
             var pin = GCHandle.Alloc(buf, GCHandleType.Pinned);
             try { bmp.CopyPixels(new PixelRect(ps), pin.AddrOfPinnedObject(), buf.Length, ps.Width * 4); }
+            catch (NotSupportedException)
+            {
+                // 회색조·팔레트 PNG 등은 Avalonia가 픽셀을 내주지 않는다 ("CopyPixels is not supported for this bitmap type", 2026-11-12) → Skia로 바로 RGBA(곱하지 않은 알파)
+                using var sk = SkiaSharp.SKBitmap.Decode(file) ?? throw new InvalidDataException("이미지를 읽지 못했어요: " + Path.GetFileName(file));
+                using var pm = sk.PeekPixels();
+                var info = new SkiaSharp.SKImageInfo(sk.Width, sk.Height, SkiaSharp.SKColorType.Rgba8888, SkiaSharp.SKAlphaType.Unpremul);
+                var rgba = new byte[sk.Width * sk.Height * 4];
+                var pin2 = GCHandle.Alloc(rgba, GCHandleType.Pinned);
+                try { if (!pm.ReadPixels(info, pin2.AddrOfPinnedObject(), sk.Width * 4)) throw new InvalidDataException("이미지를 읽지 못했어요: " + Path.GetFileName(file)); }
+                finally { pin2.Free(); }
+                return new Rgba(sk.Width, sk.Height, rgba);
+            }
             finally { pin.Free(); }
             bool bgra = bmp.Format == null || bmp.Format == PixelFormat.Bgra8888, premul = bmp.AlphaFormat == AlphaFormat.Premul;
             for (int i = 0; i < buf.Length; i += 4)

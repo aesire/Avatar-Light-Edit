@@ -148,7 +148,7 @@ namespace VrcProto.Viewer
                         float o = c.R + p.Radius * scale - (p.Target - Closest(ca, cb, p.Target)).magnitude;
                         if (o > 0) ov += $" {c.T.name}:{o * 100:0.0}";
                     }
-                    lines.Add($"  {(p.T != null ? p.T.name : "end")}{(p.Fixed ? "[F]" : "")} r {p.Radius * scale * 100:0.0}cm move {(p.Pos - p.Target).magnitude * 100:0.0}cm angle {Vector3.Angle(restDir, simDir):0}° grav {p.Gravity:0.##} pull {p.Pull:0.##} lim {p.MaxAngleX:0}/{p.MaxAngleZ:0} len {p.LenRatio:0.###} at {Position(p).x:0.####},{Position(p).y:0.####},{Position(p).z:0.####} restOverlap[{ov} ]");
+                    lines.Add($"  {(p.T != null ? p.T.name : "end")}{(p.Fixed ? "[F]" : "")} r {p.Radius * scale * 100:0.0}cm move {(p.Pos - p.Target).magnitude * 100:0.0}cm angle {Vector3.Angle(restDir, simDir):0}° grav {p.Gravity:0.##} pull {p.Pull:0.##} lim {p.MaxAngleX:0}/{p.MaxAngleZ:0} len {p.LenRatio:0.###} peak {p.PeakUp * 100:0.0}/{p.PeakFar * 100:0.0} at {Position(p).x:0.####},{Position(p).y:0.####},{Position(p).z:0.####} restOverlap[{ov} ]");
                 }
             }
         }

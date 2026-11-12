@@ -73,7 +73,8 @@ namespace VrcProto.AvHost
         {
             _args = args;
             Boot("창 만들기 시작");
-            Title = "Avatar Light Edit";
+            ReadFocus();   // --focus: 한 기능만 켜기 (MainWindow.Focus.cs)
+            Title = AppName;
             Width = 1600; Height = 960; MinWidth = 1000; MinHeight = 600;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             FontFamily = Ui.Font;
@@ -101,7 +102,7 @@ namespace VrcProto.AvHost
                 appIcon.Margin = new Thickness(0, 0, 8, 0);
                 left.Children.Add(appIcon);
             }
-            left.Children.Add(Ui.Text("Avatar Light Edit", 13, FontWeight.SemiBold));
+            left.Children.Add(Ui.Text(AppName, 13, FontWeight.SemiBold));
             _fileText.Margin = new Thickness(10, 0, 18, 0); _fileText.MaxWidth = 320;
             left.Children.Add(_fileText);
             var openBtn = MenuButton(Glyph.Open, "열기", ("Unity 씬·프리팹·패키지 가져오기…", "Ctrl+I", ImportUnityDialog), ("의상·헤어·악세서리 붙이기…", "Ctrl+Shift+A", AddItemDialog), ("가져온 파일 열기…", "Ctrl+O", OpenIrDialog), ("세션 열기…", "Ctrl+Shift+O", OpenSessionDialog), ("셰이더 팩 추가…", "Ctrl+Shift+P", ShaderPackDialog));
@@ -124,6 +125,7 @@ namespace VrcProto.AvHost
             _undoBtn = Ui.Subtle(Glyph.Undo, "실행 취소", Undo, "실행 취소 (Ctrl+Z)");
             _redoBtn = Ui.Subtle(Glyph.Redo, null, Redo, "다시 실행 (Ctrl+Y)");
             left.Children.Add(_undoBtn); left.Children.Add(_redoBtn);
+            left.Children.Add(Ui.Subtle(Glyph.History, null, ShowHistory, "작업 기록 (Ctrl+H): 지금까지 바꾼 것을 차례로 보고, 고른 시점으로 한 번에 돌아가요"));
             left.Children.Add(Divider());
             _sideBtn = Ui.Subtle(Glyph.DockRight, null, TogglePaneSide, "");   // 아이콘만 (글자 "작업 창 오른쪽"은 무엇을 하는지 잘 안 보였다). 설명은 툴팁
             left.Children.Add(_sideBtn);
@@ -226,7 +228,7 @@ namespace VrcProto.AvHost
             ApplyPaneSide();
             ApplyLayoutStyle();
 
-            _side.Select("avatar");
+            ApplyFocus();   // 평소에는 아바타 페이지, --focus면 그 기능의 페이지만 남긴다
             WarmSetup();
             _ctx.StatusRequested += SetStatus;
             _ctx.FileSaved += ShowSaved;
@@ -633,11 +635,12 @@ namespace VrcProto.AvHost
         }
 
         /// <summary>doc: 아직 페이지에 채우기 전의 문서 (OpenIr가 페이지를 채우는 동안 렌더러가 먼저 불러오게). 없으면 지금 문서</summary>
-        void SendLoadScene(Document? doc = null)
+        /// <param name="sent">불러오라는 말은 이미 보냈다 (OpenIr가 IR을 읽기 전에 먼저 보낸다) — 진행 표시만 시작한다</param>
+        void SendLoadScene(Document? doc = null, bool sent = false)
         {
             doc ??= _ctx.Doc;
             if (doc == null || _ctx.Render == null) return;
-            _ctx.Render.Send(Msg.Make(Msg.LoadScene).Set("irPath", doc.IrPath).Set("texCache", _settings.TextureCache));
+            if (!sent) _ctx.Render.Send(Msg.Make(Msg.LoadScene).Set("irPath", doc.IrPath).Set("texCache", _settings.TextureCache));
             _sceneItem.Set(StatusItem.State.Busy, "장면 불러오는 중");
             _loadRenderers = _loadTextures = 0; _loadRenderersTotal = doc.Original.Renderers.Count; _loadTexturesTotal = doc.Original.Textures.Count;
             _loadWatch.Restart();
@@ -731,6 +734,7 @@ namespace VrcProto.AvHost
                     case "P": if (shift) { ShaderPackDialog(); return true; } return false;
                     case "OemComma": SettingsDialog(); return true;
                     case "K": OpenSearch(); return true;
+                    case "H": ShowHistory(); return true;   // 작업 기록 (MainWindow.History.cs)
                     case "OemQuestion": case "Oem2": case "Divide": ShowShortcuts(); return true;   // Ctrl+/ 단축키 목록 (MainWindow.Keys.cs)
                     case "D1": _side.Select("avatar"); return true;
                     case "D2": _side.Select("material"); return true;
@@ -771,6 +775,7 @@ namespace VrcProto.AvHost
                 case "H": _settings.ViewAvatarOnly = !_settings.ViewAvatarOnly; ViewChanged(); _ctx.Status(_settings.ViewAvatarOnly ? "아바타만 보여요 (H로 되돌리기)" : "장면을 다시 보여요"); return true;
                 case "P": TogglePoseBones(); return true;
                 case "E": ToggleMeshEdit(); return true;
+                case "O": ToggleOriginal(); return true;   // 원본과 비교 (MainWindow.History.cs)
             }
             return false;
         }

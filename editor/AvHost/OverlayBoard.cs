@@ -329,7 +329,8 @@ namespace VrcProto.AvHost
             s.Grid.Children.Clear();
             bool on = _overlay.On;
             Tile(s, "오버레이", on ? "켜짐" : "꺼짐", () => _overlay.SetOn(!on), on, "게임 위에 아바타를 띄워요");
-            Tile(s, "위치 조정", _overlay.Adjusting ? "끌어서 옮기기" : "클릭은 게임으로", () => _overlay.SetAdjust(!_overlay.Adjusting), _overlay.Adjusting, "켜면 오버레이를 끌어 옮기고 오른쪽 끌기·휠로 돌려요");
+            if (_overlay.Output == "screen")   // OBS·게임 합치기 창에는 위치 조정이 없다 (2026-11-12)
+                Tile(s, "위치 조정", _overlay.Adjusting ? "끌어서 옮기기" : "클릭은 게임으로", () => _overlay.SetAdjust(!_overlay.Adjusting), _overlay.Adjusting, "켜면 오버레이를 끌어 옮기고 오른쪽 끌기·휠로 돌려요");
             _size.SetQuiet(_settings.OverlaySize * 100);
             _sizeValue.Text = $"{_settings.OverlaySize * 100:0}%";
             bool sizeHidden = Hidden(SizeKey);

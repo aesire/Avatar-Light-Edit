@@ -4,6 +4,7 @@
 //   바꾸기    %TEMP%에 풀고, 이 프로그램이 끝나기를 기다렸다가 앱 폴더에 덮어쓰고 다시 여는 배치 파일을 실행한다 (사용자 설정·세션은 %APPDATA%라 그대로)
 //   저장소    앱 폴더의 update-repo.txt (2026-11-01, 배포 빌드가 넣는다 — 저장소 주소를 코드 대신 릴리스 때 정한다)
 //   확인      GitHub가 첨부 파일에 sha256 digest를 주면 받은 zip과 맞춰 본다 (2026-11-01)
+//   치우기    zip의 files.txt(파일 목록)로 새 판에서 빠진 파일을 지운다 (2026-11-12, Host/Core/UpdateFiles.cs)
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -146,6 +147,16 @@ namespace VrcProto.AvHost
             // robocopy: 0~7 = 성공. 바뀐 파일만 덮어쓴다 (지우지 않는다: 사용자가 넣은 셰이더 팩 등은 남긴다)
             sb.AppendLine($"robocopy \"{Bat(root)}\" \"{Bat(app)}\" /E /R:5 /W:1 /NFL /NDL /NJH /NJS >nul");
             sb.AppendLine("if %ERRORLEVEL% GEQ 8 (echo " + Texts.T("업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요.") + " & pause & exit /b 1)");
+            // 새 판에서 빠진 파일 치우기 (2026-11-12, Host/Core/UpdateFiles.cs): 지금 판의 files.txt에는 있고 새 판의 files.txt에는 없는 것만. 복사가 끝난 뒤에 지운다
+            try
+            {
+                var oldList = Path.Combine(app, VrcProto.Host.Core.UpdateFiles.ListName);
+                var newList = Path.Combine(root, VrcProto.Host.Core.UpdateFiles.ListName);
+                if (File.Exists(oldList) && File.Exists(newList))
+                    foreach (var rel in VrcProto.Host.Core.UpdateFiles.Stale(File.ReadAllLines(oldList), File.ReadAllLines(newList)))
+                        sb.AppendLine($"del /F /Q \"{Bat(Path.Combine(app, rel))}\" >nul 2>nul");
+            }
+            catch (IOException) { }   // 목록을 못 읽으면 치우지 않을 뿐이다
             // 배포판은 ALEdit.exe(앱 폴더 바깥, .NET 함께 넣음)로 켜져 있다 — 그 exe로 다시 연다. 개발 빌드는 dotnet
             var self = Environment.ProcessPath;
             var launcher = Path.Combine(app, "VrcProtoAv.cmd");
