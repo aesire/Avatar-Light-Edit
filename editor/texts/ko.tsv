@@ -1550,7 +1550,7 @@ VRChat에 올리기	VRChat 업로드	MainWindow.Search.cs:109 외 4곳
 고른 것·스위치·슬라이더·강조 단추 색 (비우면 Windows 강조색)	선택한 것·스위치·슬라이더·강조 버튼 색 (비우면 Windows 강조색)	MainWindow.Settings.cs:89
 바꾸면 바로 저장돼요. 아바타·세션 파일과는 상관없는 이 PC의 설정이에요.	변경하면 바로 저장됩니다. 아바타·세션 파일과는 상관없는 이 PC의 설정입니다.	MainWindow.Settings.cs:120
 Windows 언어 따르기		MainWindow.Settings.cs:127
-한국어		MainWindow.Settings.cs:127
+한국어		MainWindow.Settings.cs:127 외 1곳
 화면		MainWindow.Settings.cs:138
 언어		MainWindow.Settings.cs:140
 화면 글의 언어예요. 바꾸면 바로 바뀌어요 · Language · 言語		MainWindow.Settings.cs:140
@@ -1670,71 +1670,71 @@ GitHub 릴리스에서 새 버전을 받아요. 새 버전이 있을 때만 사�
 에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 열어요	에디터를 켜면 지난번에 열었거나 저장한 세션(없으면 가져온 아바타)을 바로 엽니다	MainWindow.Settings.cs:302
 설정 파일		MainWindow.Settings.cs:303
 {0}개 · {1} GB · {2}		MainWindow.Settings.cs:311
- 파일이 없습니다.		MainWindow.Settings.cs:319
-사용 안내	사용 설명서	MainWindow.Settings.cs:322
-이용 조건	이용 약관	MainWindow.Settings.cs:323
-라이선스		MainWindow.Settings.cs:324
-정보		MainWindow.Settings.cs:325
-무료 프로그램 · 		MainWindow.Settings.cs:327
- · VRChat이나 Unity가 만들거나 승인한 도구가 아닙니다		MainWindow.Settings.cs:327
-문서		MainWindow.Settings.cs:328
-사용법·조건	사용법·약관	MainWindow.Settings.cs:328
-문제 알리기	문제 신고	MainWindow.Settings.cs:329
-꺼지거나 오류가 나면 최근 기록 파일을 보내 주세요. 아바타 이름·PC 경로가 적혀 있을 수 있어요	종료되거나 오류가 발생하면 최근 로그 파일을 보내 주세요. 아바타 이름·PC 경로가 포함될 수 있습니다	MainWindow.Settings.cs:329
+ 파일이 없습니다.		MainWindow.Settings.cs:320
+사용 안내	사용 설명서	MainWindow.Settings.cs:326
+이용 조건	이용 약관	MainWindow.Settings.cs:327
+라이선스		MainWindow.Settings.cs:328
+정보		MainWindow.Settings.cs:329
+무료 프로그램 · 		MainWindow.Settings.cs:331
+ · VRChat이나 Unity가 만들거나 승인한 도구가 아닙니다		MainWindow.Settings.cs:331
+문서		MainWindow.Settings.cs:332
+사용법·조건	사용법·약관	MainWindow.Settings.cs:332
+문제 알리기	문제 신고	MainWindow.Settings.cs:333
+꺼지거나 오류가 나면 최근 기록 파일을 보내 주세요. 아바타 이름·PC 경로가 적혀 있을 수 있어요	종료되거나 오류가 발생하면 최근 로그 파일을 보내 주세요. 아바타 이름·PC 경로가 포함될 수 있습니다	MainWindow.Settings.cs:333
 
 # ==== AvHost/MainWindow.Shots.cs ====
-laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:280
-laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:302
-laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:304
-VR 시험 단추		MainWindow.Shots.cs:345
-VR 시험 창		MainWindow.Shots.cs:347
-떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:347
-{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:523
-{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:554
-skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:560
-FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:570
-UI 시험 묶음		MainWindow.Shots.cs:577 외 2곳
-{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:597
-{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:609
-FAIL rocker 없음		MainWindow.Shots.cs:638
-{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:684
-FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:695
-슬롯		MainWindow.Shots.cs:699
-기타 		MainWindow.Shots.cs:709
-{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:727
- 쓰기	 사용	MainWindow.Shots.cs:731
-꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:736
-{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:739
-FAIL palette: 탭이 없음		MainWindow.Shots.cs:753
- · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:762
-자세 › 손 모양 띄우기		MainWindow.Shots.cs:859
-에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:864
-밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:867
-핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:869
-핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:871
-핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:874
-다시 붙이기	다시 도킹	MainWindow.Shots.cs:878 외 1곳
-가져온 파일 창		MainWindow.Shots.cs:886
-가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:892
-가져온 파일 창 닫기		MainWindow.Shots.cs:895
-머티리얼·에셋 창		MainWindow.Shots.cs:901
-머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:906
-머티리얼·에셋 창 닫기		MainWindow.Shots.cs:914
-텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:939
-텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:959
-텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:961
-텍스처 합치기: 적용 → 		MainWindow.Shots.cs:967
-텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:972
-텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:975
-search:눈 감기		MainWindow.Shots.cs:993
-search:웃음		MainWindow.Shots.cs:993
-save:웃는 얼굴		MainWindow.Shots.cs:1002
-쥐기		MainWindow.Shots.cs:1014 외 1곳
-그림자		MainWindow.Shots.cs:1014 외 2곳
-오버레이		MainWindow.Shots.cs:1014 외 4곳
-토글		MainWindow.Shots.cs:1014 외 1곳
-찾기 "{0}" → {1}		MainWindow.Shots.cs:1017
-찾기 색인 {0}개		MainWindow.Shots.cs:1019
+laser click on hand menu "개인 거울" ({0} → {1})		MainWindow.Shots.cs:281
+laser click on camera "타이머" ({0} → {1})		MainWindow.Shots.cs:303
+laser click on camera "고정" ({0} → {1})		MainWindow.Shots.cs:305
+VR 시험 단추		MainWindow.Shots.cs:346
+VR 시험 창		MainWindow.Shots.cs:348
+떠 있는 창도 VR에 따로 떠요		MainWindow.Shots.cs:348
+{0} dial drag {1}: {2} → {3} · 저장됨 {4} · 세밀 막대 {5}		MainWindow.Shots.cs:524
+{0} group dial wheel {1}/{2}: {3} → {4} (다이얼 {5}개)		MainWindow.Shots.cs:555
+skip shape row → bar (열린 묶음 없음)		MainWindow.Shots.cs:561
+FAIL float: 쉐이프키 둘이 없음		MainWindow.Shots.cs:571
+UI 시험 묶음		MainWindow.Shots.cs:578 외 2곳
+{0} float block dial {1} (줄 {2}): {3} → {4}		MainWindow.Shots.cs:598
+{0} float dials: 합치기 {1} · 프리셋 다시 열기 {2} ({3})		MainWindow.Shots.cs:610
+FAIL rocker 없음		MainWindow.Shots.cs:639
+{0} gimmicks: 프리팹 {1} · 도구 {2} ({3}초) {4}		MainWindow.Shots.cs:685
+FAIL section tabs: 머티리얼 탭이 없음		MainWindow.Shots.cs:696
+슬롯		MainWindow.Shots.cs:700
+기타 		MainWindow.Shots.cs:710
+{0} more button survives class changes (찾음 {1}), 메뉴 열림 {2}		MainWindow.Shots.cs:728
+ 쓰기	 사용	MainWindow.Shots.cs:732
+꺼져 있어요	꺼져 있습니다	MainWindow.Shots.cs:737
+{0} section toggle {1}: {2} → {3}, 설명 따라감 {4}, 기타에 있었음 {5}		MainWindow.Shots.cs:740
+FAIL palette: 탭이 없음		MainWindow.Shots.cs:754
+ · 넣기 {0} {1} → _Color {2}		MainWindow.Shots.cs:763
+자세 › 손 모양 띄우기		MainWindow.Shots.cs:860
+에디터 안쪽 (창 {0} 크기 {1}×{2})		MainWindow.Shots.cs:865
+밖으로 옮겨도 안쪽으로 잘림		MainWindow.Shots.cs:868
+핀 없음: 다른 페이지에서 숨음		MainWindow.Shots.cs:870
+핀 없음: 자기 페이지로 돌아오면 보임		MainWindow.Shots.cs:872
+핀: 다른 페이지에서도 보임		MainWindow.Shots.cs:875
+다시 붙이기	다시 도킹	MainWindow.Shots.cs:879 외 1곳
+가져온 파일 창		MainWindow.Shots.cs:887
+가져온 파일 창은 어느 페이지에서나 보임		MainWindow.Shots.cs:893
+가져온 파일 창 닫기		MainWindow.Shots.cs:896
+머티리얼·에셋 창		MainWindow.Shots.cs:902
+머티리얼·에셋: Assets 아래 한 줄 폴더 건너뛰기 → 		MainWindow.Shots.cs:907
+머티리얼·에셋 창 닫기		MainWindow.Shots.cs:915
+텍스처 합치기: 회색조 PNG 읽기 {0}×{1} {2},{3},{4}		MainWindow.Shots.cs:940
+텍스처 합치기: 끌어 옮기기 ({0},{1}) → ({2},{3})		MainWindow.Shots.cs:960
+텍스처 합치기: 모서리로 크기 {0} → {1} (비율 그대로)		MainWindow.Shots.cs:962
+텍스처 합치기: 적용 → 		MainWindow.Shots.cs:968
+텍스처 합치기: 다시 열면 레이어 2개		MainWindow.Shots.cs:973
+텍스처 합치기: 실행 취소하면 바탕으로		MainWindow.Shots.cs:976
+search:눈 감기		MainWindow.Shots.cs:994
+search:웃음		MainWindow.Shots.cs:994
+save:웃는 얼굴		MainWindow.Shots.cs:1003
+쥐기		MainWindow.Shots.cs:1015 외 1곳
+그림자		MainWindow.Shots.cs:1015 외 2곳
+오버레이		MainWindow.Shots.cs:1015 외 4곳
+토글		MainWindow.Shots.cs:1015 외 1곳
+찾기 "{0}" → {1}		MainWindow.Shots.cs:1018
+찾기 색인 {0}개		MainWindow.Shots.cs:1020
 
 # ==== AvHost/MainWindow.TestEdit.cs ====
 촬영 		MainWindow.TestEdit.cs:48 외 1곳
@@ -1790,14 +1790,14 @@ owner/name (GitHub 저장소)		MainWindow.Update.cs:91
 새 버전 {0}이 있어요	새 버전 {0}이 있습니다	MainWindow.Update.cs:117
 최신 버전이에요 ({0})	최신 버전입니다 ({0})	MainWindow.Update.cs:117
  · 받을 zip이 없는 릴리스입니다		MainWindow.Update.cs:117
-업데이트를 받을 GitHub 저장소(owner/name)를 적어 주세요.		MainWindow.Update.cs:127
-확인하는 중…		MainWindow.Update.cs:128
-확인하지 못했습니다: 		MainWindow.Update.cs:135
-{0}은 다시 알리지 않아요.	{0}은 다시 알리지 않습니다.	MainWindow.Update.cs:144
-{0} 받는 중…		MainWindow.Update.cs:153
-다시 시작해요…	다시 시작합니다…	MainWindow.Update.cs:157
-업데이트하지 못했습니다: 		MainWindow.Update.cs:163
-업데이트를 받을 GitHub 저장소(owner/name)를 적고 "확인"을 눌러요.	업데이트를 받을 GitHub 저장소(owner/name)를 적고 "확인"을 누르세요.	MainWindow.Update.cs:168
+업데이트를 받을 GitHub 저장소(owner/name)를 적어 주세요.		MainWindow.Update.cs:128
+확인하는 중…		MainWindow.Update.cs:129
+확인하지 못했습니다: 		MainWindow.Update.cs:136
+{0}은 다시 알리지 않아요.	{0}은 다시 알리지 않습니다.	MainWindow.Update.cs:145
+{0} 받는 중…		MainWindow.Update.cs:154
+다시 시작해요…	다시 시작합니다…	MainWindow.Update.cs:158
+업데이트하지 못했습니다: 		MainWindow.Update.cs:164
+업데이트를 받을 GitHub 저장소(owner/name)를 적고 "확인"을 눌러요.	업데이트를 받을 GitHub 저장소(owner/name)를 적고 "확인"을 누르세요.	MainWindow.Update.cs:169
 
 # ==== AvHost/MainWindow.Vr.cs ====
 SteamVR로 아바타를 헤드셋에서 봐요. "SteamVR 연결"만 켜면 장치만 확인하고, "VR로 보기"를 켜면 헤드셋에 화면이 나와요	SteamVR로 아바타를 헤드셋에서 봅니다. "SteamVR 연결"만 켜면 장치만 확인하고, "VR로 보기"를 켜면 헤드셋에 화면이 표시됩니다	MainWindow.Vr.cs:23
@@ -2476,8 +2476,7 @@ Unity를 찾지 못함 (UNITY_EXE)		Program.cs:364
 팩 이름		ShaderPackWindow.cs:22
 열린 아바타의 머티리얼로 필요한 기능(키워드)까지 넣기		ShaderPackWindow.cs:23
 미리보기에 없는 셰이더(MToon, Poiyomi 등)를 더해요.	미리보기에 없는 셰이더(MToon, Poiyomi 등)를 추가합니다.	ShaderPackWindow.cs:39
-셰이더가 든 .unitypackage 나 폴더를 선택하면 이 PC의 Unity 		ShaderPackWindow.cs:40
-로 컴파일해 팩으로 만듭니다. 셰이더 파일만 꺼내 사용하고 스크립트는 실행하지 않습니다.		ShaderPackWindow.cs:40
+셰이더가 든 .unitypackage 나 폴더를 선택하면 이 PC의 Unity {0}로 컴파일해 팩으로 만듭니다. 셰이더 파일만 꺼내 사용하고 스크립트는 실행하지 않습니다.		ShaderPackWindow.cs:40
 패키지 고르기	패키지 선택	ShaderPackWindow.cs:42
 폴더 고르기	폴더 선택	ShaderPackWindow.cs:43
 설치된 팩 없음		ShaderPackWindow.cs:51
@@ -2778,7 +2777,7 @@ PNG·JPG 이미지, 또는 HDR(.hdr) 파노라마		StudioPanel.cs:67
 360° 파노라마 · {0} ({1}×{2})		StudioPanel.cs:498
 평면 이미지 · {0} ({1}×{2})		StudioPanel.cs:499
 단색 · {0}		StudioPanel.cs:500
-그라데이션 ·{0} → {1}		StudioPanel.cs:501
+그라데이션 · {0} → {1}		StudioPanel.cs:501
 
 # ==== AvHost/SubTabs.cs ====
 기타		SubTabs.cs:49 외 4곳
@@ -2868,11 +2867,12 @@ Windows 설정 따라		Theme.cs:22
 # ==== AvHost/Updater.cs ====
 저장소는 "owner/name" 모양이어야 해요	저장소는 "owner/name" 모양이어야 합니다	Updater.cs:78
 릴리스가 없거나 저장소를 찾지 못했어요 (비공개 저장소는 쓸 수 없어요)	릴리스가 없거나 저장소를 찾지 못했습니다 (비공개 저장소는 사용할 수 없습니다)	Updater.cs:80
-이 릴리스에 zip 파일이 없어요	이 릴리스에 zip 파일이 없습니다	Updater.cs:95
-받은 파일이 릴리스와 달라요 (해시가 맞지 않음). 다시 시도해 주세요	받은 파일이 릴리스와 다릅니다 (해시가 맞지 않음). 다시 시도해 주세요	Updater.cs:121
-zip 안에 VrcProtoAv.dll이 없어요 (이 프로그램의 릴리스가 아니에요)	zip 안에 VrcProtoAv.dll이 없습니다 (이 프로그램의 릴리스가 아닙니다)	Updater.cs:128
-echo ALEdit 업데이트: 프로그램이 끝나기를 기다려요...	echo ALEdit 업데이트: 프로그램이 끝나기를 기다립니다...	Updater.cs:136
-if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했습니다. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	Updater.cs:144
+GitHub가 잠시 확인을 막았어요 (같은 인터넷에서 요청이 많았을 때). 한 시간쯤 뒤에 다시 확인해 주세요		Updater.cs:83
+이 릴리스에 zip 파일이 없어요	이 릴리스에 zip 파일이 없습니다	Updater.cs:98
+받은 파일이 릴리스와 달라요 (해시가 맞지 않음). 다시 시도해 주세요	받은 파일이 릴리스와 다릅니다 (해시가 맞지 않음). 다시 시도해 주세요	Updater.cs:124
+zip 안에 VrcProtoAv.dll이 없어요 (이 프로그램의 릴리스가 아니에요)	zip 안에 VrcProtoAv.dll이 없습니다 (이 프로그램의 릴리스가 아닙니다)	Updater.cs:131
+ALEdit 업데이트: 프로그램이 끝나기를 기다려요...		Updater.cs:140
+업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요.		Updater.cs:148
 
 # ==== AvHost/Upload.Export.cs ====
 원본 패키지 복사: {0} {1}		Upload.Export.cs:77
@@ -3283,6 +3283,10 @@ MP4 녹화 (파이프)		Mp4Writer.cs:345
 녹화 파이프 머리말이 달라요	녹화 파이프 머리말이 다릅니다	Mp4Writer.cs:373
 녹화 파이프 레코드가 다릅니다: 		Mp4Writer.cs:397
 
+# ==== Host/Core/ReleaseNotes.cs ====
+영어		ReleaseNotes.cs:22
+일본어		ReleaseNotes.cs:23
+
 # ==== Host/Core/Session.cs ====
 세션 파일이 아닙니다		Session.cs:52
 더 새 버전의 세션 파일입니다.		Session.cs:53
@@ -3620,6 +3624,8 @@ ACES (영화 같은 대비)		PostProcess.cs:120
 그림자 없는 고른 빛		UnityLighting.cs:44
 
 # ==== 코드에서 사라진 원문 (바꿀 글을 옮겨 적은 뒤 지워도 된다) ====
+echo ALEdit 업데이트: 프로그램이 끝나기를 기다려요...	echo ALEdit 업데이트: 프로그램이 끝나기를 기다립니다...	(없음)
+if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했습니다. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)	(없음)
 VR로 보기를 켰어요. 내 키 {0} cm로 아바타 눈높이에 맞춰요	VR로 보기를 켰습니다. 내 키 {0} cm로 아바타 눈높이에 맞춥니다	(없음)
 VR로 보기를 켰어요. 몸 크기가 안 맞으면 VR 메뉴에서 내 키를 맞추거나 서서 재 주세요	VR로 보기를 켰습니다. 몸 크기가 안 맞으면 VR 메뉴에서 내 키를 맞추거나 서서 측정해 주세요	(없음)
 VR로 보기를 켰어요. 헤드셋을 쓰면 아바타 앞에 서 있어요 (다시 맞추기로 자리를 다시 잡아요).	VR로 보기를 켰습니다. 헤드셋을 사용하면 아바타 앞에 서 있습니다 (다시 맞추기로 위치를 다시 잡습니다).	(없음)

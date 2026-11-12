@@ -100,7 +100,7 @@ cp packages/lib/*.dll packages/native/*.dll bin/Protocol.dll "$IMPORTSIM" bin/av
 # 화면 글 표 (AvHost/Texts.cs). 고치는 곳은 editor/texts/ko·en·ja.tsv (화면 언어별) — 테스트 모드는 그 파일을 바로 읽는다
 mkdir -p bin/av/texts && cp texts/*.tsv bin/av/texts/
 # 사용 안내·이용 조건·오픈소스 고지 (설정 › 정보에서 연다)
-cp release/README.txt release/LICENSE.txt release/THIRD_PARTY_NOTICES.txt bin/av/
+cp release/README.txt release/README.en.txt release/README.ja.txt release/LICENSE.txt release/THIRD_PARTY_NOTICES.txt bin/av/
 cp ../LICENSE bin/av/COPYING.txt   # GPLv3 전문 (2026-11-02, 배포판에 함께 넣어야 한다)
 runtimeconfig bin/av/VrcProtoAv
 printf '@start "" dotnet "%%~dp0VrcProtoAv.dll" %%*\r\n' > bin/av/VrcProtoAv.cmd

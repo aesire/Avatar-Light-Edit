@@ -97,7 +97,7 @@ static class MakeRelease
             File.Copy(f, Path.Combine(stage, n));
         }
         foreach (var d in new[] { "texts", "Localization", "ShaderPack", "Upload" }) CopyDir(Path.Combine(av, d), Path.Combine(stage, d));
-        foreach (var need in new[] { "VrcProtoAv.dll", "Protocol.dll", "ImportSim.Core.dll", "README.txt", "LICENSE.txt", "COPYING.txt", "THIRD_PARTY_NOTICES.txt", "texts/ko.tsv", "texts/en.tsv", "texts/ja.tsv", "Upload/VrcProtoUpload.cs", "ShaderPack/ShaderPackBuilder.cs" })
+        foreach (var need in new[] { "VrcProtoAv.dll", "Protocol.dll", "ImportSim.Core.dll", "README.txt", "README.en.txt", "README.ja.txt", "LICENSE.txt", "COPYING.txt", "THIRD_PARTY_NOTICES.txt", "texts/ko.tsv", "texts/en.tsv", "texts/ja.tsv", "Upload/VrcProtoUpload.cs", "ShaderPack/ShaderPackBuilder.cs" })
             if (!File.Exists(Path.Combine(stage, need))) throw new FileNotFoundException("bin/av에 없어요: " + need);
     }
 

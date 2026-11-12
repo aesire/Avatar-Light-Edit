@@ -37,7 +37,7 @@ namespace VrcProto.AvHost
 
             var p = new StackPanel { Margin = new Thickness(24, 20, 24, 20), Spacing = 6 };
             p.Children.Add(Ui.DialogHeader("셰이더 팩 추가", "미리보기에 없는 셰이더(MToon, Poiyomi 등)를 더해요.",
-                "셰이더가 든 .unitypackage 나 폴더를 선택하면 이 PC의 Unity " + unityVersion + "로 컴파일해 팩으로 만듭니다. 셰이더 파일만 꺼내 사용하고 스크립트는 실행하지 않습니다."));
+                $"셰이더가 든 .unitypackage 나 폴더를 선택하면 이 PC의 Unity {unityVersion}로 컴파일해 팩으로 만듭니다. 셰이더 파일만 꺼내 사용하고 스크립트는 실행하지 않습니다."));
             var pick = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, Margin = new Thickness(0, 4, 0, 4) };
             pick.Children.Add(Ui.Button("패키지 고르기", PickPackage, glyph: Glyph.Open));
             pick.Children.Add(Ui.Button("폴더 고르기", PickFolder, glyph: Glyph.Folder));

@@ -95,7 +95,7 @@ namespace VrcProto.AvHost
             _checkItem.IsVisible = issues.Count > 0;
             if (issues.Count == 0) return;
             _checkItem.Set(issues.Any(i => i.Level >= 2) ? StatusItem.State.Error : StatusItem.State.Warn, $"올리기 전에 볼 것 {issues.Count}개");
-            ToolTip.SetTip(_checkItem, string.Join("\n", issues.Select(i => "· " + i.Title)) + "\n\n누르면 업로드 페이지로 갑니다");
+            ToolTip.SetTip(_checkItem, string.Join("\n", issues.Select(i => "· " + Texts.T(i.Title))) + "\n\n누르면 업로드 페이지로 갑니다");
         }
 
         /// <summary>점검 한 줄: 상태 아이콘(0 좋음 · 1 주의 · 2 고칠 것) · 제목 · 설명. 누르면 go</summary>

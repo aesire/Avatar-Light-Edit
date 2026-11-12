@@ -169,7 +169,7 @@ namespace VrcProto.AvHost
                 var meshNames = used.Select(r => NodeName(s, r)).Distinct().ToList();
                 e.Ren = used.FirstOrDefault();
                 e.Desc = ShaderLabel(m, schema) + (unsup ? " (미리보기 미지원)" : "") + " · "
-                    + (meshNames.Count == 0 ? "쓰는 메시 없음" : "메시 " + (meshNames.Count <= 3 ? string.Join(", ", meshNames) : $"{string.Join(", ", meshNames.Take(3))} 외 {meshNames.Count - 3}개"));
+                    + (meshNames.Count == 0 ? Texts.T("쓰는 메시 없음") : Texts.T("메시 ") + (meshNames.Count <= 3 ? string.Join(", ", meshNames) : $"{string.Join(", ", meshNames.Take(3))} 외 {meshNames.Count - 3}개"));
                 e.Dim = used.Count == 0;
                 e.Tip = (m.Path.Length > 0 ? m.Path : "FBX 안의 머티리얼") + "\nGUID " + m.Guid;
                 mats[m.Guid] = e;

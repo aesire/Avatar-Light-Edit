@@ -18,7 +18,7 @@ static partial class CoreTests
     {
         Run(Json); Run(DocumentBasics); Run(UndoGroups); Run(ChangesetRoundTrip); Run(RenderSyncMessages);
         Run(LilRules); Run(Sections); Run(BlendGroups); Run(ShapeNames); Run(BlendSides); Run(PipeRoundTrip); Run(IrLoad); Run(PerfStats); Run(PhysBoneStats); Run(OutfitRecompose); Run(PoseCore); Run(AnimParse); Run(WardrobeParts); Run(Toggles); Run(ShapeKeyRun); Run(AnimWrite); Run(BlinkFixMath); Run(FaceMapMerge);
-        Run(MeshOpsBasics); Run(MeshEditsDoc); Run(VpmVersions); Run(UploadPlanBuild); Run(DecimateBasics); Run(DecimateIslands); Run(DecimateToCount); Run(StickerImages); Run(SheetCore); Run(ColorHarmonyBasics); Run(ImageDecodeBasics); Run(ImageDecodeMore); Run(TextureGpuBasics); Run(SessionSource); Run(SceneSpecBasics); Run(SceneSpecStudioTabs); Run(StudioPresets); Run(DocEditBasics); Run(TextureMixBasics); Run(SessionPackRoundTrip);
+        Run(MeshOpsBasics); Run(MeshEditsDoc); Run(VpmVersions); Run(UploadPlanBuild); Run(DecimateBasics); Run(DecimateIslands); Run(DecimateToCount); Run(StickerImages); Run(SheetCore); Run(ColorHarmonyBasics); Run(ImageDecodeBasics); Run(ImageDecodeMore); Run(TextureGpuBasics); Run(SessionSource); Run(SceneSpecBasics); Run(SceneSpecStudioTabs); Run(StudioPresets); Run(DocEditBasics); Run(TextureMixBasics); Run(SessionPackRoundTrip); Run(ReleaseNotesLang);
         Console.WriteLine($"{_pass} passed, {_fail} failed");
         return _fail == 0 ? 0 : 1;
     }

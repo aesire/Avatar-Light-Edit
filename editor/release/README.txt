@@ -1,5 +1,6 @@
 Avatar Light Edit
 =====================
+(English: README.en.txt · 日本語: README.ja.txt)
 
 Unity를 열지 않고 VRChat 아바타의 겉모습(머티리얼·색·블렌드쉐이프·의상·자세)을 미리 보고 고치는 Windows 프로그램입니다.
 무료이고 소스가 공개된 프로그램입니다 (GPLv3). VRChat이나 Unity가 만들거나 승인한 도구가 아닙니다.

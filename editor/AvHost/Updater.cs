@@ -78,6 +78,9 @@ namespace VrcProto.AvHost
             if (!System.Text.RegularExpressions.Regex.IsMatch(repo ?? "", @"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")) throw new ArgumentException("저장소는 \"owner/name\" 모양이어야 해요");
             using var res = await Http.GetAsync($"{ApiBase}/repos/{repo}/releases/latest", ct);
             if (res.StatusCode == System.Net.HttpStatusCode.NotFound) throw new InvalidOperationException("릴리스가 없거나 저장소를 찾지 못했어요 (비공개 저장소는 쓸 수 없어요)");
+            // GitHub는 로그인 없는 요청을 같은 인터넷 주소에서 한 시간에 60번까지만 받는다 (2026-11-12: 공유기·회사망에서는 다른 프로그램 몫까지 합쳐져 쉽게 찬다)
+            if ((int)res.StatusCode is 403 or 429 && res.Headers.TryGetValues("X-RateLimit-Remaining", out var left) && left.FirstOrDefault() == "0")
+                throw new InvalidOperationException("GitHub가 잠시 확인을 막았어요 (같은 인터넷에서 요청이 많았을 때). 한 시간쯤 뒤에 다시 확인해 주세요");
             res.EnsureSuccessStatusCode();
             var j = JNode.Parse(await res.Content.ReadAsStringAsync(ct));
             var r = new Release { Tag = j["tag_name"].AsString, Name = j["name"].AsString, Notes = j["body"].AsString, Url = j["html_url"].AsString };
@@ -133,7 +136,8 @@ namespace VrcProto.AvHost
             var sb = new StringBuilder();
             sb.AppendLine("@echo off");
             sb.AppendLine("chcp 65001 >nul");
-            sb.AppendLine("echo ALEdit 업데이트: 프로그램이 끝나기를 기다려요...");
+            // 검은 창의 글도 화면 언어로 (2026-11-12). 배치 파일의 echo라 바꾼 글에 & | < > ^ % 는 쓰지 않는다
+            sb.AppendLine("echo " + Texts.T("ALEdit 업데이트: 프로그램이 끝나기를 기다려요..."));
             sb.AppendLine($":wait");
             sb.AppendLine($"tasklist /FI \"PID eq {Environment.ProcessId}\" 2>nul | find \"{Environment.ProcessId}\" >nul && (timeout /t 1 /nobreak >nul & goto wait)");
             // 이 앱 폴더의 렌더러만 (다른 곳에서 띄운 것은 두고, 2026-11-01)
@@ -141,7 +145,7 @@ namespace VrcProto.AvHost
             sb.AppendLine("timeout /t 1 /nobreak >nul");
             // robocopy: 0~7 = 성공. 바뀐 파일만 덮어쓴다 (지우지 않는다: 사용자가 넣은 셰이더 팩 등은 남긴다)
             sb.AppendLine($"robocopy \"{Bat(root)}\" \"{Bat(app)}\" /E /R:5 /W:1 /NFL /NDL /NJH /NJS >nul");
-            sb.AppendLine("if %ERRORLEVEL% GEQ 8 (echo 업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요. & pause & exit /b 1)");
+            sb.AppendLine("if %ERRORLEVEL% GEQ 8 (echo " + Texts.T("업데이트 파일을 복사하지 못했어요. 프로그램 폴더 권한을 확인해 주세요.") + " & pause & exit /b 1)");
             // 배포판은 ALEdit.exe(앱 폴더 바깥, .NET 함께 넣음)로 켜져 있다 — 그 exe로 다시 연다. 개발 빌드는 dotnet
             var self = Environment.ProcessPath;
             var launcher = Path.Combine(app, "VrcProtoAv.cmd");

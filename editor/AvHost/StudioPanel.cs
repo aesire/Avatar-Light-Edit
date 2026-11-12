@@ -498,7 +498,7 @@ namespace VrcProto.AvHost
                         "panorama" => $"360° 파노라마 · {Path.GetFileName(_settings.StudioBgPath)} ({m["width"].AsInt}×{m["height"].AsInt})",
                         "image" => $"평면 이미지 · {Path.GetFileName(_settings.StudioBgPath)} ({m["width"].AsInt}×{m["height"].AsInt})",
                         "gradient" when _settings.StudioBgMode == "solid" => $"단색 · {_settings.StudioBgColor}",
-                        "gradient" => $"그라데이션 ·{_settings.StudioBgTop} → {_settings.StudioBgBottom}",
+                        "gradient" => $"그라데이션 · {_settings.StudioBgTop} → {_settings.StudioBgBottom}",
                         _ => "없음 (환경 설정의 배경)",
                     };
                     break;

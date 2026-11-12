@@ -115,7 +115,8 @@ namespace VrcProto.AvHost
             {
                 bool newer = Updater.IsNewer(r);
                 state.Text = (newer ? $"새 버전 {r.Tag}이 있어요" : $"최신 버전이에요 ({r.Tag})") + (r.ZipUrl.Length == 0 ? " · 받을 zip이 없는 릴리스입니다" : $" · {r.ZipName} ({r.ZipSize / 1048576.0:0.#} MB)");
-                notes.Text = r.Notes; notes.IsVisible = r.Notes.Length > 0;
+                // 릴리스 글이 언어별로 나뉘어 있으면 화면 언어 부분만 (2026-11-12, Host/Core/ReleaseNotes.cs)
+                notes.Text = VrcProto.Host.Core.ReleaseNotes.ForLang(r.Notes, Texts.Lang); notes.IsVisible = r.Notes.Length > 0;
                 install.IsVisible = r.ZipUrl.Length > 0 && (newer || Updater.CurrentText == null);
                 skip.IsVisible = newer;
                 _updFound = newer ? r : null;

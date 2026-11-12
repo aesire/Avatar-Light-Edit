@@ -18,7 +18,7 @@ Unity 없이 가볍게 여는 VRChat 아바타 편집기 — Windows 프로그�
 - **PhysBone**: 원본 VRCPhysBone 값을 그대로 쓰는 미리보기 시뮬레이션.
 - **환경·촬영**: 조명·후처리 프리셋, 고해상도·투명 배경 촬영, 턴테이블·녹화, 스티커, 방송 오버레이.
 - **메시**: 정점 합치기·줄이기, 간단한 정점 편집.
-- **VR**: SteamVR로 보기, VR 안에서 자세 잡기·아이템 배치·카메라.
+- **VR**: SteamVR로 보기, VR 안에서 본·아이템 잡기·배치·카메라.
 - **내보내기·올리기**: 고친 결과를 Unity 프로젝트로 내보내거나, VRChat SDK로 올린다 (SDK는 사용자 PC에 공식 저장소에서 받는다).
 - **쇼콜라 애호해주기**
 - 화면 언어: 한국어 · English · 日本語.
@@ -26,7 +26,7 @@ Unity 없이 가볍게 여는 VRChat 아바타 편집기 — Windows 프로그�
 ## 받기
 
 [릴리스](../../releases)에서 `ALEdit-<버전>.zip`을 받아 풀고 `ALEdit.exe`를 실행한다.
-.NET은 함께 들어 있다. 쓰는 법은 zip 안의 `README.txt`([editor/release/README.txt](editor/release/README.txt)).
+.NET은 함께 들어 있다. 쓰는 법은 zip 안의 `README.txt`([한국어](editor/release/README.txt) · [English](editor/release/README.en.txt) · [日本語](editor/release/README.ja.txt)).
 
 ## 구조
 

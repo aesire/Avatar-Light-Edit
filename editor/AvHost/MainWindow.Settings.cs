@@ -312,14 +312,18 @@ namespace VrcProto.AvHost
             });
 
             // ---- 정보 (2026-11-01, 배포 전) ----
-            Control Doc(string text, string file) => Ui.Button(text, () =>
+            Control Doc(string text, string file, Func<string>? pick = null) => Ui.Button(text, () =>
             {
+                if (pick != null) file = pick();
                 var path = Path.Combine(Updater.AppDir, file);
                 if (File.Exists(path)) Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
                 else SetStatus(file + " 파일이 없습니다.");
             }, file);
             var docs = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 6 };
-            docs.Children.Add(Doc("사용 안내", "README.txt"));
+            // 사용 안내는 화면 언어 판으로 (2026-11-12, README.en.txt · README.ja.txt). 없으면 한국어 판
+            //   누를 때 고른다 — 이 창에서 언어를 바꾼 바로 뒤에도 맞게
+            string Readme() { var f = Texts.Lang == "ko" ? "README.txt" : $"README.{Texts.Lang}.txt"; return File.Exists(Path.Combine(Updater.AppDir, f)) ? f : "README.txt"; }
+            docs.Children.Add(Doc("사용 안내", "README.txt", Readme));
             docs.Children.Add(Doc("이용 조건", "LICENSE.txt"));
             docs.Children.Add(Doc("라이선스", "THIRD_PARTY_NOTICES.txt"));
             p.Children.Add(Ui.SectionTitle("정보"));

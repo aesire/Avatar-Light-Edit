@@ -409,7 +409,7 @@ namespace VrcProto.AvHost
         {
             var (label, options) = LilLocalization.Describe(p.Description);
             string[]? components = null;
-            if (p.Type == "Vector" && options.Length > 0) { components = new[] { label }.Concat(options).ToArray(); label = string.Join(" · ", components); }
+            if (p.Type == "Vector" && options.Length > 0) { components = new[] { label }.Concat(options).ToArray(); label = string.Join(" · ", components.Select(Texts.T)); }   // 이름마다 따로 바꿔 잇는다 (2026-11-12: 이은 글은 표로 못 찾아 "Size · 오프셋"처럼 섞였다)
             var name = Ui.Text(label);
             var tip = p.Name + (p.Attributes.Count > 0 ? "\n[" + string.Join("][", p.Attributes) + "]" : "");
             var addrs = (p.Type == "Texture" ? new[] { Addr.MatTex(_mat!, p.Name) } : AddrsFor(p)).ToList();

@@ -27,7 +27,7 @@ namespace VrcProto.AvHost
         static Dictionary<string, string> _exact = new Dictionary<string, string>();
         static readonly Dictionary<string, string> _memo = new Dictionary<string, string>();   // 틀로 찾은 결과 (표를 다시 읽으면 비운다)
         static List<Template> _templates = new List<Template>(), _openTemplates = new List<Template>(), _tailTemplates = new List<Template>();
-        static List<KeyValuePair<string, string>> _heads = new List<KeyValuePair<string, string>>(), _tails = new List<KeyValuePair<string, string>>();
+        static List<KeyValuePair<string, string>> _heads = new List<KeyValuePair<string, string>>(), _tails = new List<KeyValuePair<string, string>>(), _lineHeads = new List<KeyValuePair<string, string>>();
         static readonly ConditionalWeakTable<AvaloniaObject, Orig> _orig = new ConditionalWeakTable<AvaloniaObject, Orig>();
         static bool _busy, _hooked;
         static int _depth;
@@ -145,6 +145,17 @@ namespace VrcProto.AvHost
 
         static string FromTemplates(string s)
         {
+            // 표에는 "…합니다.\n"처럼 줄바꿈까지 적힌 조각인데 줄바꿈 없이 온 글 (2026-11-12): "{0}\n{1}" 같은 틀이 줄을 나눠 넘기면 여기로 온다
+            if (s[^1] != '\n')
+            {
+                if (_exact.TryGetValue(s + "\n", out var nl1) && nl1.EndsWith("\n")) return nl1.Substring(0, nl1.Length - 1);
+                if (_exact.TryGetValue(s + "\n\n", out var nl2) && nl2.EndsWith("\n\n")) return nl2.Substring(0, nl2.Length - 2);
+            }
+            // 줄바꿈으로 끝나는 앞 조각은 틀보다 먼저 (2026-11-12): "트래커 앱: …받습니다.\n" + "연결: …"을 짧은 틀 "트래커 {0}"가 먼저 삼켰다
+            if (_depth < 8)
+                foreach (var h in _lineHeads)
+                    if (s.Length > h.Key.Length && s.StartsWith(h.Key, StringComparison.Ordinal))
+                        return h.Value + Value(s.Substring(h.Key.Length));
             foreach (var t in _templates)
             {
                 if (!s.StartsWith(t.Prefix, StringComparison.Ordinal) || !s.EndsWith(t.Suffix, StringComparison.Ordinal)) continue;
@@ -152,21 +163,7 @@ namespace VrcProto.AvHost
                 if (m.Success) return Fill(t, m);
             }
             // 코드가 + 로 이어 붙인 글 (2026-11-02): 표에 있는 앞 조각("저장하지 못했어요: " 등)·뒤 조각(" (실행 취소로 되돌려요)" 등)을 바꾸고 나머지는 다시 찾는다
-            if (_depth >= 4) return s;
-            // 여러 줄 글 (2026-11-03): 툴팁이 "이름 + \n기본값: + 값 + \n…"처럼 가운데에 조각이 끼면 앞·뒤 조각으로 못 찾는다 → 줄마다 따로.
-            //   둘째 줄부터는 "\n줄"로 먼저 찾는다 (표에 "\n기본값: "처럼 줄바꿈째 적힌 조각이 많다)
-            if (s.IndexOf('\n', 1) > 0)
-            {
-                var lines = s.Split('\n');
-                var sb = new StringBuilder(Value(lines[0]));
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    var nl = "\n" + lines[i];
-                    var t = Value(nl);
-                    sb.Append(t != nl ? t : "\n" + Value(lines[i]));
-                }
-                return sb.ToString();
-            }
+            if (_depth >= 8) return s;
             foreach (var h in _heads)
                 if (s.Length > h.Key.Length && s.StartsWith(h.Key, StringComparison.Ordinal) && (HeadEnd(h.Key[^1]) || TailStart(s[h.Key.Length])))
                     return h.Value + Value(s.Substring(h.Key.Length));
@@ -187,6 +184,23 @@ namespace VrcProto.AvHost
                 var m = t.Re.Match(s.Substring(at));
                 if (m.Success) return Value(s.Substring(0, at)) + Fill(t, m);
             }
+            // 여러 줄 글 (2026-11-03): 툴팁이 "이름 + \n기본값: + 값 + \n…"처럼 가운데에 조각이 끼면 앞·뒤 조각으로 못 찾는다 → 줄마다 따로.
+            //   앞·뒤 조각으로 못 찾았을 때만 (2026-11-12): 먼저 하면 "…합니다.\n"처럼 줄바꿈으로 끝나는 조각을 이어 붙인 긴 안내 툴팁이 통째로 안 바뀌었다 (0.1.1)
+            //   둘째 줄부터는 "\n줄"로 먼저 찾는다 (표에 "\n기본값: "처럼 줄바꿈째 적힌 조각이 많다)
+            if (s.IndexOf('\n', 1) > 0)
+            {
+                var lines = s.Split('\n');
+                var sb = new StringBuilder(Value(lines[0]));
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    var nl = "\n" + lines[i];
+                    var t = Value(nl);
+                    sb.Append(t != nl ? t : "\n" + Value(lines[i]));
+                }
+                return sb.ToString();
+            }
+            // 줄바꿈으로 시작하는 나머지 ("다시 실행 (Ctrl+Y)" 뒤의 "\n색 조화: 색", 2026-11-12): 줄바꿈을 떼고 다시 찾는다
+            if (s[0] == '\n' && s.Length > 1) return "\n" + Value(s.Substring(1));
             return s;
         }
 
@@ -196,7 +210,7 @@ namespace VrcProto.AvHost
         /// <summary>틀에 들어간 값·이어 붙인 나머지도 표로 바꾼다 — 코드가 이어 붙인 글("높이 약 1.2 m · " 같은)이 값 자리에 들어오기 때문 (2026-11-02, 네 겹까지)</summary>
         static string Value(string v)
         {
-            if (_depth >= 4 || v.Length == 0) return v;
+            if (_depth >= 8 || v.Length == 0) return v;   // 긴 안내 툴팁은 조각이 다섯을 넘는다 (2026-11-12, 예전 4)
             _depth++;
             try { return T(v); } finally { _depth--; }
         }
@@ -240,9 +254,11 @@ namespace VrcProto.AvHost
             // 조각은 긴 것부터
             _heads = exact.Where(kv => kv.Key.Length >= 2 && HasHangul(kv.Key)).OrderByDescending(kv => kv.Key.Length).ToList();
             _tails = _heads;
+            _lineHeads = _heads.Where(kv => kv.Key[^1] == '\n').ToList();
             _openTemplates = templates.Where(t => t.Open != null).ToList();
             // 뒤 조각으로 쓸 틀: " · 미지원 셰이더 {0}"처럼 띄어쓰기·문장부호로 시작하고 앞머리에 한글이 있는 것
-            _tailTemplates = templates.Where(t => t.Prefix.Length >= 3 && TailStart(t.Prefix[0]) && HasHangul(t.Prefix)).ToList();
+            //   " · {0}개 변경됨"처럼 값 뒤에 한글이 오는 것도 (2026-11-12)
+            _tailTemplates = templates.Where(t => t.Prefix.Length >= 3 && TailStart(t.Prefix[0]) && (HasHangul(t.Prefix) || HasHangul(t.Suffix))).ToList();
             _exact = exact; _templates = templates; _memo.Clear();
             return err;
         }
